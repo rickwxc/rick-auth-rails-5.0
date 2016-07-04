@@ -1,21 +1,29 @@
 rick's auth project  in rails5.0
 
 1. create key & secret file at /config/local_env.yml
+
 DEV_DB_NAME: '****'
+
 DEV_DB_USER: '****'
+
 DEV_DB_PSWD: '****'
+
 DEV_DB_HOST: '****'
 
 GOOGLE_APP_KEY: '****'
+
 GOOGLE_APP_SECRET: '****'
 
 FB_APP_KEY: '****'
+
 FB_APP_SECRET: '****'
 
 TW_APP_KEY: '****'
+
 TW_APP_SECRET: '****'
 
 LINKIN_APP_KEY: '****'
+
 LINKIN_APP_SECRET: '****'
 
 
