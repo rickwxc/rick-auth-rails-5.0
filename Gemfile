@@ -48,28 +48,18 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-#--- above is auto  generated
+#--- above is auto generated
 
 gem 'mysql2'
-gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'haml'
 gem 'annotate'
-gem 'mailgun-ruby'
-gem 'mailgun_rails'
-gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
 #auth
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-stalkable'
-gem "omniauth-google-oauth2"
-
 gem 'omniauth'
+gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
-
-
-source 'https://rails-assets.org' do
-	  gem 'rails-assets-tether', '>= 1.1.0'
-end
