@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @um.user %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @um.content %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @um.provider %>
+</p>
+
+<%= link_to 'Edit', edit_um_path(@um) %> |
+<%= link_to 'Back', ums_path %>

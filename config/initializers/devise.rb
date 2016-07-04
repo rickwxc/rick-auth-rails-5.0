@@ -134,7 +134,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 1.years
 
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true
@@ -265,4 +265,16 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  
+  config.omniauth :facebook, ENV['FB_APP_KEY'], ENV['FB_APP_SECRET']
+  config.omniauth :twitter, ENV['TW_APP_KEY'], ENV['TW_APP_SECRET']
+  config.omniauth :linkedin, ENV['LINKIN_APP_KEY'], ENV['LINKIN_APP_SECRET']
+
+  config.omniauth :google_oauth2, ENV['GOOGLE_APP_KEY'], ENV['GOOGLE_APP_SECRET'], { 
+	  :scope => "email, profile",
+	  :prompt => "select_account",
+	  :image_aspect_ratio => "square",
+	  :image_size => 50
+  }
+
 end
