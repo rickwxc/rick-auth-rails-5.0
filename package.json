@@ -1,0 +1,39 @@
+{
+  "name": "rick",
+  "version": "1.0.0",
+  "description": "rick auth",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
+    "bootstrap-loader": "^1.0.10",
+    "bootstrap-sass": "^3.3.6",
+    "css-loader": "^0.23.1",
+    "expose-loader": "^0.7.1",
+    "file-loader": "^0.9.0",
+    "jquery": "^3.0.0",
+    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.9.1",
+    "resolve-url-loader": "^1.5.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickwxc/rick-auth-rails-5.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rickwxc/rick-auth-rails-5.0/issues"
+  },
+  "homepage": "https://github.com/rickwxc/rick-auth-rails-5.0#readme"
+}

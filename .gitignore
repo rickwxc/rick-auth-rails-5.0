@@ -8,6 +8,8 @@
 /.bundle
 /dev.sh
 /config/local_env.yml
+/app/assets/javascripts/*
+/node_modules
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
