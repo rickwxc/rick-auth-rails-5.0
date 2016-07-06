@@ -5,11 +5,20 @@ var config = module.exports = {
   // the base path which will be used to resolve entry points
   context: __dirname,
   // the main entry point for our application's frontend JS
-  entry: './app/frontend/javascripts/entry.js',
+  //entry: './app/frontend/javascripts/entry.js',
+
+  entry: {
+	  entry: "./app/frontend/javascripts/entry.js",
+	  entry2: "./app/frontend/javascripts/entry2.js"
+  },
+
 module: {
     loaders: [
 	  { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
 	  { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+	  { test: /\.css$/, loader: "style!css" },
+	  { test: /\.png$/, loader: "url-loader?mimetype=image/png&limit=8192" },
+
     ]
   },
 };
@@ -18,7 +27,8 @@ config.output = {
   // this is our app/assets/javascripts directory, which is part of the Sprockets pipeline
   path: path.join(__dirname, 'app', 'assets', 'javascripts'),
   // the filename of the compiled bundle, e.g. app/assets/javascripts/bundle.js
-  filename: 'bundle.js',
+  //filename: 'bundle.js',
+  filename: "[name].js",
   // if the webpack code-splitting feature is enabled, this is the path it'll use to download bundles
   publicPath: '/assets',
 };
