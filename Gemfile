@@ -63,3 +63,8 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
+
+
+#mailgun
+gem 'mailgun-ruby'
+gem 'mailgun_rails'
