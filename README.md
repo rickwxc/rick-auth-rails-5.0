@@ -1,5 +1,10 @@
 rick's auth project  in rails5.0
 
+About the branches:
+master: basic auth
+frontend1.0: basic auth + bootstrap + jquery
+mailgun: frontend1.0 + mailgun integration
+
 1. create key & secret file at /config/local_env.yml
 
 DEV_DB_NAME: '****'
@@ -25,6 +30,7 @@ TW_APP_SECRET: '****'
 LINKIN_APP_KEY: '****'
 
 LINKIN_APP_SECRET: '****'
+
 
 
 This README would normally document whatever steps are necessary to get the
