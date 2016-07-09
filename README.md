@@ -1,9 +1,13 @@
 rick's auth project  in rails5.0
 
 About the branches:
+
 master: basic auth
+
 frontend1.0: basic auth + bootstrap + jquery
+
 mailgun: frontend1.0 + mailgun integration
+
 s3upload-4.0: frontend1.0 + mailgun + s3upload integration
 
 1. create key & secret file at /config/local_env.yml
