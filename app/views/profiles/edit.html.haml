@@ -1,0 +1,14 @@
+.container
+  .row
+    = form_tag(@profile, multipart: true, method: :put) do
+      - if @profile.avatar.present?
+        = image_tag @profile.avatar.url(:thumb) 
+      %br
+      = label_tag :avatar 
+      = file_field_tag "profile[avatar]"
+      %br
+      %br
+      note: if no file selected, you will see 'param is missing  error'
+      %br
+
+      =submit_tag "Submit", class: "btn btn-default"

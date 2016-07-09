@@ -64,7 +64,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 
-
 #mailgun
 gem 'mailgun-ruby'
 gem 'mailgun_rails'
+
+#s3upload and paperclip
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '~> 2.3'

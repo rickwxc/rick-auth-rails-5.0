@@ -10,5 +10,7 @@
       =@u.id
       )
 
+      =link_to('Profile', profiles_path)     
+
       .text-right
         =link_to('Logout', destroy_user_session_path, :method => :delete)     

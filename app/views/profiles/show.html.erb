@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user.email %>
+</p>
+
+<%if @profile.avatar.present?%>
+<%= image_tag @profile.avatar.url(:thumb) %>
+<br />
+<%= image_tag @profile.avatar.url(:square) %>
+<br />
+<%= image_tag @profile.avatar.url(:medium) %>
+<br />
+<%end%>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', my_path %>
