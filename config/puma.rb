@@ -1,47 +1,106 @@
-# Puma can serve each request in a thread from an internal thread pool.
-# The `threads` method setting takes two numbers a minimum and maximum.
-# Any libraries that use thread pools should be configured to match
-# the maximum value specified for Puma. Default is set to 5 threads for minimum
-# and maximum, this matches the default thread size of Active Record.
+## Puma can serve each request in a thread from an internal thread pool.
+## The `threads` method setting takes two numbers a minimum and maximum.
+## Any libraries that use thread pools should be configured to match
+## the maximum value specified for Puma. Default is set to 5 threads for minimum
+## and maximum, this matches the default thread size of Active Record.
+##
+#threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
+#threads threads_count, threads_count
 #
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-threads threads_count, threads_count
-
-# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
+## Specifies the `port` that Puma will listen on to receive requests, default is 3000.
+##
+#port        ENV.fetch("PORT") { 3000 }
 #
-port        ENV.fetch("PORT") { 3000 }
-
-# Specifies the `environment` that Puma will run in.
+## Specifies the `environment` that Puma will run in.
+##
+#environment ENV.fetch("RAILS_ENV") { "development" }
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
-
-# Specifies the number of `workers` to boot in clustered mode.
-# Workers are forked webserver processes. If using threads and workers together
-# the concurrency of the application would be max `threads` * `workers`.
-# Workers do not work on JRuby or Windows (both of which do not support
-# processes).
+## Specifies the number of `workers` to boot in clustered mode.
+## Workers are forked webserver processes. If using threads and workers together
+## the concurrency of the application would be max `threads` * `workers`.
+## Workers do not work on JRuby or Windows (both of which do not support
+## processes).
+##
+## workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-# Use the `preload_app!` method when specifying a `workers` number.
-# This directive tells Puma to first boot the application and load code
-# before forking the application. This takes advantage of Copy On Write
-# process behavior so workers use less memory. If you use this option
-# you need to make sure to reconnect any threads in the `on_worker_boot`
-# block.
+## Use the `preload_app!` method when specifying a `workers` number.
+## This directive tells Puma to first boot the application and load code
+## before forking the application. This takes advantage of Copy On Write
+## process behavior so workers use less memory. If you use this option
+## you need to make sure to reconnect any threads in the `on_worker_boot`
+## block.
+##
+## preload_app!
 #
-# preload_app!
-
-# The code in the `on_worker_boot` will be called if you are using
-# clustered mode by specifying a number of `workers`. After each worker
-# process is booted this block will be run, if you are using `preload_app!`
-# option you will want to use this block to reconnect to any threads
-# or connections that may have been created at application boot, Ruby
-# cannot share connections between processes.
+## The code in the `on_worker_boot` will be called if you are using
+## clustered mode by specifying a number of `workers`. After each worker
+## process is booted this block will be run, if you are using `preload_app!`
+## option you will want to use this block to reconnect to any threads
+## or connections that may have been created at application boot, Ruby
+## cannot share connections between processes.
+##
+## on_worker_boot do
+##   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+## end
 #
-# on_worker_boot do
-#   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-# end
+## Allow puma to be restarted by `rails restart` command.
+#plugin :tmp_restart
 
-# Allow puma to be restarted by `rails restart` command.
-plugin :tmp_restart
+#workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+#threads_count = Integer(ENV['MAX_THREADS'] || 5)
+#threads threads_count, threads_count
+#
+#preload_app!
+#
+#rackup      DefaultRackup
+#port        ENV['PORT']     || 3000
+#environment ENV['RACK_ENV'] || 'development'
+#
+#on_worker_boot do
+#  # Worker specific setup for Rails 4.1+
+#  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
+#  ActiveRecord::Base.establish_connection
+#end
+
+## Change to match your CPU core count
+#workers 1
+#
+## Min and Max threads per worker
+#threads 1, 5
+#
+#app_dir = File.expand_path("../..", __FILE__)
+#shared_dir = "#{app_dir}/shared"
+#
+## Default to production
+#rails_env = ENV['RAILS_ENV'] || "production"
+#environment rails_env
+#
+## Set up socket location
+#bind "unix://#{shared_dir}/sockets/puma.sock"
+#
+## Logging
+#stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
+#
+## Set master PID and state locations
+#pidfile "#{shared_dir}/pids/puma.pid"
+#state_path "#{shared_dir}/pids/puma.state"
+#activate_control_app
+#
+#on_worker_boot do
+#  require "active_record"
+#  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+#  ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
+#end
+
+
+
+
+#!/usr/bin/env puma
+
+threads 0, 4
+# workers 3
+
+bind  "unix:///var/tmp/project.sock"
+pidfile "/var/run/puma/project.pid"
+environment ENV['RAILS_ENV'] || "development"
+stdout_redirect "/var/log/puma/project.log"
