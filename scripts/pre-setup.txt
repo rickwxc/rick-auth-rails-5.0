@@ -1,0 +1,9 @@
+#run as deloy user group
+
+mkdir -p /var/log/puma
+chown deploy. /var/log/puma
+
+mkdir -p /var/run/puma
+chown deploy. /var/run/puma
+
+RAILS_ENV=production bundle exec puma -C config/puma.rb
