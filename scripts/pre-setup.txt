@@ -11,5 +11,5 @@ RAILS_ENV=development rake db:migrate
 RAILS_ENV=production rake db:migrate 
 npm install
 webpack
-
+rake assets:precompile
 RAILS_ENV=production bundle exec puma -C config/puma.rb
