@@ -103,4 +103,4 @@ threads 0, 4
 bind  "unix:///var/tmp/project.sock"
 pidfile "/var/run/puma/project.pid"
 environment ENV['RAILS_ENV'] || "development"
-stdout_redirect "/var/log/puma/project.log"
+#stdout_redirect "/var/log/puma/project.log"
