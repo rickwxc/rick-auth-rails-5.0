@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :roles
+	resources :roles
 	mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	resources :profiles
 	devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }

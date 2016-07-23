@@ -43,4 +43,14 @@ RailsAdmin.config do |config|
 		# history_index
 		# history_show
 	end
+
+	config.model User do
+		edit do
+		#	field :email
+			field :admin
+			field :role, :belongs_to_association
+		end
+	end
+
+
 end
