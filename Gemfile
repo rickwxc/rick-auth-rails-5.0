@@ -79,3 +79,6 @@ gem 'rails_admin', github: 'sferik/rails_admin'
 gem 'rack-pjax', github: 'afcapel/rack-pjax'
 gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
 
+#rails cancancan
+gem 'cancancan', '~> 1.10'
+
