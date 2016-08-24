@@ -7,12 +7,29 @@ class User < ApplicationRecord
 		:recoverable, :rememberable, :trackable, :validatable,
 		:omniauthable, :omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]
 
+	#create / update meta content
 	def save_meta(provider, meta_str)
-
-		Um.find_or_initialize_by(:user_id => self.id, :provider => provider).update_attributes!(
+		um = Um.find_or_initialize_by(:user_id => self.id, :provider => provider)
+		um.update_attributes!(
 			:content => meta_str,
 			:updated_at => Time.now
 		)
+
+		um
+	end
+
+	#add key and value to existing meta field, no delete.
+	def update_meta(provider, kvs)
+		um = Um.find_or_initialize_by(:user_id => self.id, :provider => provider)
+		hash = um.content.present??  (JSON.parse(um.content)):Hash.new;
+
+		kvs.each do |k,v |
+			hash[k] = v
+		end
+
+		um = save_meta(provider, hash.to_json.to_s)
+
+		um
 	end
 
 	#load or create user from 3rd party's email
