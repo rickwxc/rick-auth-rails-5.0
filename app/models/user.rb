@@ -16,13 +16,22 @@ class User < ApplicationRecord
 		um
 	end
 
-	#add key and value to existing meta field, no delete.
+	#add key and value to existing meta field, store as array
 	def update_meta(provider, kvs)
 		um = Um.find_or_initialize_by(:user_id => self.id, :provider => provider)
 		hash = um.content.present??  (JSON.parse(um.content)):Hash.new;
 
-		kvs.each do |k,v |
-			hash[k] = v
+		kvs.each do |k,v|
+			v = v.to_s
+			if hash[k].present?
+				cv = hash[k]
+				if  !cv.include? v
+					cv << v 
+				end
+				hash[k] = cv
+			else
+				hash[k] = [v]
+			end
 		end
 
 		um = save_meta(provider, hash.to_json.to_s)
