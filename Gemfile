@@ -82,3 +82,8 @@ gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
 #rails cancancan
 gem 'cancancan', '~> 1.10'
 
+#deploy
+group :development do
+  gem 'mina', require: false
+  gem 'mina-puma', require: false
+end
