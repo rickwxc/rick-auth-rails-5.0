@@ -63,3 +63,9 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
+
+#deploy
+group :development do
+  gem 'mina', require: false
+  gem 'mina-puma', require: false
+end
