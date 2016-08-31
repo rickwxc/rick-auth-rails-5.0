@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725234506) do
+ActiveRecord::Schema.define(version: 20160831121736) do
+
+  create_table "permissions", force: :cascade do |t|
+    t.string   "controllername"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "position2permissions", force: :cascade do |t|
+    t.integer  "position_id"
+    t.integer  "permission_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,12 +42,6 @@ ActiveRecord::Schema.define(version: 20160725234506) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "ums", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "content"
@@ -36,6 +49,13 @@ ActiveRecord::Schema.define(version: 20160725234506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_ums_on_user_id"
+  end
+
+  create_table "user2positions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "position_id"
   end
 
   create_table "users", force: :cascade do |t|

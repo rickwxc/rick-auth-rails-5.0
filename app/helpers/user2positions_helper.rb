@@ -1,0 +1,2 @@
+module User2positionsHelper
+end

@@ -72,7 +72,6 @@ gem 'mailgun_rails'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '~> 2.3'
 
-
 #rails admin
 #ref http://blog.endpoint.com/2016/05/gem-dependency-issues-with-rails-5-beta.html
 gem 'rails_admin', github: 'sferik/rails_admin'

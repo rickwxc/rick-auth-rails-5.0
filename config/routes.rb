@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-	resources :roles
 	mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+	resources :user2positions
+	resources :position2permissions
+	resources :permissions
+	resources :positions
 	resources :profiles
+
 	devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
 	get 'my', to: 'my#index', :as => :my
