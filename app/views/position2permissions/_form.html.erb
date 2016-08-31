@@ -1,0 +1,27 @@
+<%= form_for(position2permission) do |f| %>
+  <% if position2permission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(position2permission.errors.count, "error") %> prohibited this position2permission from being saved:</h2>
+
+      <ul>
+      <% position2permission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :position_id %>
+    <%= f.number_field :position_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :permission_id %>
+    <%= f.number_field :permission_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

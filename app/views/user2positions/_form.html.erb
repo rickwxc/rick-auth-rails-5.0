@@ -1,0 +1,27 @@
+<%= form_for(user2position) do |f| %>
+  <% if user2position.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user2position.errors.count, "error") %> prohibited this user2position from being saved:</h2>
+
+      <ul>
+      <% user2position.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position %>
+    <%= f.number_field :position %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
