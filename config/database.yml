@@ -20,17 +20,13 @@ development:
 #  <<: *default
 #  database: db/test.sqlite3
 #
+
 production:
-  <<: *default
-  database: db/production.sqlite3
-
-#development:
-#  adapter: mysql2
-#  encoding: utf8
-#  database: <%= ENV['DEV_DB_NAME'] %>
-#  username: <%= ENV['DEV_DB_USER'] %>
-#  password: <%= ENV['DEV_DB_PSWD'] %>
-#  host: <%= ENV['DEV_DB_HOST'] %>
-#  port: <%= ENV['DEV_DB_HOST_PORT'] || 3306 %>
-
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['PRO_DB_NAME'] %>
+  username: <%= ENV['PRO_DB_USER'] %>
+  password: <%= ENV['PRO_DB_PSWD'] %>
+  host: <%= ENV['PRO_DB_HOST'] %>
+  port: <%= ENV['PRO_DB_HOST_PORT'] || 3306 %>
 

@@ -71,3 +71,9 @@ gem 'mailgun_rails'
 #s3upload and paperclip
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '~> 2.3'
+
+#deploy
+group :development do
+  gem 'mina', require: false
+  gem 'mina-puma', require: false
+end
