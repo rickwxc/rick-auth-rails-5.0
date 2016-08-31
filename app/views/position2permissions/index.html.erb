@@ -2,7 +2,7 @@
 
 <h1>Position2permissions</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Position</th>
@@ -14,8 +14,8 @@
   <tbody>
     <% @position2permissions.each do |position2permission| %>
       <tr>
-        <td><%= position2permission.position_id %></td>
-        <td><%= position2permission.permission_id %></td>
+        <td><%= position2permission.position.name %></td>
+        <td><%= position2permission.permission.controllername %></td>
         <td><%= link_to 'Show', position2permission %></td>
         <td><%= link_to 'Edit', edit_position2permission_path(position2permission) %></td>
         <td><%= link_to 'Destroy', position2permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -13,12 +13,13 @@
 
   <div class="field">
     <%= f.label :position_id %>
-    <%= f.number_field :position_id %>
+<%=select_tag "position2permission[position_id]", options_from_collection_for_select(Position.all, "id", "name", position2permission.position_id||0 ) %>
+
   </div>
 
   <div class="field">
     <%= f.label :permission_id %>
-    <%= f.number_field :permission_id %>
+<%=select_tag "position2permission[permission_id]", options_from_collection_for_select(Permission.all, "id", "controllername", position2permission.permission_id||0 ) %>
   </div>
 
   <div class="actions">

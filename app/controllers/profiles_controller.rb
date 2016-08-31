@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
 	before_action :authenticate_user!
+	before_action -> {can_current_user_access(params[:controller]) } 
 	before_action :show_edit_profile, only: [:index, :new, :destroy, :create]
 	before_action :set_profile, only: [:show, :edit, :update]
 

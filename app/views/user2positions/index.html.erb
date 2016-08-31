@@ -2,7 +2,7 @@
 
 <h1>User2positions</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>User</th>
@@ -14,8 +14,8 @@
   <tbody>
     <% @user2positions.each do |user2position| %>
       <tr>
-        <td><%= user2position.user_id %></td>
-        <td><%= user2position.position %></td>
+        <td><%= user2position.user.email %></td>
+        <td><%= user2position.position.name %></td>
         <td><%= link_to 'Show', user2position %></td>
         <td><%= link_to 'Edit', edit_user2position_path(user2position) %></td>
         <td><%= link_to 'Destroy', user2position, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,5 +1,7 @@
 class PositionsController < ApplicationController
-  before_action :set_position, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
+	before_action -> {can_current_user_access(params[:controller]) } 
+	before_action :set_position, only: [:show, :edit, :update, :destroy]
 
   # GET /positions
   # GET /positions.json

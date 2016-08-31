@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :position %>
-    <%= f.number_field :position %>
+    <%= f.label :position_id %>
+<%=select_tag "user2position[position_id]", options_from_collection_for_select(Position.all, "id", "name", user2position.position_id||0 ) %>
   </div>
 
   <div class="actions">

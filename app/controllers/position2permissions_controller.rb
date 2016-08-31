@@ -1,5 +1,7 @@
 class Position2permissionsController < ApplicationController
-  before_action :set_position2permission, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
+	before_action -> {can_current_user_access(params[:controller]) } 
+	before_action :set_position2permission, only: [:show, :edit, :update, :destroy]
 
   # GET /position2permissions
   # GET /position2permissions.json

@@ -1,5 +1,7 @@
 class User2positionsController < ApplicationController
-  before_action :set_user2position, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
+	before_action -> {can_current_user_access(params[:controller]) } 
+	before_action :set_user2position, only: [:show, :edit, :update, :destroy]
 
   # GET /user2positions
   # GET /user2positions.json
@@ -69,6 +71,6 @@ class User2positionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user2position_params
-      params.require(:user2position).permit(:user_id, :position)
+      params.require(:user2position).permit(:user_id, :position_id)
     end
 end
