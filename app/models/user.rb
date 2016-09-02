@@ -58,5 +58,22 @@ class User < ApplicationRecord
 		user
 	end
 
+	def has_position(pid)
+		if pid == Position::No_position
+			ps = User2position.where(:user_id => self.id).first
+			if ps
+				return false 
+			end
+
+			return true
+		end
+
+		ps = User2position.where(:user_id => self.id, :position_id => pid).first
+		if ps
+			return true
+		end
+
+		return false 
+	end
 
 end
