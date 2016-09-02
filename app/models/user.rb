@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
+	No_relation = 0
 	
 	has_many :user2positions
 	has_many :positions, through: :user2positions
@@ -58,9 +59,11 @@ class User < ApplicationRecord
 		user
 	end
 
-	def has_position(pid)
-		if pid == Position::No_position
-			ps = User2position.where(:user_id => self.id).first
+	#current_user.has_relation(User2position, :position_id, pid)
+	#current_user.has_relation(,,User::No_relation) means no relation found at all.
+	def has_relation(relation_table, rel_field, rel_id)
+		if rel_id == User::No_relation
+			ps = relation_table.where(:user_id => self.id).first
 			if ps
 				return false 
 			end
@@ -68,12 +71,12 @@ class User < ApplicationRecord
 			return true
 		end
 
-		ps = User2position.where(:user_id => self.id, :position_id => pid).first
+		ps = relation_table.where(:user_id => self.id, rel_field => rel_id).first
 		if ps
 			return true
 		end
 
-		return false 
+		false 
 	end
 
 end
