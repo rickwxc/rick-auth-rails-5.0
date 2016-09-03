@@ -59,6 +59,14 @@ class User < ApplicationRecord
 		user
 	end
 
+
+	def add_relation(relation_table, rel_field, rel_id)
+		rs = relation_table.find_or_initialize_by(:user_id => self.id, rel_field => rel_id)
+		rs.save
+
+		rs
+	end
+
 	#current_user.has_relation(User2position, :position_id, pid)
 	#current_user.has_relation(,,User::No_relation) means no relation found at all.
 	def has_relation(relation_table, rel_field, rel_id)
