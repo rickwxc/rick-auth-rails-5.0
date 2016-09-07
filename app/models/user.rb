@@ -87,4 +87,18 @@ class User < ApplicationRecord
 		false 
 	end
 
+    def del_all_relations(relation_table)
+		relation_table.destroy_all(:user_id => self.id)
+    end
+
+    def get_all_relations_ids(relation_table, rel_field)
+        ps = relation_table.where(:user_id => self.id)
+        ids = []
+        ps.each do |v|
+            ids << v[rel_field]
+        end
+
+        ids
+    end
+
 end
