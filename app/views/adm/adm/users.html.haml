@@ -1,0 +1,13 @@
+%h2{:class=>"user-profile__title"}
+  Users
+%table{:class=>'table'}
+  -@users.each do |v|
+    %tr
+      %td
+        =v.id
+      %td
+        =v.email
+      %td
+        %a{:href=>"#{adm_ad_user_path(:user_id => v.id)}"}
+          Settings
+= will_paginate @users

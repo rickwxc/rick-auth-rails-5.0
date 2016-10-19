@@ -77,3 +77,6 @@ group :development do
   gem 'mina', require: false
   gem 'mina-puma', require: false
 end
+
+gem 'will_paginate'
+

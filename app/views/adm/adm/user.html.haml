@@ -1,0 +1,14 @@
+.container
+  =notice
+  %h3
+    =@u.email
+
+  = form_tag do
+    -Position.all.each do |p|
+      %label
+        %input{:type => 'checkbox', :name =>"pos[#{p.id}]", :checked =>(@position_ids.include? p.id)}
+          =p.name
+      %br
+    %button{:type=>"submit"}
+      Submit
+

@@ -11,5 +11,16 @@ Rails.application.routes.draw do
 
 	root 'we#index'
 
+    namespace :adm do
+        get '/', to: 'adm#index'
+
+        #user
+        get 'users', to: 'adm#users'
+        get 'user/:user_id', to: 'adm#user', :as => :ad_user
+        post 'user/:user_id', to: 'adm#user'
+
+	end
+
+
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
