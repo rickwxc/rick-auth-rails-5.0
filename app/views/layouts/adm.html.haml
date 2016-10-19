@@ -1,0 +1,25 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title Adm
+  = csrf_meta_tags
+  = javascript_include_tag 'entry'
+  %body
+    %a{:href=>"/", :target => '_blank'}
+      Website
+    %a{:href=>"/adm/"}
+      Admin
+    %a{:href=>"/adm/users"}
+      User
+    -if current_user && current_user.id == 1
+      ='['
+      %a{:href=>"/positions"}
+        Positions
+      %a{:href=>"/permissions"}
+        Permissions
+      %a{:href=>"/position2permissions"}
+        P2P
+      =']'
+
+
+    = yield

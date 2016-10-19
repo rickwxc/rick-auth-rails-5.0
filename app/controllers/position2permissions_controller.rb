@@ -1,4 +1,5 @@
 class Position2permissionsController < ApplicationController
+	layout 'adm'
 	before_action :authenticate_user!
 	before_action -> {can_current_user_access(params[:controller]) } 
 	before_action :set_position2permission, only: [:show, :edit, :update, :destroy]

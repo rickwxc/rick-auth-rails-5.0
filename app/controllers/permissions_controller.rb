@@ -1,4 +1,5 @@
 class PermissionsController < ApplicationController
+	layout 'adm'
 	before_action :authenticate_user!
 	before_action -> {can_current_user_access(params[:controller]) } 
 	before_action :set_permission, only: [:show, :edit, :update, :destroy]

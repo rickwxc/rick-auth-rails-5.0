@@ -1,7 +1,12 @@
 class Adm::AdmController < ApplicationController
+	layout 'adm'
+	before_action :authenticate_user!
+	before_action -> {can_current_user_access(params[:controller]) } 
+
 
 	def index
 	end
+
     def user
         id = params[:user_id]
         @u = User.find(id)
