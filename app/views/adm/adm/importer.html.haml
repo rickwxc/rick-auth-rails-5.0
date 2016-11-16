@@ -1,0 +1,30 @@
+
+.container
+  %h1
+    Importer 
+  %h3
+    =notice 
+
+  = form_tag do
+    %select{:name => 'md'}
+      -ActiveRecord::Base.connection.data_sources.map do |model|
+        - if model.match('ar_internal_metadata') ||  model.match('schema_migrations') 
+          -next
+        %option
+          =model.capitalize.singularize.camelize
+    %br
+    %br
+    %textarea{:name => 'cnt'}
+    %br
+    %br
+    %button{:type=>"submit"}
+      Submit
+
+
+  %hr
+  %br
+  email|name
+  %br
+  r@g|rick
+  %br
+

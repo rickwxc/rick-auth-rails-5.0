@@ -7,6 +7,44 @@ class Adm::AdmController < ApplicationController
 	def index
 	end
 
+	def importer
+        if params['authenticity_token'] && current_user.id == 1
+			md = params[:md]
+
+			cnt = params[:cnt]
+			lines = cnt.split(/\r\n/)
+
+
+			i = 0
+			fields = nil
+			lines.each do |r|
+				r.strip!
+				if r == ''
+					next
+				end
+
+				row = r.split(/\|/)
+				i = i + 1
+
+				if i == 1
+					fields = row
+					next
+				end
+
+				obj = md.constantize.new
+				fields.each_with_index do |v, i|
+					obj[v.to_sym] = row[i]
+					obj.save
+				end
+
+			end
+			
+			
+            redirect_to adm_importer_path(), notice: 'Done!'
+        end
+
+	end
+
     def user
         id = params[:user_id]
         @u = User.find(id)

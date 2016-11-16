@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
         #user
         get 'users', to: 'adm#users'
+        get 'importer', to: 'adm#importer'
+        post 'importer', to: 'adm#importer'
         get 'user/:user_id', to: 'adm#user', :as => :ad_user
         post 'user/:user_id', to: 'adm#user'
 
