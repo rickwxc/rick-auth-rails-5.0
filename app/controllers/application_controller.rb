@@ -12,15 +12,16 @@ class ApplicationController < ActionController::Base
 		  return
 	  end
 
-	  cn = current_controller_name
-	  cn2 = current_controller_name.sub '/', '::'
+      cn = current_controller_name
+      cn1 = current_controller_name.gsub '_', ''
+      cn2 = current_controller_name.gsub '/', '::'
 
-	  current_user.user2positions.each do |u2p|
-		  cs = u2p.position.get_controllernames
-		  if (cs.include? cn) || (cs.include? cn2)
-			  return
-		  end
-	  end
+      current_user.user2positions.each do |u2p|
+          cs = u2p.position.get_controllernames
+          if (cs.include? cn) || (cs.include? cn1) || (cs.include? cn2)
+              return
+          end 
+      end 
 
 	  redirect_to root_path
   end
