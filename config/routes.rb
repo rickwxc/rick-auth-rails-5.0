@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 	devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
 	get 'my', to: 'my#index', :as => :my
+    get 'login/:user_id/:code', to: 'we#login', :as => :login
+
 
 	root 'we#index'
 

@@ -10,6 +10,12 @@ class User < ApplicationRecord
 		:recoverable, :rememberable, :trackable, :validatable,
 		:omniauthable, :omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]
 
+	def login_code
+		code = Digest::SHA1.hexdigest (Rails.application.secrets.secret_key_base + self.email)
+
+		code
+	end
+
 	#create / update meta content
 	def save_meta(provider, meta_str)
 		um = Um.find_or_initialize_by(:user_id => self.id, :provider => provider)
