@@ -8,8 +8,9 @@
       %td
         =v.email
       %td
-        %a{:href=>"#{login_url(:user_id => v.id, :code => v.login_code)}"}
-          Login
+        - if v.id != 1
+          %a{:href=>"#{login_url(:user_id => v.id, :code => v.login_code)}"}
+            Login
       %td
         %a{:href=>"#{adm_ad_user_path(:user_id => v.id)}"}
           Settings
