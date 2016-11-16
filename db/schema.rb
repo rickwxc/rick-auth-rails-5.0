@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831121736) do
+ActiveRecord::Schema.define(version: 20161116053326) do
 
   create_table "permissions", force: :cascade do |t|
     t.string   "controllername"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20160831121736) do
 
   create_table "position2permissions", force: :cascade do |t|
     t.integer  "position_id"
-    t.integer  "permission_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "controllername"
   end
 
   create_table "positions", force: :cascade do |t|

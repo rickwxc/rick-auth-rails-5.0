@@ -2,7 +2,7 @@
 
 <h1>Positions</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Name</th>
@@ -13,7 +13,10 @@
   <tbody>
     <% @positions.each do |position| %>
       <tr>
-        <td><%= position.name %></td>
+		  <td>
+			  <%= position.name %>
+			  <%= position.get_controllernames %>
+	  </td>
         <td><%= link_to 'Show', position %></td>
         <td><%= link_to 'Edit', edit_position_path(position) %></td>
         <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>

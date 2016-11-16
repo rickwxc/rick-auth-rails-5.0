@@ -31,6 +31,9 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @position.save
+
+		self.update_permissions
+
         format.html { redirect_to @position, notice: 'Position was successfully created.' }
         format.json { render :show, status: :created, location: @position }
       else
@@ -40,11 +43,27 @@ class PositionsController < ApplicationController
     end
   end
 
+	def update_permissions
+
+		Position2permission.where(:position_id => @position.id).destroy_all
+
+		params['cs'].each do |cn|
+			rs = Position2permission.new
+			rs[:position_id] = @position.id
+			rs[:controllername] = cn
+			rs.save
+		end if params['cs']
+	end
+
+
   # PATCH/PUT /positions/1
   # PATCH/PUT /positions/1.json
   def update
     respond_to do |format|
       if @position.update(position_params)
+
+		  self.update_permissions
+
         format.html { redirect_to @position, notice: 'Position was successfully updated.' }
         format.json { render :show, status: :ok, location: @position }
       else

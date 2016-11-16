@@ -88,7 +88,7 @@ class User < ApplicationRecord
 	end
 
     def del_all_relations(relation_table)
-		relation_table.destroy_all(:user_id => self.id)
+		relation_table.where(:user_id => self.id).destroy_all
     end
 
     def get_all_relations_ids(relation_table, rel_field)

@@ -22,6 +22,8 @@
 <%=select_tag "position2permission[permission_id]", options_from_collection_for_select(Permission.all, "id", "controllername", position2permission.permission_id||0 ) %>
   </div>
 
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -16,6 +16,24 @@
     <%= f.text_field :name %>
   </div>
 
+  <% 
+  cs = position.get_controllernames
+
+  ApplicationController.subclasses.each do |c| 
+	  s = c.to_s
+	  s.downcase!
+	  s.sub! 'controller', ''
+  %>
+	  <label>
+		  <input type="checkbox" name='cs[]' 
+
+  <%= (cs.include? s)? 'checked':''%>
+		  value="<%=s %>" />
+		  <%=s %>
+	  </label>
+	  <br />
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
