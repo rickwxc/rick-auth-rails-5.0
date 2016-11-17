@@ -7,11 +7,46 @@ class Adm::AdmController < ApplicationController
 	def index
 	end
 
+
+	def csv 
+		require 'csv'
+		s = ''
+		name = params[:name]
+		objs = name.constantize.all
+
+		if  current_user.id == 1
+			i = 0
+			objs.each do |obj|
+				if i == 0
+					obj.attributes.each do |k, v|
+						s = s +  '|' + k.to_s
+					end
+					s  = s + "\n" 
+				end
+
+				obj.attributes.each do |k, v|
+					s = s +  '|' + v.to_s
+				end
+				s = s + "\n" 
+				i =  i + 1
+			end
+		end
+
+		render :plain => s
+	end
+
 	def importer
         if params['authenticity_token'] && current_user.id == 1
 			md = params[:md]
 
 			cnt = params[:cnt]
+
+			if cnt == 'csv'
+				redirect_to adm_csv_path(:name => md)
+				return
+			end
+
+
 			lines = cnt.split(/\r\n/)
 
 
