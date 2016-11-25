@@ -10,6 +10,13 @@ class User < ApplicationRecord
 		:recoverable, :rememberable, :trackable, :validatable,
 		:omniauthable, :omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]
 
+
+	def self.list_by_positions(position_id)
+		rs = User.joins("INNER JOIN user2positions ON  users.id = user2positions.user_id").where(:user2positions => {:position_id => position_id})
+
+		rs
+	end
+
 	def login_code
 		code = Digest::SHA1.hexdigest (Rails.application.secrets.secret_key_base + self.email)
 
