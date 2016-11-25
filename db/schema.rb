@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20161116053326) do
 
   create_table "ums", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "content"
+    t.string   "content"
     t.string   "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,11 +71,8 @@ ActiveRecord::Schema.define(version: 20161116053326) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.boolean  "admin"
-    t.integer  "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end

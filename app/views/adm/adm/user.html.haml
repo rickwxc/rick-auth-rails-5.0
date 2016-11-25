@@ -9,6 +9,20 @@
         %input{:type => 'checkbox', :name =>"pos[#{p.id}]", :checked =>(@position_ids.include? p.id)}
           =p.name
       %br
+
+    %table{:class => 'table'}
+      -Profile.column_names.each do |v|
+        - if ((['id', 'user_id', 'created_at', 'updated_at'].include? v) || (v.include? 'avatar'))
+          -next
+        %tr
+          %td
+            %label
+              = v
+          %td
+            = text_field_tag v, @profile[v]
+          %td
+            =Profile.columns_hash[v].type
+
     %button{:type=>"submit"}
       Submit
 

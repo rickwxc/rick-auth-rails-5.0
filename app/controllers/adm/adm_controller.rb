@@ -84,6 +84,8 @@ class Adm::AdmController < ApplicationController
         id = params[:user_id]
         @u = User.find(id)
 
+		@profile =  Profile.get_profile(@u.id)
+
         if params['authenticity_token']
 
             @u.del_all_relations(User2position)
@@ -91,6 +93,15 @@ class Adm::AdmController < ApplicationController
             params['pos'].each do |pid|
                 @u.add_relation(User2position, 'position_id', pid)
             end if params['pos']
+
+			params.each do |f|
+				if @profile.has_attribute?(f)
+					@profile[f] = params[f]
+				end
+			end
+
+			@profile.save
+
 
             redirect_to adm_ad_user_path(@u.id), notice: 'user updated.'
         end
