@@ -10,6 +10,11 @@ class User < ApplicationRecord
 		:recoverable, :rememberable, :trackable, :validatable,
 		:omniauthable, :omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]
 
+	def pf
+		p = Profile.get_profile(self.id)
+
+		p
+	end
 
 	def self.list_by_positions(position_id)
 		rs = User.joins("INNER JOIN user2positions ON  users.id = user2positions.user_id").where(:user2positions => {:position_id => position_id})
@@ -80,8 +85,8 @@ class User < ApplicationRecord
 		rs
 	end
 
-	#current_user.has_relation(User2position, :position_id, pid)
-	#current_user.has_relation(,,User::No_relation) means no relation found at all.
+	# current_user.has_relation(User2position, 'position_id', Position::Admin)
+	# current_user.has_relation(User2position, 'position_id', User::No_relation)
 	def has_relation(relation_table, rel_field, rel_id)
 		if rel_id == User::No_relation
 			ps = relation_table.where(:user_id => self.id).first
