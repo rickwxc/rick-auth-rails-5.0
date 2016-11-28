@@ -23,5 +23,10 @@ class Img < ApplicationRecord
   validates_attachment_content_type :file, :content_type => /\Aimage\/.*\Z/
 
 
+  def self.load_imgs(modelname, uuid)
+	  rs = Img.where(:modelname => modelname, :uuid => uuid).order('idx desc')
+
+	  rs
+  end
 
 end
