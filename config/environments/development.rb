@@ -61,7 +61,7 @@ Rails.application.configure do
 	  domain: ENV['MAILGUN_DOMAIN']
   }
 
-  config.action_mailer.default_url_options = {:host => ENV['DEV_HOST']}
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 
   #paperclip conf
   config.paperclip_defaults = {

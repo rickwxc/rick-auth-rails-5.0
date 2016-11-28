@@ -11,6 +11,11 @@ class UserMailer < Devise::Mailer
         mail(to: @user.email, subject: 'Welcome')
     end
 
+    def account_password_email(user)
+        @user = user
+        mail(to: @user.email, subject: 'System Login Details')
+    end
+
 
 end
 

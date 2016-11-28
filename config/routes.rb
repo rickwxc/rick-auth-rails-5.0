@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get 'users', to: 'adm#users'
         get 'importer', to: 'adm#importer'
         post 'importer', to: 'adm#importer'
+        post 'add_by_email', to: 'adm#add_by_email'
         get 'csv/:name', to: 'adm#csv', :as => :csv
 
         get 'user/:user_id', to: 'adm#user', :as => :ad_user

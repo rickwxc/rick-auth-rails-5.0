@@ -1,4 +1,5 @@
 class Adm::AdmController < ApplicationController
+	skip_before_action :verify_authenticity_token
 	layout 'adm'
 	before_action :authenticate_user!
 	before_action -> {can_current_user_access(params[:controller]) } 
@@ -111,6 +112,18 @@ class Adm::AdmController < ApplicationController
 	end
 
 
+	def add_by_email
+		email = params[:email]
+
+		u = User.from_omniauth_email(email)
+		UserMailer.account_password_email(u).deliver_now
+
+		rs = {
+			:id => u.id
+		}
+
+		render :json => rs
+	end
 
 
 	def users

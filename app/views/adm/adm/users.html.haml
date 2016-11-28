@@ -15,3 +15,28 @@
         %a{:href=>"#{adm_ad_user_path(:user_id => v.id)}"}
           Settings
 = will_paginate @users
+
+
+%hr
+%br
+%br
+Add User By Email:
+= text_field_tag 'invite_by_email' 
+%a{:onclick=> 'javascript:add_by_email()', :class => 'btn btn-default'}
+  Submit
+
+%script
+  function add_by_email(){
+  var v = $('#invite_by_email').val();
+  var data = {email: v};
+  $.ajax({
+  url:"#{adm_add_by_email_path}",
+  type: 'post',
+  data: data,
+  dataType: 'json',
+  success: function(rs) {
+  window.location = "/adm/user/"  + rs.id
+  }
+  });
+  
+  }
