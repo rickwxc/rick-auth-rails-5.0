@@ -1,0 +1,51 @@
+<%= form_for(img, multipart: true) do |f| %>
+
+  <% if img.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(img.errors.count, "error") %> prohibited this img from being saved:</h2>
+
+      <ul>
+      <% img.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field hide">
+    <%= f.label :modelname %>
+    <%= f.text_field :modelname %>
+  </div>
+
+  <div class="field hide">
+    <%= f.label :uuid %>
+    <%= f.number_field :uuid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :idx %>
+    <%= f.number_field :idx %>
+  </div>
+
+  <div class="field">
+    <%= f.label :alt %>
+    <%= f.text_field :alt %>
+  </div>
+
+
+  <div class="field">
+	  Upload image
+    <%= f.file_field :file %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%if  img.file.present? %>
+	<%= image_tag img.file.url(:original) %>
+	<br />
+	<br />
+<%end %>

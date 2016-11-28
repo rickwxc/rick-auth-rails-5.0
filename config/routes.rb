@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	resources :imgs
 	resources :user2positions
 	resources :positions
 	resources :profiles

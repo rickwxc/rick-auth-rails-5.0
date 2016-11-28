@@ -1,0 +1,9 @@
+
+
+gallery
+
+rails g scaffold img model:string  uuid:integer alt:string   
+
+
+
+

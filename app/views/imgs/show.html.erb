@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Modelname:</strong>
+  <%= @img.modelname %>
+</p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @img.uuid %>
+</p>
+
+<p>
+  <strong>Idx:</strong>
+  <%= @img.idx %>
+</p>
+
+<p>
+  <strong>Alt:</strong>
+  <%= @img.alt %>
+</p>
+
+<%= link_to 'Edit', edit_img_path(@img) %> |
+<%= link_to 'Back', imgs_path %>
