@@ -50,9 +50,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #--- above is auto generated
 
-gem 'mysql2'
+group :production do
+	gem 'mysql2'
+end
 gem 'haml'
-gem 'annotate'
 
 #auth
 gem 'devise'

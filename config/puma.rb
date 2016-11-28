@@ -95,12 +95,12 @@
 
 
 
-#!/usr/bin/env puma
-
-threads 0, 4
-# workers 3
-
-bind  "unix:///var/tmp/project.sock"
-pidfile "/var/run/puma/project.pid"
-environment ENV['RAILS_ENV'] || "development"
-#stdout_redirect "/var/log/puma/project.log"
+##!/usr/bin/env puma
+#
+#threads 0, 4
+## workers 3
+#
+#bind  "unix:///var/tmp/project.sock"
+#pidfile "/var/run/puma/project.pid"
+#environment ENV['RAILS_ENV'] || "development"
+##stdout_redirect "/var/log/puma/project.log"
