@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116053326) do
+ActiveRecord::Schema.define(version: 20161212014815) do
+
+  create_table "imgs", force: :cascade do |t|
+    t.string   "modelname"
+    t.integer  "uuid"
+    t.integer  "idx"
+    t.string   "alt"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
 
   create_table "permissions", force: :cascade do |t|
     t.string   "controllername"
@@ -44,7 +57,7 @@ ActiveRecord::Schema.define(version: 20161116053326) do
 
   create_table "ums", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "content"
+    t.text     "content"
     t.string   "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
