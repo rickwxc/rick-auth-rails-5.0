@@ -53,9 +53,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
 	gem 'mysql2'
 end
-
 gem 'haml'
-gem 'annotate'
 
 #auth
 gem 'devise'
