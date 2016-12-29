@@ -4,6 +4,45 @@ gallery
 
 rails g scaffold img model:string  uuid:integer alt:string   
 
+ecomm-6.0
+
+rails g scaffold img model:string  uuid:integer alt:string   
+
+ecitem
+
+model_name
+uuid
+qty
+unit_price
+tax
+total
+
+
+rails generate scaffold ecorder  
+user_id:integer visitor_uuid:string
+item_total:decimal{10.2} item_tax:decimal{10.2} 
+orderst_id:integer payst_id:integer
+
+shipping_addr_id:integer shppingfee:decimal{8.2} total:decimal{10.2}
+
+
+user_id:integer  
+   visitor_uuid:.string  
+    t.decimal  "item_total",            precision: 10, scale: 2
+    t.decimal  "item_gst",              precision: 10, scale: 2
+    t.integer  "shipping_addr_id"
+    t.decimal  "shippingfee",           precision: 8,  scale: 2
+    t.decimal  "total",                 precision: 10, scale: 2
+    t.integer  "orderst_id"
+    t.integer  "payst_id"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.decimal  "org_shippingfee",       precision: 8,  scale: 2
+    t.integer  "shipping_cost_rule_id"
+    t.decimal  "shipping_x",            precision: 6,  scale: 2
+    t.string   "note"
+    t.string   "mob"
+    t.string   "cname"
 
 
 
