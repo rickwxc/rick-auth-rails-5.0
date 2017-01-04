@@ -116,8 +116,9 @@ function submit(){
 	});
 
 	data = {
-		'to' : to, 
-		'msg' : text 
+		'id' : id,
+		'to' : to,
+		'msg' : text
 	}
 
 	ajax_post('/auth_support_ticket_reply', data, 'json', function(rs){

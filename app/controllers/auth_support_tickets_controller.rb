@@ -5,6 +5,7 @@ class AuthSupportTicketsController < ApplicationController
   before_action :set_auth_support_ticket, only: [:show, :edit, :update, :destroy]
 
   def auth_support_ticket_reply
+	  id = params[:id]
 	  to = params[:to]
 	  msg = params[:msg]
 
