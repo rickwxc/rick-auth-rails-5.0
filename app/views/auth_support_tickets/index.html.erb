@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Support Tickets</h2>
+
+	<% AuthReasonst.all.each do |st|%>
+
+		<a 
+			href="<%=auth_support_tickets_path(:auth_reasonst_id => st.id) %>" 
+			class="btn btn-<%=((params[:auth_reasonst_id].to_i == st.id)? ('primary'):('default'))%> ">
+			<%=st.st %>
+		</a>
+
+<% end %>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>User</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_support_tickets.each do |auth_support_ticket| %>
+      <tr>
+		<td>
+			<%= select_tag "st", 
+				options_from_collection_for_select(AuthReasonst.all, "id", "st", auth_support_ticket.auth_reasonst_id ) %>
+			<br /> 
+		</td>
+		<td>
+        <%= auth_support_ticket.auth_reason.short %>
+		</td>
+        <td><%= auth_support_ticket.email %>
+        <%= auth_support_ticket.mobile %>
+        <%= auth_support_ticket.user_id %>
+		<td>
+			<%= auth_support_ticket.note %>
+		<br />
+        <%= auth_support_ticket.meta %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @auth_support_tickets %>
+<br>
+
+
+
+
+[
+<a href="/auth_reasons" >
+	Reasons
+</a>
+
+<a href="/auth_reasonsts" >
+	Status
+</a>
+]
+
+<br />
+<%= link_to 'New Auth Support Ticket', new_auth_support_ticket_path %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @auth_reason.long %>
+</p>
+
+<p>
+  <strong>Short:</strong>
+  <%= @auth_reason.short %>
+</p>
+
+<p>
+  <strong>Descr:</strong>
+  <%= @auth_reason.descr %>
+</p>
+
+
+<%= link_to 'Edit', edit_auth_reason_path(@auth_reason) %> |
+<%= link_to 'Back', auth_reasons_path %>

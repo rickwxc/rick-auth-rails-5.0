@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Support Ticket Status</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>St</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_reasonsts.each do |auth_reasonst| %>
+      <tr>
+        <td><%= auth_reasonst.st %></td>
+        <td><%= link_to 'Edit', edit_auth_reasonst_path(auth_reasonst) %></td>
+        <td><%= link_to 'Destroy', auth_reasonst, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Reasonst', new_auth_reasonst_path %>

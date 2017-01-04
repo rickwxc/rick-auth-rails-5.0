@@ -1,0 +1,50 @@
+<%= form_for(auth_support_ticket) do |f| %>
+  <% if auth_support_ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_support_ticket.errors.count, "error") %> prohibited this auth_support_ticket from being saved:</h2>
+
+      <ul>
+      <% auth_support_ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	  Ticket Status
+	<%= select_tag "auth_support_ticket[auth_reasonst_id]", options_from_collection_for_select(AuthReasonst.all, "id", "st", auth_support_ticket.auth_reasonst_id||0 ) %>
+
+  </div>
+
+  <div class="field">
+	  Reason
+	<%= select_tag "auth_support_ticket[auth_reason_id]", options_from_collection_for_select(AuthReason.all, "id", "short", auth_support_ticket.auth_reason_id||0 ) %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mobile %>
+    <%= f.text_field :mobile %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note %>
+    <%= f.text_area :note %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

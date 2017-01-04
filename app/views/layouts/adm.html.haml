@@ -3,7 +3,7 @@
   %head
     %title Adm
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = #stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
     %script{:src=>"/assets_default/jquery.min.js"}
@@ -16,6 +16,8 @@
       Website
     %a{:href=>"/adm/"}
       Admin
+    %a{:href=>"/auth_support_tickets"}
+      Supports
     %a{:href=>"/adm/users"}
       User
     -if current_user && current_user.id == 1

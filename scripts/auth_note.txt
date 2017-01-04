@@ -1,0 +1,16 @@
+
+
+rails g scaffold auth_reason long:string short:string descr:string auth_reasonst_id:integer
+
+rails g scaffold auth_reasonst st:string 
+
+
+rails g scaffold auth_support_ticket 
+email:string mobile:string user_id:integer note:text meta:text  
+
+
+rails generate migration remove_auth_reasonst_id_from_auth_reason  auth_reasonst_id:integer
+rails generate migration add_auth_reasonst_id_to_auth_support_ticket   auth_reasonst_id:integer
+
+rails generate migration add_auth_reason_id_to_auth_support_ticket   auth_reason_id:integer
+

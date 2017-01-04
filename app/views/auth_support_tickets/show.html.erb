@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @auth_support_ticket.email %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @auth_support_ticket.mobile %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @auth_support_ticket.user_id %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @auth_support_ticket.note %>
+</p>
+
+<p>
+  <strong>Meta:</strong>
+  <%= @auth_support_ticket.meta %>
+</p>
+
+<%= link_to 'Edit', edit_auth_support_ticket_path(@auth_support_ticket) %> |
+<%= link_to 'Back', auth_support_tickets_path %>

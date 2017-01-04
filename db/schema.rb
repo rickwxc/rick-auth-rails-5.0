@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212014815) do
+ActiveRecord::Schema.define(version: 20170103225948) do
+
+  create_table "auth_reasons", force: :cascade do |t|
+    t.string   "long"
+    t.string   "short"
+    t.string   "descr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_reasonsts", force: :cascade do |t|
+    t.string   "st"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_support_tickets", force: :cascade do |t|
+    t.string   "email"
+    t.string   "mobile"
+    t.integer  "user_id"
+    t.text     "note"
+    t.text     "meta"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "auth_reasonst_id"
+    t.integer  "auth_reason_id"
+  end
 
   create_table "imgs", force: :cascade do |t|
     t.string   "modelname"

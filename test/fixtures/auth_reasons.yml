@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  long: MyString
+  short: MyString
+  descr: MyString
+  auth_reasonst_id: 1
+
+two:
+  long: MyString
+  short: MyString
+  descr: MyString
+  auth_reasonst_id: 1

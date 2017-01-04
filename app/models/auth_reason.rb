@@ -1,0 +1,2 @@
+class AuthReason < ApplicationRecord
+end

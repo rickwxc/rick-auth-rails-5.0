@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Reasons</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Long</th>
+      <th>Short</th>
+      <th>Descr</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_reasons.each do |auth_reason| %>
+      <tr>
+        <td><%= auth_reason.long %></td>
+        <td><%= auth_reason.short %></td>
+        <td><%= auth_reason.descr %></td>
+        <td><%= link_to 'Edit', edit_auth_reason_path(auth_reason) %></td>
+        <td><%= link_to 'Destroy', auth_reason, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Reason', new_auth_reason_path %>

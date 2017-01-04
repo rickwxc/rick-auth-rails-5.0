@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :auth_support_tickets
+  resources :auth_reasons
+  resources :auth_reasonsts
 	resources :user2positions
 	resources :positions
 	resources :profiles

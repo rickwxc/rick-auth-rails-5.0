@@ -1,0 +1,33 @@
+<%= form_for(auth_reason) do |f| %>
+  <% if auth_reason.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_reason.errors.count, "error") %> prohibited this auth_reason from being saved:</h2>
+
+      <ul>
+      <% auth_reason.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :long %>
+    <%= f.text_field :long %>
+  </div>
+
+  <div class="field">
+    <%= f.label :short %>
+    <%= f.text_field :short %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descr %>
+    <%= f.text_field :descr %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
