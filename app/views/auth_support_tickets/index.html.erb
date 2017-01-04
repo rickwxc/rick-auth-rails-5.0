@@ -15,6 +15,7 @@
 <table class='table'>
   <thead>
     <tr>
+      <th>#</th>
       <th></th>
       <th></th>
       <th>User</th>
@@ -26,16 +27,38 @@
     <% @auth_support_tickets.each do |auth_support_ticket| %>
       <tr>
 		<td>
-			<%= select_tag "st", 
+        <%= auth_support_ticket.id %>
+		</td>
+		<td>
+			<%= select_tag ("st-" + auth_support_ticket.id.to_s), 
 				options_from_collection_for_select(AuthReasonst.all, "id", "st", auth_support_ticket.auth_reasonst_id ) %>
-			<br /> 
 		</td>
 		<td>
         <%= auth_support_ticket.auth_reason.short %>
 		</td>
-        <td><%= auth_support_ticket.email %>
-        <%= auth_support_ticket.mobile %>
+		<td>
+			<% if auth_support_ticket.email != '' %>
+			<a class='btn btn-default btn-xs'
+onclick="reply('<%= auth_support_ticket.id %>', '<%= auth_support_ticket.auth_reasonst_id %>', '<%= auth_support_ticket.email %>')"
+data-toggle="modal" data-target="#myModal"
+>
+			<%= auth_support_ticket.email %>
+			</a>
+			<%end  %>
+
+			<% if auth_support_ticket.mobile != '' %>
+				<a class='btn btn-default btn-xs'
+data-toggle="modal" data-target="#myModal"
+onclick="reply('<%= auth_support_ticket.id %>', '<%= auth_support_ticket.auth_reasonst_id %>', '<%= auth_support_ticket.mobile %>')"
+>
+					<%= auth_support_ticket.mobile %>
+				</a>
+			<%end  %>
+
         <%= auth_support_ticket.user_id %>
+<div id='<%= auth_support_ticket.id %>_user'>
+</div>
+
 		<td>
 			<%= auth_support_ticket.note %>
 		<br />
@@ -49,6 +72,60 @@
 <%= will_paginate @auth_support_tickets %>
 <br>
 
+<script>
+	$(document).ready(function(){
+
+		$("select[id|='st']").change(function(){
+			var st_id = $(this).val();
+			var org_id = $(this).attr('id');
+			var id = org_id.split('-');
+
+			data = {
+				'auth_support_ticket[auth_reasonst_id]' : st_id
+			}
+
+			ajax_put('/auth_support_tickets/'+id[1], data, 'json', function(rs){
+				$('#'+org_id).after('<br /><b>updated!</b>')
+			});
+		
+		})
+	
+	})
+
+
+function reply(id, st_id, to){
+$('#reply_addr_id').html(to);
+$('#popup-st').val(st_id);
+$('#popup_id').val(id);
+$('#popup-text').val('');
+
+}
+
+function submit(){
+	st_id = $('#popup-st').val();
+	id = $('#popup_id').val();
+	to = $('#reply_addr_id').html();
+	text = $('#popup-text').val();
+
+	data = {
+		'auth_support_ticket[auth_reasonst_id]' : st_id
+	}
+
+	ajax_put('/auth_support_tickets/'+id, data, 'json', function(rs){
+		$('#'+id+'_user').after('<b>updated.</b>')
+	});
+
+	data = {
+		'to' : to, 
+		'msg' : text 
+	}
+
+	ajax_post('/auth_support_ticket_reply', data, 'json', function(rs){
+		$('#'+id+'_user').after('<b>msg send.</b>')
+	});
+
+}
+</script>
 
 
 
@@ -64,3 +141,39 @@
 
 <br />
 <%= link_to 'New Auth Support Ticket', new_auth_support_ticket_path %>
+
+
+<div id='myModal' class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Message To <span id='reply_addr_id'></span></h4>
+      </div>
+      <div class="modal-body">
+
+		  <div class="form-group">
+            <label for="popup-text" class="control-label">Message:</label>
+            <textarea class="form-control" id="popup-text"></textarea>
+          </div>
+		  <div class="form-group">
+            <input type='hidden' id="popup_id" />
+            <label for="popup-st" class="control-label">
+Ticket Status
+</label>
+			<%= select_tag ("popup-st"), options_from_collection_for_select(AuthReasonst.all, "id", "st" ), class:'form-control' %>
+          </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button onclick='javascript:submit()' type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+<!--
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

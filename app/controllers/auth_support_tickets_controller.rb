@@ -4,6 +4,21 @@ class AuthSupportTicketsController < ApplicationController
 	before_action -> {can_current_user_access(params[:controller]) } 
   before_action :set_auth_support_ticket, only: [:show, :edit, :update, :destroy]
 
+  def auth_support_ticket_reply
+	  to = params[:to]
+	  msg = params[:msg]
+
+	  if to.include? '@'
+		  #send email
+	  end
+
+	  rs = {
+		  'rs' => 1
+	  }
+
+	  render :json => rs
+  end
+
   # GET /auth_support_tickets
   # GET /auth_support_tickets.json
   def index
