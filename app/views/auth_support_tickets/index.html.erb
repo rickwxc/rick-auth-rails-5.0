@@ -25,7 +25,7 @@
 
   <tbody>
     <% @auth_support_tickets.each do |auth_support_ticket| %>
-      <tr>
+		<tr id='tr_<%= auth_support_ticket.id %>' >
 		<td>
         <%= auth_support_ticket.id %>
 		</td>
@@ -85,7 +85,8 @@ onclick="reply('<%= auth_support_ticket.id %>', '<%= auth_support_ticket.auth_re
 			}
 
 			ajax_put('/auth_support_tickets/'+id[1], data, 'json', function(rs){
-				$('#'+org_id).after('<br /><b>updated!</b>')
+				$('#'+org_id).after('<br /><b>updated!</b>');
+				$('#tr_'+id[1]).remove();
 			});
 		
 		})
