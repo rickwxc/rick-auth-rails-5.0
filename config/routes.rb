@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 	resources :auth_support_tickets
     post 'auth_support_ticket_reply', to: 'auth_support_tickets#auth_support_ticket_reply'
+    post 'auth_support_ticket_add', to: 'we#auth_support_ticket_add'
 	resources :auth_reasons
 	resources :auth_reasonsts
 	resources :user2positions

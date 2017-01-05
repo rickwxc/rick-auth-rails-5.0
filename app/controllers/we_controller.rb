@@ -25,5 +25,40 @@ class WeController < ApplicationController
         end
     end
 
+	def auth_support_ticket_add
+
+        email = params[:email]
+        mobile = params[:mobile]
+        note = params[:note]
+        auth_reason_id = params[:auth_reason_id]
+
+		keys = [:email, :mobile, :note,:auth_reason_id, :controller, :action]
+
+		meta = {}
+		params.each do |k,v|
+			if keys.include? k.to_sym
+				next
+			end
+			meta[k] = v
+		end
+
+		ast = AuthSupportTicket.new
+		ast.email = email
+		ast.mobile = mobile
+		ast.note = note
+		ast.meta = meta.to_json
+		ast.auth_reason_id = auth_reason_id
+		ast.auth_reasonst_id = 1
+		if current_user
+			ast.user_id = current_user.id
+		end
+		ast.save
+
+		rs = {
+			'rs' => 1
+		}
+
+		render :json => rs
+	end
 
 end
