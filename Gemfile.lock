@@ -248,7 +248,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
   aws-sdk (~> 2.3)
   byebug
   coffee-rails (~> 4.2)
