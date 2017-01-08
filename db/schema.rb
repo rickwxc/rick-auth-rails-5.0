@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108214048) do
+ActiveRecord::Schema.define(version: 20170108221433) do
+
+  create_table "auth_order2objs", force: :cascade do |t|
+    t.integer  "auth_order_id"
+    t.decimal  "auth_total",            precision: 10, scale: 2
+    t.decimal  "auth_gst",              precision: 10, scale: 2
+    t.integer  "auth_obj_id"
+    t.string   "auth_obj_model_name"
+    t.string   "auth_obj_display_name"
+    t.decimal  "auth_obj_qty",          precision: 10, scale: 2
+    t.decimal  "auth_obj_unitprice",    precision: 10, scale: 2
+    t.text     "auth_obj_meta_json"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
 
   create_table "auth_orders", force: :cascade do |t|
     t.integer  "auth_user_id"

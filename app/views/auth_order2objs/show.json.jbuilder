@@ -1,0 +1,1 @@
+json.extract! @auth_order2obj, :id, :auth_order_id, :auth_total, :auth_gst, :auth_obj_id, :auth_obj_model_name, :auth_obj_display_name, :auth_obj_qty, :auth_obj_unitprice, :auth_obj_meta_json, :created_at, :updated_at

@@ -1,0 +1,58 @@
+<%= form_for(auth_order2obj) do |f| %>
+  <% if auth_order2obj.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_order2obj.errors.count, "error") %> prohibited this auth_order2obj from being saved:</h2>
+
+      <ul>
+      <% auth_order2obj.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :auth_order_id %>
+    <%= f.number_field :auth_order_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_total %>
+    <%= f.text_field :auth_total %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_gst %>
+    <%= f.text_field :auth_gst %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_id %>
+    <%= f.number_field :auth_obj_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_model_name %>
+    <%= f.text_field :auth_obj_model_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_display_name %>
+    <%= f.text_field :auth_obj_display_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_qty %>
+    <%= f.text_field :auth_obj_qty %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_unitprice %>
+    <%= f.text_field :auth_obj_unitprice %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

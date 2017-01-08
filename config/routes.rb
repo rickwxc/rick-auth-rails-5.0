@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :auth_order2objs
   resources :auth_orders
   resources :auth_ordersts
   resources :auth_paysts

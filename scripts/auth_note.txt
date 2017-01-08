@@ -10,6 +10,7 @@ ecomm-6.0
 order
 and checkout
 
+total inc gst
 
 
 rails g scaffold auth_orderst auth_st:string auth_descr:text
@@ -22,10 +23,11 @@ auth_total:decimal{10.2} auth_gst:decimal{10.2}
 auth_orderst_id:integer auth_payst_id:integer
 auth_note:text auth_meta_json:text
 
-  create_table "auth_order2items", force: :cascade do |t|
-    t.integer  "auth_order_id"
-    t.integer  "auth_item_id"
 
+rails g scaffold auth_order2obj
+auth_order_id:integer auth_total:decimal{10.2} auth_gst:decimal{10.2} 
+auth_obj_id:integer auth_obj_model_name:string auth_obj_display_name:string
+auth_obj_qty:decimal{10.2} auth_obj_unitprice:decimal{10.2} auth_obj_meta_json:text
 
 
 rails g scaffold img model:string  uuid:integer alt:string   

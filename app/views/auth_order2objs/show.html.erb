@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Auth order:</strong>
+  <%= @auth_order2obj.auth_order_id %>
+</p>
+
+<p>
+  <strong>Auth total:</strong>
+  <%= @auth_order2obj.auth_total %>
+</p>
+
+<p>
+  <strong>Auth gst:</strong>
+  <%= @auth_order2obj.auth_gst %>
+</p>
+
+<p>
+  <strong>Auth obj:</strong>
+  <%= @auth_order2obj.auth_obj_id %>
+</p>
+
+<p>
+  <strong>Auth obj model name:</strong>
+  <%= @auth_order2obj.auth_obj_model_name %>
+</p>
+
+<p>
+  <strong>Auth obj display name:</strong>
+  <%= @auth_order2obj.auth_obj_display_name %>
+</p>
+
+<p>
+  <strong>Auth obj qty:</strong>
+  <%= @auth_order2obj.auth_obj_qty %>
+</p>
+
+<p>
+  <strong>Auth obj unitprice:</strong>
+  <%= @auth_order2obj.auth_obj_unitprice %>
+</p>
+
+<p>
+  <strong>Auth obj meta json:</strong>
+  <%= @auth_order2obj.auth_obj_meta_json %>
+</p>
+
+<%= link_to 'Edit', edit_auth_order2obj_path(@auth_order2obj) %> |
+<%= link_to 'Back', auth_order2objs_path %>
