@@ -1,0 +1,53 @@
+<%= form_for(auth_order) do |f| %>
+  <% if auth_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_order.errors.count, "error") %> prohibited this auth_order from being saved:</h2>
+
+      <ul>
+      <% auth_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :auth_user_id %>
+    <%= f.number_field :auth_user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_visitor_uuid %>
+    <%= f.text_field :auth_visitor_uuid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_total %>
+    <%= f.text_field :auth_total %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_gst %>
+    <%= f.text_field :auth_gst %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_orderst_id %>
+	<%= select_tag "auth_order[auth_orderst_id]", options_from_collection_for_select(AuthOrderst.order('id asc').all, "id", "auth_st", auth_order.auth_orderst_id||1 ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_payst_id %>
+	<%= select_tag "auth_order[auth_payst_id]", 
+		options_from_collection_for_select(AuthPayst.order('id asc').all, "id", "auth_st", auth_order.auth_payst_id||1 ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_note %>
+    <%= f.text_area :auth_note %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

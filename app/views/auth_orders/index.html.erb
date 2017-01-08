@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>user</th>
+      <th>Total(inc gst)</th>
+      <th>GST</th>
+      <th>Orderst</th>
+      <th>Payst</th>
+      <th>note</th>
+      <th>meta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_orders.each do |auth_order| %>
+      <tr>
+        <td><%= auth_order.auth_user_id %>
+        <%= auth_order.auth_visitor_uuid %></td>
+        <td><%= auth_order.auth_total %></td>
+        <td><%= auth_order.auth_gst %></td>
+        <td><%= auth_order.auth_orderst.auth_st %></td>
+        <td><%= auth_order.auth_payst.auth_st %></td>
+        <td><%= auth_order.auth_note %></td>
+        <td><%= auth_order.auth_meta_json %></td>
+        <td><%= link_to 'Show', auth_order %></td>
+        <td><%= link_to 'Edit', edit_auth_order_path(auth_order) %></td>
+        <td><%= link_to 'Destroy', auth_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Order', new_auth_order_path %>

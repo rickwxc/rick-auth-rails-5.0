@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :auth_orders
+  resources :auth_ordersts
+  resources :auth_paysts
 	resources :imgs
 	resources :user2positions
 	resources :positions

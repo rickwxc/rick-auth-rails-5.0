@@ -18,6 +18,12 @@
       Admin
     %a{:href=>"/adm/users"}
       User
+    %a{:href=>"/auth_orders"}
+      Orders
+    %a{:href=>"/auth_ordersts"}
+      OrderST
+    %a{:href=>"/auth_paysts"}
+      PayST
     -if current_user && current_user.id == 1
       ='['
       %a{:href=>"/positions"}

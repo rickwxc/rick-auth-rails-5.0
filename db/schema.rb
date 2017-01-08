@@ -10,7 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212014815) do
+ActiveRecord::Schema.define(version: 20170108214048) do
+
+  create_table "auth_orders", force: :cascade do |t|
+    t.integer  "auth_user_id"
+    t.string   "auth_visitor_uuid"
+    t.decimal  "auth_total",        precision: 10, scale: 2
+    t.decimal  "auth_gst",          precision: 10, scale: 2
+    t.integer  "auth_orderst_id"
+    t.integer  "auth_payst_id"
+    t.text     "auth_note"
+    t.text     "auth_meta_json"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  create_table "auth_ordersts", force: :cascade do |t|
+    t.string   "auth_st"
+    t.text     "auth_descr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_paysts", force: :cascade do |t|
+    t.string   "auth_st"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_reasons", force: :cascade do |t|
+    t.string   "long"
+    t.string   "short"
+    t.string   "descr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_reasonsts", force: :cascade do |t|
+    t.string   "st"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_support_tickets", force: :cascade do |t|
+    t.string   "email"
+    t.string   "mobile"
+    t.integer  "user_id"
+    t.text     "note"
+    t.text     "meta"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "auth_reasonst_id"
+    t.integer  "auth_reason_id"
+  end
 
   create_table "imgs", force: :cascade do |t|
     t.string   "modelname"
@@ -57,7 +109,7 @@ ActiveRecord::Schema.define(version: 20161212014815) do
 
   create_table "ums", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "content"
+    t.text     "content"
     t.string   "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Auth user:</strong>
+  <%= @auth_order.auth_user_id %>
+</p>
+
+<p>
+  <strong>Auth visitor uuid:</strong>
+  <%= @auth_order.auth_visitor_uuid %>
+</p>
+
+<p>
+  <strong>Auth total:</strong>
+  <%= @auth_order.auth_total %>
+</p>
+
+<p>
+  <strong>Auth gst:</strong>
+  <%= @auth_order.auth_gst %>
+</p>
+
+<p>
+  <strong>Auth orderst:</strong>
+  <%= @auth_order.auth_orderst_id %>
+</p>
+
+<p>
+  <strong>Auth payst:</strong>
+  <%= @auth_order.auth_payst_id %>
+</p>
+
+<p>
+  <strong>Auth note:</strong>
+  <%= @auth_order.auth_note %>
+</p>
+
+<p>
+  <strong>Auth meta json:</strong>
+  <%= @auth_order.auth_meta_json %>
+</p>
+
+<%= link_to 'Edit', edit_auth_order_path(@auth_order) %> |
+<%= link_to 'Back', auth_orders_path %>

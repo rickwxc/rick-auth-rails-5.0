@@ -6,6 +6,28 @@ rails g scaffold img model:string  uuid:integer alt:string
 
 ecomm-6.0
 
+
+order
+and checkout
+
+
+
+rails g scaffold auth_orderst auth_st:string auth_descr:text
+rails g scaffold auth_payst auth_st:string
+
+
+rails g scaffold auth_order
+auth_user_id:integer auth_visitor_uuid:string
+auth_total:decimal{10.2} auth_gst:decimal{10.2} 
+auth_orderst_id:integer auth_payst_id:integer
+auth_note:text auth_meta_json:text
+
+  create_table "auth_order2items", force: :cascade do |t|
+    t.integer  "auth_order_id"
+    t.integer  "auth_item_id"
+
+
+
 rails g scaffold img model:string  uuid:integer alt:string   
 
 ecitem

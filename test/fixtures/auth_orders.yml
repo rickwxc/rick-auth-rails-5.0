@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  auth_user_id: 1
+  auth_visitor_uuid: MyString
+  auth_total: 9.99
+  auth_gst: 9.99
+  auth_orderst_id: 1
+  auth_payst_id: 1
+  auth_note: MyText
+  auth_meta_json: MyText
+
+two:
+  auth_user_id: 1
+  auth_visitor_uuid: MyString
+  auth_total: 9.99
+  auth_gst: 9.99
+  auth_orderst_id: 1
+  auth_payst_id: 1
+  auth_note: MyText
+  auth_meta_json: MyText

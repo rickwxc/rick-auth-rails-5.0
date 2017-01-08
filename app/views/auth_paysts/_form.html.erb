@@ -1,0 +1,22 @@
+<%= form_for(auth_payst) do |f| %>
+  <% if auth_payst.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_payst.errors.count, "error") %> prohibited this auth_payst from being saved:</h2>
+
+      <ul>
+      <% auth_payst.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :auth_st %>
+    <%= f.text_field :auth_st %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
