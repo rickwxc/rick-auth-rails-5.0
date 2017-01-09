@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :auth_invoices
+  resources :auth_invoicests
+  resources :auth_paymethods
   resources :auth_order2objs
   resources :auth_orders
   resources :auth_ordersts
@@ -15,6 +18,12 @@ Rails.application.routes.draw do
 
 
 	root 'we#index'
+
+    namespace :authecom do
+        get '/', to: 'authecom#index'
+        get '/pay', to: 'authecom#pay'
+		post 'paypalipn' => 'authecom#paypalipn', :as => :paypalipn
+	end
 
     namespace :adm do
         get '/', to: 'adm#index'

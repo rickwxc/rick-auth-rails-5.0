@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Paymethods</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Auth name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_paymethods.each do |auth_paymethod| %>
+      <tr>
+        <td><%= auth_paymethod.auth_name %></td>
+        <td><%= link_to 'Show', auth_paymethod %></td>
+        <td><%= link_to 'Edit', edit_auth_paymethod_path(auth_paymethod) %></td>
+        <td><%= link_to 'Destroy', auth_paymethod, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Paymethod', new_auth_paymethod_path %>

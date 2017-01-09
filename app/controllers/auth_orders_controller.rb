@@ -7,7 +7,14 @@ class AuthOrdersController < ApplicationController
   # GET /auth_orders
   # GET /auth_orders.json
   def index
-    @auth_orders = AuthOrder.all
+	  #@auth_orders = AuthOrder.all
+
+	  @orderst_id = params[:orderst_id].to_i
+	  if @orderst_id == 0
+		  @orderst_id = AuthOrderst::Pending
+	  end
+
+	  @auth_orders = AuthOrder.where('auth_orderst_id' => @orderst_id).order('id desc').paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /auth_orders/1

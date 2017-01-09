@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  gross: 9.99
+  fee: 9.99
+  auth_order_id: 1
+  auth_paymethod_id: 1
+  auth_invoicest_id: 1
+
+two:
+  uuid: MyString
+  gross: 9.99
+  fee: 9.99
+  auth_order_id: 1
+  auth_paymethod_id: 1
+  auth_invoicest_id: 1

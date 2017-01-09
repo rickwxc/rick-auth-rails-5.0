@@ -1,10 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
+<% AuthOrderst.all.each do |st| %>
+	<a href="/auth_orders?orderst_id=<%=st.id%>" 
+		class="btn btn-<%=((@orderst_id== st.id) ? ('success'):('default'))%>">
+
+<%=st.auth_st  %>
+<span id='cnt_<%=st.id%>'>
+</span>
+	</a>
+<% end  %>
+<br />
 
 <table class='table'>
   <thead>
     <tr>
+      <th>#</th>
       <th>user</th>
       <th>Total(inc gst)</th>
       <th>GST</th>
@@ -19,6 +30,7 @@
   <tbody>
     <% @auth_orders.each do |auth_order| %>
       <tr>
+        <td><%= auth_order.id %></td>
         <td><%= auth_order.auth_user_id %>
         <%= auth_order.auth_visitor_uuid %></td>
         <td><%= auth_order.auth_total %></td>
@@ -35,6 +47,8 @@
   </tbody>
 </table>
 
+<%= will_paginate @auth_orders %>
+<br>
 <br>
 
 <%= link_to 'New Auth Order', new_auth_order_path %>

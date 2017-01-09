@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108221433) do
+ActiveRecord::Schema.define(version: 20170109054226) do
+
+  create_table "auth_invoices", force: :cascade do |t|
+    t.string   "uuid"
+    t.decimal  "gross",             precision: 10, scale: 2
+    t.decimal  "fee",               precision: 10, scale: 2
+    t.integer  "auth_order_id"
+    t.integer  "auth_paymethod_id"
+    t.integer  "auth_invoicest_id"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  create_table "auth_invoicests", force: :cascade do |t|
+    t.string   "auth_st"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "auth_order2objs", force: :cascade do |t|
     t.integer  "auth_order_id"
@@ -42,6 +59,12 @@ ActiveRecord::Schema.define(version: 20170108221433) do
   create_table "auth_ordersts", force: :cascade do |t|
     t.string   "auth_st"
     t.text     "auth_descr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_paymethods", force: :cascade do |t|
+    t.string   "auth_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

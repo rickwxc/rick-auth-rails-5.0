@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Invoicests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Auth st</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_invoicests.each do |auth_invoicest| %>
+      <tr>
+        <td><%= auth_invoicest.auth_st %></td>
+        <td><%= link_to 'Show', auth_invoicest %></td>
+        <td><%= link_to 'Edit', edit_auth_invoicest_path(auth_invoicest) %></td>
+        <td><%= link_to 'Destroy', auth_invoicest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Invoicest', new_auth_invoicest_path %>

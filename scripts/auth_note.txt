@@ -16,6 +16,12 @@ total inc gst
 rails g scaffold auth_orderst auth_st:string auth_descr:text
 rails g scaffold auth_payst auth_st:string
 
+rails g scaffold auth_paymethod auth_name:string
+rails g scaffold auth_invoicest auth_st:string
+
+rails g scaffold auth_invoice uuid:string gross:decimal{10.2} fee:decimal{10.2}
+auth_order_id:integer auth_paymethod_id:integer auth_invoicest_id:integer
+
 
 rails g scaffold auth_order
 auth_user_id:integer auth_visitor_uuid:string

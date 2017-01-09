@@ -1,0 +1,22 @@
+.container
+  .row
+    %h1
+      Payment
+    Hint: /authecom/pay?order_id=1
+    %hr
+    - if @order
+      = @order.id
+      %br
+      Total:
+      = @order.auth_total
+      %br
+      = @order.auth_orderst.auth_st
+      %br
+      = @order.auth_payst.auth_st
+      %br
+      %h3
+        Payment Method
+      %button{:class=>'btn btn-primary', :onclick=>"pp_sub(#{@order.id}, #{@order.auth_total})"}
+        Pay by Paypal
+      = render partial:  "/authecom/authecom/auth_paypal", :locals => {} 
+

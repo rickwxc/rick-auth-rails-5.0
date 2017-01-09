@@ -1,0 +1,2 @@
+class AuthInvoice < ApplicationRecord
+end

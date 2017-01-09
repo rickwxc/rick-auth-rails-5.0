@@ -1,0 +1,2 @@
+module AuthPaymethodsHelper
+end
