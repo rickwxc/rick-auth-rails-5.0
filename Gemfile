@@ -80,4 +80,5 @@ group :development do
 end
 
 gem 'will_paginate'
+gem 'offsite_payments'
 

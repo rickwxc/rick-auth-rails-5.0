@@ -21,16 +21,18 @@
       Items
     %a{:href=>"/auth_orders"}
       Orders
-    %a{:href=>"/auth_ordersts"}
-      OrderST
     %a{:href=>"/auth_invoices"}
       Invoices
+    ='['
+    %a{:href=>"/auth_ordersts"}
+      OrderST
     %a{:href=>"/auth_paysts"}
       PayST
-    %a{:href=>"/auth_paymethods"}
-      PayMethod
     %a{:href=>"/auth_invoicests"}
       InvST
+    %a{:href=>"/auth_paymethods"}
+      PayMethod
+    =']'
     -if current_user && current_user.id == 1
       ='['
       %a{:href=>"/positions"}

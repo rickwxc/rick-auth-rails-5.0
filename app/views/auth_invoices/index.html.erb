@@ -1,16 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Auth Invoices</h1>
+<h1>Invoices</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
+      <th>#</th>
       <th>Uuid</th>
       <th>Gross</th>
       <th>Fee</th>
       <th>Auth order</th>
-      <th>Auth paymethod</th>
-      <th>Auth invoicest</th>
+      <th> paymethod</th>
+      <th> invoicest</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,12 +19,13 @@
   <tbody>
     <% @auth_invoices.each do |auth_invoice| %>
       <tr>
+        <td><%= auth_invoice.id %></td>
         <td><%= auth_invoice.uuid %></td>
         <td><%= auth_invoice.gross %></td>
         <td><%= auth_invoice.fee %></td>
         <td><%= auth_invoice.auth_order_id %></td>
-        <td><%= auth_invoice.auth_paymethod_id %></td>
-        <td><%= auth_invoice.auth_invoicest_id %></td>
+        <td><%= auth_invoice.auth_paymethod.auth_name %></td>
+        <td><%= auth_invoice.auth_invoicest.auth_st %></td>
         <td><%= link_to 'Show', auth_invoice %></td>
         <td><%= link_to 'Edit', edit_auth_invoice_path(auth_invoice) %></td>
         <td><%= link_to 'Destroy', auth_invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>

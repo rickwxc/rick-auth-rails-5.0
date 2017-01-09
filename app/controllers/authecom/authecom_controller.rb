@@ -3,7 +3,9 @@ class Authecom::AuthecomController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
 	def index
-
+		#order = AuthOrder.find(1)
+		#order.paid(AuthPaymethod::Paypal, 'KZKDAJERKZDE', 101.3, 2.3)
+		#order.refund(AuthPaymethod::Paypal, 'KZKDAJERKZDE49', 51.3, 2.3)
 	end
 
 	def pay
