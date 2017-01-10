@@ -1,0 +1,27 @@
+<%= form_for(auth_bundle) do |f| %>
+  <% if auth_bundle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_bundle.errors.count, "error") %> prohibited this auth_bundle from being saved:</h2>
+
+      <ul>
+      <% auth_bundle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :auth_name %>
+    <%= f.text_field :auth_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_total %>
+    <%= f.text_field :auth_total %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

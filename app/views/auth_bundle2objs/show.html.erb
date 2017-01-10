@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Auth bundle:</strong>
+  <%= @auth_bundle2obj.auth_bundle_id %>
+</p>
+
+<p>
+  <strong>Auth obj:</strong>
+  <%= @auth_bundle2obj.auth_obj_id %>
+</p>
+
+<p>
+  <strong>Auth obj model name:</strong>
+  <%= @auth_bundle2obj.auth_obj_model_name %>
+</p>
+
+<%= link_to 'Edit', edit_auth_bundle2obj_path(@auth_bundle2obj) %> |
+<%= link_to 'Back', auth_bundle2objs_path %>

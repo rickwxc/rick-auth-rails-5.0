@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :auth_bundle2objs
+  resources :auth_bundles
   resources :auth_invoices
   resources :auth_invoicests
   resources :auth_paymethods

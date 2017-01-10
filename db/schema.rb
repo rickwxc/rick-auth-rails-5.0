@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109054226) do
+ActiveRecord::Schema.define(version: 20170110004320) do
+
+  create_table "auth_bundle2objs", force: :cascade do |t|
+    t.integer  "auth_bundle_id"
+    t.integer  "auth_obj_id"
+    t.string   "auth_obj_model_name"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "auth_bundles", force: :cascade do |t|
+    t.string   "auth_name"
+    t.decimal  "auth_total", precision: 10, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "auth_invoices", force: :cascade do |t|
     t.string   "uuid"

@@ -1,0 +1,2 @@
+class AuthBundle < ApplicationRecord
+end

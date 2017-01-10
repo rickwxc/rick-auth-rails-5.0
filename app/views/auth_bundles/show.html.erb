@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Auth name:</strong>
+  <%= @auth_bundle.auth_name %>
+</p>
+
+<p>
+  <strong>Auth total:</strong>
+  <%= @auth_bundle.auth_total %>
+</p>
+
+<%= link_to 'Edit', edit_auth_bundle_path(@auth_bundle) %> |
+<%= link_to 'Back', auth_bundles_path %>

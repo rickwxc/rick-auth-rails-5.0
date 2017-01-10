@@ -22,6 +22,17 @@ rails g scaffold auth_invoicest auth_st:string
 rails g scaffold auth_invoice uuid:string gross:decimal{10.2} fee:decimal{10.2}
 auth_order_id:integer auth_paymethod_id:integer auth_invoicest_id:integer
 
+rails g scaffold auth_bundle 
+auth_name:string auth_total:decimal{10.2}
+
+rails g scaffold auth_bundle2obj
+auth_bundle_id:integer auth_obj_id:integer auth_obj_model_name:string
+
+
+rails g scaffold auth_vip_obj
+auth_obj_id:integer auth_obj_model_name:string auth_total:decimal{10.2} 
+//handles wholesale, vip price, etc
+
 
 rails g scaffold auth_order
 auth_user_id:integer auth_visitor_uuid:string

@@ -1,0 +1,2 @@
+module AuthBundle2objsHelper
+end
