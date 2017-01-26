@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         get 'user/:user_id', to: 'adm#user', :as => :ad_user
         post 'user/:user_id', to: 'adm#user'
 
+        post 'ajax_updater', to: 'adm#ajax_updater'
 	end
 
 
