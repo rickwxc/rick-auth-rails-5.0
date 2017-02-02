@@ -1,0 +1,2 @@
+class AuthGj < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+module AuthStsHelper
+end

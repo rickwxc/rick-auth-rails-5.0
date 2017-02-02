@@ -1,0 +1,42 @@
+<%= form_for(auth_addr) do |f| %>
+  <% if auth_addr.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_addr.errors.count, "error") %> prohibited this auth_addr from being saved:</h2>
+
+      <ul>
+      <% auth_addr.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :street_number %>
+    <%= f.text_field :street_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street %>
+    <%= f.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_sb_id %>
+    <%= f.number_field :auth_sb_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :org %>
+    <%= f.text_area :org %>
+  </div>
+
+  <div class="field">
+    <%= f.label :raw_json %>
+    <%= f.text_area :raw_json %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

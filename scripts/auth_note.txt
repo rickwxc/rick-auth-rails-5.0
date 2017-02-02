@@ -7,6 +7,13 @@ rails g scaffold img model:string  uuid:integer alt:string
 ecomm-6.0
 
 
+rails g scaffold auth_addr street_number:string street:string auth_sb_id:integer org:text raw_json:text 
+
+rails g scaffold auth_sb name:string zip:string auth_st_id:integer
+rails g scaffold auth_st name:string auth_gj_id:integer
+rails g scaffold auth_gj name:string 
+
+
 order
 and checkout
 

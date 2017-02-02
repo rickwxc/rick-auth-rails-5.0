@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Suburb</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Zip</th>
+      <th>State</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_sbs.each do |auth_sb| %>
+      <tr>
+        <td><%= auth_sb.name %></td>
+        <td><%= auth_sb.zip %></td>
+        <td><%= auth_sb.auth_st.name %></td>
+        <td><%= link_to 'Show', auth_sb %></td>
+        <td><%= link_to 'Edit', edit_auth_sb_path(auth_sb) %></td>
+        <td><%= link_to 'Destroy', auth_sb, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Sb', new_auth_sb_path %>

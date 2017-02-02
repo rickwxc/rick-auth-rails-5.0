@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Street number:</strong>
+  <%= @auth_addr.street_number %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @auth_addr.street %>
+</p>
+
+<p>
+  <strong>Auth sb:</strong>
+  <%= @auth_addr.auth_sb_id %>
+</p>
+
+<p>
+  <strong>Org:</strong>
+  <%= @auth_addr.org %>
+</p>
+
+<p>
+  <strong>Raw json:</strong>
+  <%= @auth_addr.raw_json %>
+</p>
+
+<%= link_to 'Edit', edit_auth_addr_path(@auth_addr) %> |
+<%= link_to 'Back', auth_addrs_path %>

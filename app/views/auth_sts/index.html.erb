@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>State</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_sts.each do |auth_st| %>
+      <tr>
+        <td><%= auth_st.name %></td>
+        <td><%= auth_st.auth_gj.name %></td>
+        <td><%= link_to 'Show', auth_st %></td>
+        <td><%= link_to 'Edit', edit_auth_st_path(auth_st) %></td>
+        <td><%= link_to 'Destroy', auth_st, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth St', new_auth_st_path %>

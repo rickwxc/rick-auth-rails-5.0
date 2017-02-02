@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110004320) do
+ActiveRecord::Schema.define(version: 20170202044426) do
+
+  create_table "auth_addrs", force: :cascade do |t|
+    t.string   "street_number"
+    t.string   "street"
+    t.integer  "auth_sb_id"
+    t.text     "org"
+    t.text     "raw_json"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "auth_bundle2objs", force: :cascade do |t|
     t.integer  "auth_bundle_id"
@@ -25,6 +35,12 @@ ActiveRecord::Schema.define(version: 20170110004320) do
     t.decimal  "auth_total", precision: 10, scale: 2
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+  end
+
+  create_table "auth_gjs", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "auth_invoices", force: :cascade do |t|
@@ -100,6 +116,21 @@ ActiveRecord::Schema.define(version: 20170110004320) do
 
   create_table "auth_reasonsts", force: :cascade do |t|
     t.string   "st"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_sbs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "zip"
+    t.integer  "auth_st_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_sts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "auth_gj_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

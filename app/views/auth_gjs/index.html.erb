@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Gjs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_gjs.each do |auth_gj| %>
+      <tr>
+        <td><%= auth_gj.name %></td>
+        <td><%= link_to 'Show', auth_gj %></td>
+        <td><%= link_to 'Edit', edit_auth_gj_path(auth_gj) %></td>
+        <td><%= link_to 'Destroy', auth_gj, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Gj', new_auth_gj_path %>

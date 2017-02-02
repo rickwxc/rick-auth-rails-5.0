@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :auth_addrs
+  resources :auth_sbs
+  resources :auth_sts
+  resources :auth_gjs
   resources :auth_bundle2objs
   resources :auth_bundles
   resources :auth_invoices
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
 	get 'my', to: 'my#index', :as => :my
     get 'login/:user_id/:code', to: 'we#login', :as => :login
 
+    get 'lab_addr_google', to: 'lab#lab_addr_google'
+    post 'auth_save_addr', to: 'authapi#auth_save_addr'
 
 	root 'we#index'
 

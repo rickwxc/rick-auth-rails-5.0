@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street_number: MyString
+  street: MyString
+  auth_sb_id: 1
+  org: MyText
+  raw_json: MyText
+
+two:
+  street_number: MyString
+  street: MyString
+  auth_sb_id: 1
+  org: MyText
+  raw_json: MyText

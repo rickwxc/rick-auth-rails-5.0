@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Addrs</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Street number</th>
+      <th>Street</th>
+      <th>sb</th>
+      <th>Org</th>
+      <th>Raw json</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_addrs.each do |auth_addr| %>
+      <tr>
+        <td><%= auth_addr.id %></td>
+        <td><%= auth_addr.street_number %></td>
+        <td><%= auth_addr.street %></td>
+        <td><%= auth_addr.auth_sb.name %></td>
+        <td><%= auth_addr.org %></td>
+        <td><%= auth_addr.raw_json %></td>
+        <td><%= link_to 'Show', auth_addr %></td>
+        <td><%= link_to 'Edit', edit_auth_addr_path(auth_addr) %></td>
+        <td><%= link_to 'Destroy', auth_addr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Addr', new_auth_addr_path %>

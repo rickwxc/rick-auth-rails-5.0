@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_sb.name %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @auth_sb.zip %>
+</p>
+
+<p>
+  <strong>Auth st:</strong>
+  <%= @auth_sb.auth_st_id %>
+</p>
+
+<%= link_to 'Edit', edit_auth_sb_path(@auth_sb) %> |
+<%= link_to 'Back', auth_sbs_path %>

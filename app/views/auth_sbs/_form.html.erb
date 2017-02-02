@@ -1,0 +1,32 @@
+<%= form_for(auth_sb) do |f| %>
+  <% if auth_sb.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_sb.errors.count, "error") %> prohibited this auth_sb from being saved:</h2>
+
+      <ul>
+      <% auth_sb.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_st_id %>
+    <%= f.number_field :auth_st_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

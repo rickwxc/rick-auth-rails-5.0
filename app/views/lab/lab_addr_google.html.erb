@@ -1,0 +1,159 @@
+<div class="" >
+	<form class='white' style='margin-bottom:0px;'>
+	<h3>
+		Address
+	</h3>
+	<input type="text" value='' id="autocomplete" class="form-control"  placeholder=""></input>
+	<b>
+	Hint: Type in street number &amp; name, and select from dropdown.
+	</b>
+	<br />
+	e.g.  6 xxx Street, sydney
+	<br />
+	<br />
+
+<div id='geo_decode_id' class='hide'>
+	<h3>
+	Please have a quick review 
+	and correct it if need.
+	</h3>
+	<div class="row">
+		<div class="col-md-6">
+		<label>Street Number</label>
+		<input type="text" value="" class="form-control " id='street_number' placeholder="Street Number">
+
+		<label>Street Name</label>
+		<input type="text" value="" class="form-control  " id='route'  placeholder="Street">
+
+		<label>Suburb</label>
+		<input type="text" value="" class="form-control  " id='locality'  placeholder="Suburb">
+		</div>
+		<div class="col-md-6">
+
+
+		<label>State</label>
+		<input type="text" value=""  class="form-control  " id='administrative_area_level_1'  placeholder="State">
+
+		<label>Postcode</label>
+		<input type="text" value=""  class="form-control  " id='postal_code'  placeholder="Zip">
+
+		<label>Country</label>
+		<input type="text" value="" class="form-control  " id='country'  placeholder="Country">
+		</div>
+	</div>
+
+
+		<div style="text-align:right;">
+			<a href="javascript:addr_next()" class="btn  btn-lg">
+			Next &raquo;</a>
+		</div>
+
+</div>
+	</form>
+
+
+</div>
+
+
+    <script>
+      // This example displays an address form, using the autocomplete feature
+      // of the Google Places API to help users fill in the information.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+			{types: [], 
+				componentRestrictions: {country: "au"}
+			});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+		//console.log(place);
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+
+		$('#geo_decode_id').removeClass('hide')
+
+      }
+
+    </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&libraries=places&callback=initAutocomplete" async defer></script>
+
+
+<script>
+function addr_next(){
+
+	var ids = [
+		'street_number',
+		'route',
+		'locality',
+		'administrative_area_level_1',
+		'country',
+		'autocomplete',
+		'postal_code'
+	];
+
+	var data = {
+	
+	};
+
+	for(var idx in ids){
+		id = ids[idx];
+		var  v = $('#'+id).val();
+		data[id] = v;
+	}
+
+	$.ajax({
+		url:"<%=auth_save_addr_path%>",
+		type: 'post',
+		beforeSend:function(xhr){
+		xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+		data: data,
+		dataType: 'json',
+		success: function(rs) {
+			console.log(rs);
+
+		}
+	});
+
+}
+
+
+</script>
+
