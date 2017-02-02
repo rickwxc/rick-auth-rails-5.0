@@ -8,6 +8,21 @@ class Adm::AdmController < ApplicationController
 	def index
 	end
 
+	def ajax_updater
+		rs = {}
+		id = params[:id].to_i
+		field = params[:field]
+		value = params[:value]
+		obj = params[:model].constantize.find(id)
+		obj[field] = value
+		obj.save
+
+		rs[:new_value] = obj[field]
+		rs[:ok] = 1
+
+		render :json => rs
+	end
+
 
 	def csv 
 		require 'csv'
