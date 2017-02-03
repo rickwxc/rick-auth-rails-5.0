@@ -72,6 +72,6 @@ class AuthAddrsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_addr_params
-      params.require(:auth_addr).permit(:street_number, :street, :auth_sb_id, :org, :raw_json)
+      params.require(:auth_addr).permit(:unit_no, :street_number, :street, :auth_sb_id, :org)
     end
 end

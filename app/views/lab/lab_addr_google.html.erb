@@ -18,6 +18,10 @@
 	and correct it if need.
 	</h3>
 	<div class="row">
+		<div class="col-md-12">
+		<label>Unit/Flat #</label>
+		<input type="text" value="" class="form-control " id='unit_no' placeholder="Unit/Flat Number">
+		</div>
 		<div class="col-md-6">
 		<label>Street Number</label>
 		<input type="text" value="" class="form-control " id='street_number' placeholder="Street Number">
@@ -120,6 +124,7 @@
 function addr_next(){
 
 	var ids = [
+		'unit_no',
 		'street_number',
 		'route',
 		'locality',

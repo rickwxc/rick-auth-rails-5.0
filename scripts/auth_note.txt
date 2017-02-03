@@ -9,6 +9,8 @@ ecomm-6.0
 
 rails g scaffold auth_addr street_number:string street:string auth_sb_id:integer org:text raw_json:text 
 
+rails generate migration add_unit_no_to_auth_addr unit_no:string
+
 rails g scaffold auth_sb name:string zip:string auth_st_id:integer
 rails g scaffold auth_st name:string auth_gj_id:integer
 rails g scaffold auth_gj name:string 

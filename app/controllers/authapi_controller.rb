@@ -8,6 +8,8 @@ class AuthapiController < ApplicationController
 		street = params['route']
 		zip = params['postal_code']
 		raw = params['autocomplete']
+		unit_no = params['unit_no']
+
 
 		sb = params['locality']
 		st = params['administrative_area_level_1']
@@ -23,8 +25,10 @@ class AuthapiController < ApplicationController
 		sb.save
 
 		addr = AuthAddr.new
-		addr.street_number = street_number
-		addr.street = street
+
+		addr.unit_no = unit_no.strip
+		addr.street_number = street_number.strip
+		addr.street = street.strip
 		addr.auth_sb_id = sb.id
 
 		params.delete('controller')

@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label :unit_no %>
+    <%= f.text_field :unit_no %>
+  </div>
 
   <div class="field">
     <%= f.label :street_number %>
@@ -31,10 +35,12 @@
     <%= f.text_area :org %>
   </div>
 
+  <!--
   <div class="field">
     <%= f.label :raw_json %>
     <%= f.text_area :raw_json %>
   </div>
+  -->
 
   <div class="actions">
     <%= f.submit %>
