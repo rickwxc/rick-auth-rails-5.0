@@ -23,7 +23,10 @@ Rails.application.routes.draw do
     get 'login/:user_id/:code', to: 'we#login', :as => :login
 
     get 'lab_addr_google', to: 'lab#lab_addr_google'
+
+	#authapi
     post 'auth_save_addr', to: 'authapi#auth_save_addr'
+    post 'auth_gene_order_for_payment', to: 'authapi#auth_gene_order_for_payment'
 
 	root 'we#index'
 
