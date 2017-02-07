@@ -1,6 +1,7 @@
 class AuthOrder < ApplicationRecord
 	belongs_to:auth_orderst
 	belongs_to:auth_payst
+	has_many :auth_order2objs
 	
 	def self.get_price_with_out_gst_from_total(amt)
 		p = amt/1.1 

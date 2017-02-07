@@ -22,7 +22,6 @@
       <th>Orderst</th>
       <th>Payst</th>
       <th>note</th>
-      <th>meta</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,12 +32,22 @@
         <td><%= auth_order.id %></td>
         <td><%= auth_order.auth_user_id %>
         <%= auth_order.auth_visitor_uuid %></td>
-        <td><%= auth_order.auth_total %></td>
+	<td>
+		<%= auth_order.auth_total %>
+	<hr />
+
+		<% auth_order.auth_order2objs.each  do |v|%>
+		<%=v.auth_obj_display_name%> (<%=v.auth_obj_unitprice%> x <%=v.auth_obj_qty%>)
+		<%=v.auth_total%>
+		<%end%>
+</td>
         <td><%= auth_order.auth_gst %></td>
         <td><%= auth_order.auth_orderst.auth_st %></td>
         <td><%= auth_order.auth_payst.auth_st %></td>
-        <td><%= auth_order.auth_note %></td>
-        <td><%= auth_order.auth_meta_json %></td>
+		<td>
+			<%= auth_order.auth_note %>
+			<br /><%= auth_order.auth_meta_json %>
+		</td>
         <td><%= link_to 'Show', auth_order %></td>
         <td><%= link_to 'Edit', edit_auth_order_path(auth_order) %></td>
         <td><%= link_to 'Destroy', auth_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
