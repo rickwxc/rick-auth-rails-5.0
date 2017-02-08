@@ -1,0 +1,2 @@
+class AuthObj < ApplicationRecord
+end

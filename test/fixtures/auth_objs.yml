@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  auth_name: MyString
+  auth_uuid: MyString
+  auth_descr: MyText
+  auth_total: 9.99
+
+two:
+  auth_name: MyString
+  auth_uuid: MyString
+  auth_descr: MyText
+  auth_total: 9.99

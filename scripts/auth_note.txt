@@ -50,10 +50,20 @@ auth_orderst_id:integer auth_payst_id:integer
 auth_note:text auth_meta_json:text
 
 
+
+
 rails g scaffold auth_order2obj
 auth_order_id:integer auth_total:decimal{10.2} auth_gst:decimal{10.2} 
 auth_obj_id:integer auth_obj_model_name:string auth_obj_display_name:string
 auth_obj_qty:decimal{10.2} auth_obj_unitprice:decimal{10.2} auth_obj_meta_json:text
+
+rails g scaffold auth_cart
+auth_user_id:integer auth_visitor_uuid:string
+auth_obj_id:integer auth_obj_model_name:string 
+auth_obj_qty:decimal{10.2} auth_obj_meta_json:text
+
+#general saleable objects
+rails g scaffold auth_obj auth_name:string auth_uuid:string auth_descr:text auth_total:decimal{10.2} 
 
 
 rails g scaffold img model:string  uuid:integer alt:string   

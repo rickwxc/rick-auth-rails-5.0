@@ -1,0 +1,47 @@
+<%= form_for(auth_cart) do |f| %>
+  <% if auth_cart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_cart.errors.count, "error") %> prohibited this auth_cart from being saved:</h2>
+
+      <ul>
+      <% auth_cart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :auth_user_id %>
+    <%= f.number_field :auth_user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_visitor_uuid %>
+    <%= f.text_field :auth_visitor_uuid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_id %>
+    <%= f.number_field :auth_obj_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_model_name %>
+    <%= f.text_field :auth_obj_model_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_qty %>
+    <%= f.text_field :auth_obj_qty %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_meta_json %>
+    <%= f.text_area :auth_obj_meta_json %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

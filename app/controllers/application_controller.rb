@@ -26,4 +26,15 @@ class ApplicationController < ActionController::Base
 	  redirect_to root_path
   end
 
+	def g_get_visitor_uuid
+
+		if cookies[:visitor_uuid].present?
+			return cookies[:visitor_uuid]
+		else
+			visitor_uuid = Digest::SHA1.hexdigest ((Time.now.to_s + rand(1 .. 500).to_s))
+			cookies[:visitor_uuid] = {value: visitor_uuid, expires: 1000.day.from_now }
+			return visitor_uuid
+		end
+	end
+
 end

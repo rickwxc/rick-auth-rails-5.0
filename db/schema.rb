@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203040231) do
+ActiveRecord::Schema.define(version: 20170208231951) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20170203040231) do
     t.datetime "updated_at",                          null: false
   end
 
+  create_table "auth_carts", force: :cascade do |t|
+    t.integer  "auth_user_id"
+    t.string   "auth_visitor_uuid"
+    t.integer  "auth_obj_id"
+    t.string   "auth_obj_model_name"
+    t.decimal  "auth_obj_qty",        precision: 10, scale: 2
+    t.text     "auth_obj_meta_json"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
   create_table "auth_gjs", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -59,6 +70,15 @@ ActiveRecord::Schema.define(version: 20170203040231) do
     t.string   "auth_st"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_objs", force: :cascade do |t|
+    t.string   "auth_name"
+    t.string   "auth_uuid"
+    t.text     "auth_descr"
+    t.decimal  "auth_unitprice", precision: 10, scale: 2
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "auth_order2objs", force: :cascade do |t|

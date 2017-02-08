@@ -1,0 +1,2 @@
+module AuthObjsHelper
+end

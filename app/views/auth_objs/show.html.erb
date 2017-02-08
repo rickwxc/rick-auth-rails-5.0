@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Auth name:</strong>
+  <%= @auth_obj.auth_name %>
+</p>
+
+<p>
+  <strong>Auth uuid:</strong>
+  <%= @auth_obj.auth_uuid %>
+</p>
+
+<p>
+  <strong>Auth descr:</strong>
+  <%= @auth_obj.auth_descr %>
+</p>
+
+<p>
+  <strong> unit price:</strong>
+  <%= @auth_obj.auth_unitprice %>
+</p>
+
+<%= link_to 'Edit', edit_auth_obj_path(@auth_obj) %> |
+<%= link_to 'Back', auth_objs_path %>

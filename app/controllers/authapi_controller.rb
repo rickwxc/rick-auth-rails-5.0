@@ -5,7 +5,7 @@ class AuthapiController < ApplicationController
 
 		order_meta_keys = params['order_meta_keys']
 
-		auth_visitor_uuid = '' #todo, load form cookie.
+		auth_visitor_uuid = g_get_visitor_uuid
 
 		email = params['email']
 		uc = User.from_omniauth_email(email)

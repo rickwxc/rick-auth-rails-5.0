@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Item in Cart</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th> user</th>
+      <th> obj</th>
+      <th> obj model name</th>
+      <th> obj qty</th>
+      <th> obj meta </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_carts.each do |auth_cart| %>
+      <tr>
+		  <td><%= auth_cart.auth_user_id %>
+        <br /><%= auth_cart.auth_visitor_uuid %></td>
+        <td><%= auth_cart.auth_obj_id %></td>
+        <td><%= auth_cart.auth_obj_model_name %></td>
+        <td><%= auth_cart.auth_obj_qty %></td>
+        <td><%= auth_cart.auth_obj_meta_json %></td>
+        <td><%= link_to 'Show', auth_cart %></td>
+        <td><%= link_to 'Edit', edit_auth_cart_path(auth_cart) %></td>
+        <td><%= link_to 'Destroy', auth_cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Cart', new_auth_cart_path %>
