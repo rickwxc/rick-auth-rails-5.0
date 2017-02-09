@@ -72,6 +72,6 @@ class AuthObjsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_obj_params
-      params.require(:auth_obj).permit(:auth_name, :auth_uuid, :auth_descr, :auth_unitprice)
+      params.require(:auth_obj).permit(:auth_name, :auth_uuid, :auth_is_disabled, :auth_descr, :auth_unitprice)
     end
 end

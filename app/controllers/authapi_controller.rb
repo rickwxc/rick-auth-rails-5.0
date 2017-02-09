@@ -1,5 +1,37 @@
 class AuthapiController < ApplicationController
 
+
+	def auth_rm_obj_from_cart
+		rs = {}
+
+		id = params['cart_obj_id']
+		auth_visitor_uuid = g_get_visitor_uuid
+
+		AuthCart.where(:id => id, :auth_visitor_uuid => auth_visitor_uuid).destroy_all
+		render :json => rs
+	end
+
+	def auth_update_obj_qty_in_cart
+		rs = {}
+
+		id = params['cart_obj_id']
+		qty = params['qty'].to_f
+		auth_visitor_uuid = g_get_visitor_uuid
+
+		if qty < 0.1
+			render :json => rs
+			return
+		end
+
+		c = AuthCart.where(:id => id, :auth_visitor_uuid => auth_visitor_uuid).first
+		if c
+			c.auth_obj_qty = qty
+			c.save
+		end
+
+		render :json => rs
+	end
+	
 	def auth_add_obj_to_cart
 		rs = {}
 

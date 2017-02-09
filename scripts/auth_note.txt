@@ -63,7 +63,10 @@ auth_obj_id:integer auth_obj_model_name:string
 auth_obj_qty:decimal{10.2} auth_obj_meta_json:text
 
 #general saleable objects
-rails g scaffold auth_obj auth_name:string auth_uuid:string auth_descr:text auth_total:decimal{10.2} 
+rails g scaffold auth_obj 
+auth_name:string auth_uuid:string auth_descr:text auth_total:decimal{10.2} 
+
+rails generate migration add_auth_is_disable_to_auth_obj auth_is_disable:boolean
 
 
 rails g scaffold img model:string  uuid:integer alt:string   

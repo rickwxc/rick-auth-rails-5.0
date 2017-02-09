@@ -17,10 +17,44 @@
           %td
             %a{:onclick => "javascript:add_to_cart(#{v.id}, '#{v.class.name}')", :class => 'btn btn-default'}
               Add to Cart
+    %table{:class => 'table table-bordered'}
+      -@carts.each do |v|
+        %tr
+          %td
+            = v[:cart_obj_id]
+          %td
+            = v[:obj].auth_obj_display_name
+            = v[:metas]
+          %td
+            = v[:obj].auth_obj_unitprice
+          %td
+            = v[:qty]
+
+            %a{:onclick => "javascript:change_qty(#{v[:cart_obj_id]})", :class => 'btn btn-default'}
+              +
+          %td
+            = v[:total]
+          %td
+            %a{:onclick => "javascript:rm_from_cart(#{v[:cart_obj_id]})", :class => 'btn btn-default'}
+              Remove
 
 %script
+
+  function change_qty(cart_obj_id){
+  ajax_update_obj_qty_in_cart(cart_obj_id, 5.0, function(rs){
+  
+  });
+  }
+  
+  function rm_from_cart(cart_obj_id){
+  ajax_rm_from_cart(cart_obj_id, function(rs){
+  
+  });
+
+  }
   function add_to_cart(id, model){
-  ajax_add_to_cart(id, model, 1, {color:'red'}, function(rs){
+  qty = 1;
+  ajax_add_to_cart(id, model, qty, {color:'red'}, function(rs){
   //implement reload cart
   console.log(rs);
   
