@@ -20,7 +20,11 @@
 		  <td><%= auth_cart.auth_user_id %>
         <br /><%= auth_cart.auth_visitor_uuid %></td>
         <td><%= auth_cart.auth_obj_id %></td>
-        <td><%= auth_cart.auth_obj_model_name %></td>
+		<td>
+			<%= auth_cart.auth_obj_model_name %>
+			<br />
+			<%= (auth_cart.obj.present?? (auth_cart.obj.auth_obj_display_name):('')) %>
+		</td>
         <td><%= auth_cart.auth_obj_qty %></td>
 		<td><%auth_cart.metas.each do |k, v| %>
 		<%=k%>
