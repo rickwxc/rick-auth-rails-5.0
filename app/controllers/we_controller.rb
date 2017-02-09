@@ -2,7 +2,6 @@ class WeController < ApplicationController
 
 
 	def index
-
 	end
 
     def login

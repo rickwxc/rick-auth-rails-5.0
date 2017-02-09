@@ -1,5 +1,24 @@
 class AuthapiController < ApplicationController
 
+	def auth_add_obj_to_cart
+		rs = {}
+
+		c = AuthCart.new
+
+		if current_user
+			c.auth_user_id = current_user.id
+		end
+		c.auth_visitor_uuid = g_get_visitor_uuid
+		c.auth_obj_id = params['id']
+		c.auth_obj_model_name = params['model']
+		c.auth_obj_qty = params['qty']
+		c.auth_obj_meta_json = params['options_json'].to_json
+
+		c.save
+
+		render :json => rs
+	end
+
 	def auth_gene_order_for_payment
 		rs = {}
 

@@ -4,3 +4,27 @@
       %a{:href => my_path}
         login here
 
+%hr
+.container
+  .row
+    %table{:class => 'table table-bordered'}
+      -AuthObj.all.each do |v|
+        %tr
+          %td
+            =v.auth_name
+          %td
+            =v.auth_obj_unitprice
+          %td
+            %a{:onclick => "javascript:add_to_cart(#{v.id}, '#{v.class.name}')", :class => 'btn btn-default'}
+              Add to Cart
+
+%script
+  function add_to_cart(id, model){
+  ajax_add_to_cart(id, model, 1, {color:'red'}, function(rs){
+  //implement reload cart
+  console.log(rs);
+  
+  });
+
+  }
+

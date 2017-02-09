@@ -6,10 +6,10 @@
   <thead>
     <tr>
       <th> user</th>
-      <th> obj</th>
+      <th> id</th>
       <th> obj model name</th>
-      <th> obj qty</th>
-      <th> obj meta </th>
+      <th>  qty</th>
+      <th> meta </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,7 +22,14 @@
         <td><%= auth_cart.auth_obj_id %></td>
         <td><%= auth_cart.auth_obj_model_name %></td>
         <td><%= auth_cart.auth_obj_qty %></td>
-        <td><%= auth_cart.auth_obj_meta_json %></td>
+		<td><%auth_cart.metas.each do |k, v| %>
+		<%=k%>
+		:
+		<%=v%>
+		<%end%>
+		
+		</td>
+
         <td><%= link_to 'Show', auth_cart %></td>
         <td><%= link_to 'Edit', edit_auth_cart_path(auth_cart) %></td>
         <td><%= link_to 'Destroy', auth_cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
