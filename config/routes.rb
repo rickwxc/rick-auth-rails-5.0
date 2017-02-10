@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 	get 'my', to: 'my#index', :as => :my
     get 'login/:user_id/:code', to: 'we#login', :as => :login
 
+	#labs
     get 'lab_addr_google', to: 'lab#lab_addr_google'
+    get 'lab_shopping', to: 'lab#lab_shopping'
 
 	#authapi
     post 'auth_save_addr', to: 'authapi#auth_save_addr'

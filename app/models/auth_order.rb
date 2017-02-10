@@ -2,6 +2,25 @@ class AuthOrder < ApplicationRecord
 	belongs_to:auth_orderst
 	belongs_to:auth_payst
 	has_many :auth_order2objs
+
+	belongs_to :billing_addr, class_name: 'AuthUserAddr', foreign_key: 'billing_addr_id', :optional => true
+	belongs_to :shipping_addr, class_name: 'AuthUserAddr', foreign_key: 'shipping_addr_id', :optional => true
+
+	def shipping_str
+		if self.shipping_addr 
+			return self.shipping_addr.full 
+		end
+
+		''
+	end
+
+	def billing_str
+		if self.billing_addr 
+			return self.billing_addr.full 
+		end
+
+		''
+	end
 	
 	def self.get_price_with_out_gst_from_total(amt)
 		p = amt/1.1 

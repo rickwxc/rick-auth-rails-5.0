@@ -79,6 +79,6 @@ class AuthOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_order_params
-      params.require(:auth_order).permit(:auth_user_id, :auth_visitor_uuid, :auth_total, :auth_gst, :auth_orderst_id, :auth_payst_id, :auth_note)
+      params.require(:auth_order).permit(:auth_user_id, :auth_visitor_uuid, :auth_total, :auth_gst, :auth_orderst_id, :auth_payst_id, :auth_note, :billing_addr_id, :shipping_addr_id)
     end
 end

@@ -1,13 +1,6 @@
 class WeController < ApplicationController
 
-
 	def index
-
-		cart_list
-	end
-	
-	def cart_list
-		@carts = AuthCart::get_item_list(current_user,g_get_visitor_uuid)
 	end
 
     def login
@@ -29,6 +22,5 @@ class WeController < ApplicationController
             redirect_to new_user_session_path
         end
     end
-
 
 end
