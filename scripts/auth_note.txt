@@ -11,6 +11,11 @@ rails g scaffold auth_addr street_number:string street:string auth_sb_id:integer
 
 rails generate migration add_unit_no_to_auth_addr unit_no:string
 
+rails generate migration add_shipping_addr_id_to_auth_order shipping_addr_id:integer
+rails generate migration add_billing_addr_id_to_auth_order billing_addr_id:integer
+
+rails g scaffold 
+
 rails g scaffold auth_sb name:string zip:string auth_st_id:integer
 rails g scaffold auth_st name:string auth_gj_id:integer
 rails g scaffold auth_gj name:string 
@@ -29,6 +34,8 @@ billing
 rails g scaffold auth_user_addr 
 auth_user_id:integer auth_visitor_uuid:string auth_user_addr_type:integer auth_addr_id:integer
 firstname:string lastname:string mobile:string company:string
+
+rails g migration change_auth_user_addr_type_to_auth_user_addr_type_id
 
 
 rails g scaffold auth_orderst auth_st:string auth_descr:text

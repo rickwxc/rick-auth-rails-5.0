@@ -101,8 +101,47 @@ class AuthapiController < ApplicationController
 	end
 
 	def auth_save_addr
-		rs = {}
+		addr = self.auth_save_addr_from_params
 
+		rs = {}
+		rs['id'] = addr.id
+		rs['full'] = addr.full
+
+		render :json => rs
+	end
+
+	def auth_save_user_addr
+		addr_id = 0
+		if params['addr_id']
+			addr_id = params['addr_id'].to_i
+		else
+			addr = self.auth_save_addr_from_params
+			addr_id = addr.id
+		end
+
+		ucaddr = AuthUserAddr.new
+		if current_user
+			ucaddr.auth_user_id = current_user.id
+		end
+
+		ucaddr.auth_user_addr_type_id = params['auth_user_addr_type_id'].to_i
+		ucaddr.auth_visitor_uuid = g_get_visitor_uuid
+		ucaddr.auth_addr_id = addr_id
+
+		ucaddr.firstname = params['firstname']
+		ucaddr.lastname = params['lastname']
+		ucaddr.mobile = params['mobile']
+		ucaddr.company = params['company']
+		ucaddr.save
+
+		rs = {}
+		rs['uc_addr_id'] = ucaddr.id
+		rs['full'] = addr.full
+
+		render :json => rs
+	end
+
+	def auth_save_addr_from_params
 		street_number = params['street_number']
 		street = params['route']
 		zip = params['postal_code']
@@ -137,10 +176,7 @@ class AuthapiController < ApplicationController
 
 		addr.save
 
-		rs['id'] = addr.id
-		rs['full'] = addr.full
-
-		render :json => rs
+		addr
 	end
 
 end

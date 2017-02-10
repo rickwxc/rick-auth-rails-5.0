@@ -72,6 +72,6 @@ class AuthUserAddrsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_user_addr_params
-      params.require(:auth_user_addr).permit(:auth_user_id, :auth_visitor_uuid, :auth_user_addr_type, :auth_addr_id, :firstname, :lastname, :mobile, :company)
+      params.require(:auth_user_addr).permit(:auth_user_id, :auth_visitor_uuid, :auth_user_addr_type_id, :auth_addr_id, :firstname, :lastname, :mobile, :company)
     end
 end
