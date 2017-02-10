@@ -22,6 +22,15 @@ and checkout
 total inc gst
 
 
+rails g scaffold auth_user_addr_type name:string
+shipping
+billing
+
+rails g scaffold auth_user_addr 
+auth_user_id:integer auth_visitor_uuid:string auth_user_addr_type:integer auth_addr_id:integer
+firstname:string lastname:string mobile:string company:string
+
+
 rails g scaffold auth_orderst auth_st:string auth_descr:text
 rails g scaffold auth_payst auth_st:string
 

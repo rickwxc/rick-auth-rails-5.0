@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth User Addr Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_user_addr_types.each do |auth_user_addr_type| %>
+      <tr>
+        <td><%= auth_user_addr_type.name %></td>
+        <td><%= link_to 'Show', auth_user_addr_type %></td>
+        <td><%= link_to 'Edit', edit_auth_user_addr_type_path(auth_user_addr_type) %></td>
+        <td><%= link_to 'Destroy', auth_user_addr_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth User Addr Type', new_auth_user_addr_type_path %>

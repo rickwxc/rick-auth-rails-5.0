@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :auth_user_addrs
+  resources :auth_user_addr_types
   resources :auth_objs
   resources :auth_carts
   resources :auth_addrs

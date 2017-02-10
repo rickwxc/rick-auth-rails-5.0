@@ -1,0 +1,57 @@
+<%= form_for(auth_user_addr) do |f| %>
+  <% if auth_user_addr.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_user_addr.errors.count, "error") %> prohibited this auth_user_addr from being saved:</h2>
+
+      <ul>
+      <% auth_user_addr.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :auth_user_id %>
+    <%= f.number_field :auth_user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_visitor_uuid %>
+    <%= f.text_field :auth_visitor_uuid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_user_addr_type %>
+    <%= f.number_field :auth_user_addr_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_addr_id %>
+    <%= f.number_field :auth_addr_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :firstname %>
+    <%= f.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %>
+    <%= f.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mobile %>
+    <%= f.text_field :mobile %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

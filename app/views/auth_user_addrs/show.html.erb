@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Auth user:</strong>
+  <%= @auth_user_addr.auth_user_id %>
+</p>
+
+<p>
+  <strong>Auth visitor uuid:</strong>
+  <%= @auth_user_addr.auth_visitor_uuid %>
+</p>
+
+<p>
+  <strong>Auth user addr type:</strong>
+  <%= @auth_user_addr.auth_user_addr_type %>
+</p>
+
+<p>
+  <strong>Auth addr:</strong>
+  <%= @auth_user_addr.auth_addr_id %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @auth_user_addr.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @auth_user_addr.lastname %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @auth_user_addr.mobile %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @auth_user_addr.company %>
+</p>
+
+<%= link_to 'Edit', edit_auth_user_addr_path(@auth_user_addr) %> |
+<%= link_to 'Back', auth_user_addrs_path %>
