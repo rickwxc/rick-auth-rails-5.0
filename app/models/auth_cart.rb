@@ -35,6 +35,7 @@ class AuthCart < ApplicationRecord
 			end
 			o = {
 				:cart_obj_id => cart_it.id,
+				:cart_obj => cart_it,
 				:obj => obj,
 				:qty => cart_it.auth_obj_qty,
 				:total => (cart_it.auth_obj_qty * obj.auth_obj_unitprice).round(2),
