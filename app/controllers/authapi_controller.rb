@@ -51,22 +51,37 @@ class AuthapiController < ApplicationController
 		render :json => rs
 	end
 
-	def auth_gene_order_for_payment
-		rs = {}
-
+	def auth_gene_order_by_params
 		order_meta_keys = params['order_meta_keys']
 
 		auth_visitor_uuid = g_get_visitor_uuid
 
-		email = params['email']
-		uc = User.from_omniauth_email(email)
-		o = AuthOrder.init_order(uc.id, auth_visitor_uuid)
+		uc = nil
+		if current_user
+			uc = current_user
+		elsif params['email']
+			uc = User.from_omniauth_email(params['email'])
+		end
+
+		if uc
+			o = AuthOrder.init_order(uc.id, auth_visitor_uuid)
+		else
+			o = AuthOrder.init_order(0, auth_visitor_uuid)
+		end
 
 		self.auth_save_order_meta(order_meta_keys, o)
 		self.auth_save_order_items(o)
 
 		o.auth_note = params['note']
 		o.save
+
+		o
+	end
+
+	def auth_gene_order_for_payment
+		rs = {}
+
+		o = self.auth_gene_order_by_params
 
 		rs['auth_order_id'] = o.id
 		rs['auth_total'] = o.auth_total
