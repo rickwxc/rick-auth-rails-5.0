@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210042742) do
+ActiveRecord::Schema.define(version: 20170212035918) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -99,16 +99,17 @@ ActiveRecord::Schema.define(version: 20170210042742) do
   create_table "auth_orders", force: :cascade do |t|
     t.integer  "auth_user_id"
     t.string   "auth_visitor_uuid"
-    t.decimal  "auth_total",        precision: 10, scale: 2
-    t.decimal  "auth_gst",          precision: 10, scale: 2
+    t.decimal  "auth_total",         precision: 10, scale: 2
+    t.decimal  "auth_gst",           precision: 10, scale: 2
     t.integer  "auth_orderst_id"
     t.integer  "auth_payst_id"
     t.text     "auth_note"
     t.text     "auth_meta_json"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "shipping_addr_id"
     t.integer  "billing_addr_id"
+    t.decimal  "auth_shipping_cost", precision: 10, scale: 2
   end
 
   create_table "auth_ordersts", force: :cascade do |t|

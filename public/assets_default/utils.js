@@ -40,5 +40,4 @@ function ajax_add_to_cart(id, model, qty, options_json, callback){
 	}
 
 	ajax_post('/auth_add_obj_to_cart', data, 'json', callback);
-
 }

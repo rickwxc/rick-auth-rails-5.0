@@ -14,6 +14,71 @@ rails generate migration add_unit_no_to_auth_addr unit_no:string
 rails generate migration add_shipping_addr_id_to_auth_order shipping_addr_id:integer
 rails generate migration add_billing_addr_id_to_auth_order billing_addr_id:integer
 
+rails generate migration add_auth_shipping_cost_to_auth_order auth_shipping_cost:decimal{10.2}
+
+
+gallery
+
+rails g scaffold img model:string  uuid:integer alt:string   
+
+ecomm-6.0
+
+
+rails g scaffold auth_addr street_number:string street:string auth_sb_id:integer org:text raw_json:text 
+
+rails generate migration add_unit_no_to_auth_addr unit_no:string
+
+rails generate migration add_shipping_addr_id_to_auth_order shipping_addr_id:integer
+rails generate migration add_billing_addr_id_to_auth_order billing_addr_id:integer
+
+rails g scaffold 
+
+rails g scaffold auth_sb name:string zip:string auth_st_id:integer
+rails g scaffold auth_st name:string auth_gj_id:integer
+rails g scaffold auth_gj name:string 
+
+
+order
+and checkout
+
+total inc gst
+
+
+rails g scaffold auth_user_addr_type name:string
+shipping
+billing
+
+rails g scaffold auth_user_addr 
+auth_user_id:integer auth_visitor_uuid:string auth_user_addr_type:integer auth_addr_id:integer
+firstname:string lastname:string mobile:string company:string
+
+rails g migration change_auth_user_addr_type_to_auth_user_addr_type_id
+
+
+rails g scaffold auth_orderst auth_st:string auth_descr:text
+rails g scaffold auth_payst auth_st:string
+
+rails g scaffold auth_paymethod auth_name:string
+rails g scaffold auth_invoicest auth_st:string
+
+rails g scaffold auth_invoice uuid:string gross:decimal{10.2} fee:decimal{10.2}
+auth_order_id:integer auth_paymethod_id:integer auth_invoicest_id:integer
+
+rails g scaffold auth_bundle 
+auth_name:string auth_total:decimal{10.2}
+
+rails g scaffold auth_bundle2obj
+auth_bundle_id:integer auth_obj_id:integer auth_obj_model_name:string
+
+
+rails g scaffold auth_vip_obj
+auth_obj_id:integer auth_obj_model_name:string auth_total:decimal{10.2} 
+//handles wholesale, vip price, etc
+
+
+rails g scaffold auth_order
+
+
 rails g scaffold 
 
 rails g scaffold auth_sb name:string zip:string auth_st_id:integer

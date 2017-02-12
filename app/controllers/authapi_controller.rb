@@ -78,6 +78,20 @@ class AuthapiController < ApplicationController
 		o
 	end
 
+	def auth_get_order_shipping_cost
+		rs = {}
+
+		order_id = params['order_id']
+		o = AuthOrder.find(order_id)
+
+		#tobe implemented
+
+		rs['auth_order_id'] = o.id
+		rs['auth_shipping_cost'] = o.auth_shipping_cost
+
+		render :json => rs
+	end
+
 	def auth_gene_order_for_payment
 		rs = {}
 

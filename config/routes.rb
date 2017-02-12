@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     post 'auth_add_obj_to_cart', to: 'authapi#auth_add_obj_to_cart'
     post 'auth_rm_obj_from_cart', to: 'authapi#auth_rm_obj_from_cart'
     post 'auth_update_obj_qty_in_cart', to: 'authapi#auth_update_obj_qty_in_cart'
+    post 'auth_get_order_shipping_cost', to: 'authapi#auth_get_order_shipping_cost'
 
 
 	root 'we#index'
