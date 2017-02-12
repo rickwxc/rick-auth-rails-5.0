@@ -136,6 +136,33 @@ class AuthapiController < ApplicationController
 		order.save
 	end
 
+
+	def auth_save_order_items_from_cart (order)
+		items = params['cart_items']
+		total = 0
+		gst = 0
+		items.each do |cart_obj_id|
+			ac = AuthCart.where(:id => cart_obj_id).first
+			if !ac
+				next
+			end
+
+			obj = ac.obj
+
+			if !obj
+				next
+			end
+
+			objitem = order.add_order_item(obj, ac.auth_obj_qty, ac.auth_obj_meta_json)
+			gst = gst + objitem.auth_gst 
+			total =  total + objitem.auth_total
+		end
+
+		order.auth_total =  total
+		order.auth_gst = gst
+		order.save
+	end
+
 	def auth_save_addr
 		addr = self.auth_save_addr_from_params
 
