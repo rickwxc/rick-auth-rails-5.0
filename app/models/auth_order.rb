@@ -40,7 +40,7 @@ class AuthOrder < ApplicationRecord
 		orderobj = AuthOrder2obj.new
 		orderobj.auth_order_id = self.id
 
-		sub_total = (obj.auth_total * qty).round(2)
+		sub_total = (obj.auth_obj_unitprice * qty).round(2)
 
 		orderobj.auth_total = sub_total
 		orderobj.auth_gst = AuthOrder.get_gst_from_total(sub_total)
@@ -49,9 +49,9 @@ class AuthOrder < ApplicationRecord
 		orderobj.auth_obj_model_name = obj.class.name
 		orderobj.auth_obj_display_name = obj.auth_obj_display_name
 		orderobj.auth_obj_qty = qty
-		orderobj.auth_obj_unitprice = obj.auth_total
+		orderobj.auth_obj_unitprice = obj.auth_obj_unitprice
 		if meta
-			orderobj.auth_obj_meta_json = meta.to_json
+			orderobj.auth_obj_meta_json = meta
 		end
 
 		orderobj.save

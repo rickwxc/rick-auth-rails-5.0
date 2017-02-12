@@ -52,8 +52,6 @@ class AuthapiController < ApplicationController
 	end
 
 	def auth_gene_order_by_params
-		order_meta_keys = params['order_meta_keys']
-
 		auth_visitor_uuid = g_get_visitor_uuid
 
 		uc = nil
@@ -69,10 +67,19 @@ class AuthapiController < ApplicationController
 			o = AuthOrder.init_order(0, auth_visitor_uuid)
 		end
 
-		self.auth_save_order_meta(order_meta_keys, o)
-		self.auth_save_order_items(o)
+		if params['order_meta_keys']
+			self.auth_save_order_meta(params['order_meta_keys'], o)
+		end
 
-		o.auth_note = params['note']
+		if params['items']
+			self.auth_save_order_items(o)
+		elsif params['cart_items']
+			self.auth_save_order_items_from_cart(o)
+		end
+
+		if params['note']
+			o.auth_note = params['note']
+		end
 		o.save
 
 		o
