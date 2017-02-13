@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
 	#authapi
     post 'auth_save_addr', to: 'authapi#auth_save_addr'
+    post 'auth_save_user_addr', to: 'authapi#auth_save_user_addr'
     post 'auth_gene_order_for_payment', to: 'authapi#auth_gene_order_for_payment'
     post 'auth_add_obj_to_cart', to: 'authapi#auth_add_obj_to_cart'
     post 'auth_rm_obj_from_cart', to: 'authapi#auth_rm_obj_from_cart'
