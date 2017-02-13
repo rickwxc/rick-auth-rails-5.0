@@ -38,7 +38,9 @@
 
 		<% auth_order.auth_order2objs.each  do |v|%>
 		<%=v.auth_obj_display_name%> (<%=v.auth_obj_unitprice%> x <%=v.auth_obj_qty%>)
+		(shipping: <%=v.auth_shipping_cost%>)
 		<%=v.auth_total%>
+		<br />
 		<%end%>
 </td>
         <td><%= auth_order.auth_gst %></td>

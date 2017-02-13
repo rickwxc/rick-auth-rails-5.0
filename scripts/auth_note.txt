@@ -16,6 +16,8 @@ rails generate migration add_billing_addr_id_to_auth_order billing_addr_id:integ
 
 rails generate migration add_auth_shipping_cost_to_auth_order auth_shipping_cost:decimal{10.2}
 
+rails generate migration add_auth_shipping_cost_to_auth_order2obj auth_shipping_cost:decimal{10.2}
+
 
 gallery
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212035918) do
+ActiveRecord::Schema.define(version: 20170213044755) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170212035918) do
     t.text     "auth_obj_meta_json"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.decimal  "auth_shipping_cost",    precision: 10, scale: 2
   end
 
   create_table "auth_orders", force: :cascade do |t|
