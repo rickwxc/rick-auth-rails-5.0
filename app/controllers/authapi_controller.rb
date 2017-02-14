@@ -205,6 +205,14 @@ class AuthapiController < ApplicationController
 	end
 
 	def auth_save_addr_from_params
+
+		if params['auth_addr_org'] 
+			addr = AuthAddr.new
+			addr.org = params['auth_addr_org'].strip
+			addr.save
+			return addr
+		end
+
 		street_number = params['street_number']
 		street = params['route']
 		zip = params['postal_code']

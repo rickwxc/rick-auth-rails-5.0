@@ -21,7 +21,7 @@
         <td><%= auth_addr.unit_no %></td>
         <td><%= auth_addr.street_number %></td>
         <td><%= auth_addr.street %></td>
-        <td><%= auth_addr.auth_sb.name %></td>
+        <td><%=auth_addr.auth_sb.present?? (auth_addr.auth_sb.name):('') %></td>
 		<td>
 			<%= auth_addr.full %>
 		</td>
