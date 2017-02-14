@@ -67,6 +67,17 @@ class AuthapiController < ApplicationController
 			o = AuthOrder.init_order(0, auth_visitor_uuid)
 		end
 
+		if params['billing_addr']
+			billing_addr = auth_save_user_addr_from_params('billing_')
+			o.billing_addr_id = billing_addr.id
+		end
+
+		if params['shipping_addr']
+			shipping_addr = auth_save_user_addr_from_params('shipping_')
+			o.shipping_addr_id = shipping_addr.id
+		end
+
+
 		if params['order_meta_keys']
 			self.auth_save_order_meta(params['order_meta_keys'], o)
 		end
@@ -174,9 +185,18 @@ class AuthapiController < ApplicationController
 	end
 
 	def auth_save_user_addr
+		ucaddr = auth_save_user_addr_from_params('')
+		rs = {}
+		rs['uc_addr_id'] = ucaddr.id
+		rs['full'] = addr.full
+
+		render :json => rs
+	end
+
+	def auth_save_user_addr_from_params(prefix)
 		addr_id = 0
-		if params['addr_id']
-			addr_id = params['addr_id'].to_i
+		if params["#{prefix}addr_id"]
+			addr_id = params["#{prefix}addr_id"].to_i
 		else
 			addr = self.auth_save_addr_from_params
 			addr_id = addr.id
@@ -187,21 +207,24 @@ class AuthapiController < ApplicationController
 			ucaddr.auth_user_id = current_user.id
 		end
 
-		ucaddr.auth_user_addr_type_id = params['auth_user_addr_type_id'].to_i
+		ucaddr.auth_user_addr_type_id = params["#{prefix}auth_user_addr_type_id"].to_i
 		ucaddr.auth_visitor_uuid = g_get_visitor_uuid
 		ucaddr.auth_addr_id = addr_id
 
-		ucaddr.firstname = params['firstname']
-		ucaddr.lastname = params['lastname']
-		ucaddr.mobile = params['mobile']
-		ucaddr.company = params['company']
+		ucaddr.firstname = params["#{prefix}firstname"].strip
+		ucaddr.lastname = params["#{prefix}lastname"].strip
+
+		if params["#{prefix}mobile"]
+			ucaddr.mobile = params["#{prefix}mobile"].strip
+		end
+
+		if params["#{prefix}company"]
+			ucaddr.company = params["#{prefix}company"].strip
+		end
+
 		ucaddr.save
 
-		rs = {}
-		rs['uc_addr_id'] = ucaddr.id
-		rs['full'] = addr.full
-
-		render :json => rs
+		ucaddr
 	end
 
 	def auth_save_addr_from_params
