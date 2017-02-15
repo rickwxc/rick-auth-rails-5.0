@@ -1,0 +1,42 @@
+<%= form_for(auth_coupon) do |f| %>
+  <% if auth_coupon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_coupon.errors.count, "error") %> prohibited this auth_coupon from being saved:</h2>
+
+      <ul>
+      <% auth_coupon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :val %>
+    <%= f.text_field :val %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expire_at %>
+    <%= f.date_select :expire_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_enabled %>
+    <%= f.check_box :is_enabled %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

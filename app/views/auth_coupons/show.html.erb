@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @auth_coupon.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_coupon.name %>
+</p>
+
+<p>
+  <strong>Val:</strong>
+  <%= @auth_coupon.val %>
+</p>
+
+<p>
+  <strong>Expire at:</strong>
+  <%= @auth_coupon.expire_at %>
+</p>
+
+<p>
+  <strong>Is enabled:</strong>
+  <%= @auth_coupon.is_enabled %>
+</p>
+
+<%= link_to 'Edit', edit_auth_coupon_path(@auth_coupon) %> |
+<%= link_to 'Back', auth_coupons_path %>

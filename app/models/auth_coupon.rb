@@ -1,0 +1,2 @@
+class AuthCoupon < ApplicationRecord
+end

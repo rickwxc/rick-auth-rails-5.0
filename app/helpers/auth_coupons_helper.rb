@@ -1,0 +1,2 @@
+module AuthCouponsHelper
+end

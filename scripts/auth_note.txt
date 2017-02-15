@@ -15,6 +15,15 @@ rails generate migration add_shipping_addr_id_to_auth_order shipping_addr_id:int
 rails generate migration add_billing_addr_id_to_auth_order billing_addr_id:integer
 
 rails generate migration add_auth_shipping_cost_to_auth_order auth_shipping_cost:decimal{10.2}
+rails generate migration add_unit_no_to_auth_addr unit_no:string
+
+
+rails generate migration add_auth_total_org_to_auth_order auth_total_org:decimal{10.2}
+
+rails g scaffold auth_coupon code:string name:string val:decimal{10.2} expire_at:date is_enabled:boolean
+
+rails generate migration add_auth_coupon_id_to_auth_order auth_coupon_id:integer
+rails generate migration add_auth_coupon_amt_to_auth_order auth_coupon_amt:decimal{10.2}
 
 rails generate migration add_auth_shipping_cost_to_auth_order2obj auth_shipping_cost:decimal{10.2}
 
