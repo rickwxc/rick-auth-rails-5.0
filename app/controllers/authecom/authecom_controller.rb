@@ -26,7 +26,14 @@ class Authecom::AuthecomController < ApplicationController
 			return
 		end
 
-		order_id = @ipn.invoice
+		inv = @ipn.invoice
+
+		order_id = inv
+		if inv.include? "_"
+			invs = inv.split '_'
+			order_id = invs[1] 
+		end
+
 		order = AuthOrder.find(order_id)
 
 		uuid = @ipn.transaction_id
