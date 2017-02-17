@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :init_env
 
 
   def can_current_user_access(current_controller_name)
@@ -35,6 +36,10 @@ class ApplicationController < ActionController::Base
 			cookies[:visitor_uuid] = {value: visitor_uuid, expires: 1000.day.from_now }
 			return visitor_uuid
 		end
+	end
+
+	def init_env
+		#tobe implemented
 	end
 
 end
