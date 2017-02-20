@@ -104,7 +104,7 @@ class AuthOrder < ApplicationRecord
 		#save payment info
 		#auth_paymethod_id
 		
-		if self.auth_payst_id == AuthPayst::Paid || self.auth_payst_id = AuthPayst::Half_Paid
+		if self.auth_payst_id == AuthPayst::Paid || self.auth_payst_id == AuthPayst::Half_Paid
 			return
 		end
 		
