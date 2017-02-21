@@ -1,7 +1,7 @@
 class AuthOrder < ApplicationRecord
 	belongs_to:auth_orderst
 	belongs_to:auth_payst
-	belongs_to:user, :optional => true
+	belongs_to :user, class_name: 'User', foreign_key: 'auth_user_id', :optional => true
 	has_many :auth_order2objs
 
 	belongs_to :billing_addr, class_name: 'AuthUserAddr', foreign_key: 'billing_addr_id', :optional => true
