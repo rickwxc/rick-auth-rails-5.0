@@ -18,6 +18,12 @@ class AuthBundle2objsController < ApplicationController
   # GET /auth_bundle2objs/new
   def new
     @auth_bundle2obj = AuthBundle2obj.new
+	if params[:auth_obj_model_name]
+		@auth_bundle2obj.auth_obj_model_name = params[:auth_obj_model_name]
+	end
+	if params[:auth_obj_id]
+		@auth_bundle2obj.auth_obj_id = params[:auth_obj_id]
+	end
   end
 
   # GET /auth_bundle2objs/1/edit

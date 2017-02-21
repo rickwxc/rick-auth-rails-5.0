@@ -16,10 +16,18 @@
   <tbody>
     <% @auth_objs.each do |auth_obj| %>
       <tr>
-        <td><%= auth_obj.auth_name %></td>
+		  <td>
+			  <%= auth_obj.auth_name %>
+	  </td>
         <td><%= auth_obj.auth_uuid %></td>
         <td><%= auth_obj.auth_unitprice %></td>
         <td><%= (auth_obj.auth_is_disabled  == true ? 'Disabled':'') %></td>
+		<td>
+			<a target='_blank'
+				href="/auth_bundle2objs/new?auth_obj_model_name=<%=auth_obj.class.name%>&auth_obj_id=<%=auth_obj.id%>">
+				Add to bundle
+			</a>
+		</td>
 
         <td><%= link_to 'Show', auth_obj %></td>
         <td><%= link_to 'Edit', edit_auth_obj_path(auth_obj) %></td>

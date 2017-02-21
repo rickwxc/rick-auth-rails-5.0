@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :auth_bundle_id %>
-    <%= f.number_field :auth_bundle_id %>
+	<%= select_tag "auth_bundle2obj[auth_bundle_id]", options_from_collection_for_select(AuthBundle.all, "id", "auth_name", auth_bundle2obj.auth_bundle_id||0 ) %>
+
   </div>
 
   <div class="field">

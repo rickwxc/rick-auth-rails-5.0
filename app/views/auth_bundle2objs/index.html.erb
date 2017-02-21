@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Auth Bundle2objs</h1>
+<h1> Bundle Items</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
-      <th>Auth bundle</th>
+      <th>Bundle</th>
       <th>Auth obj</th>
       <th>Auth obj model name</th>
       <th colspan="3"></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @auth_bundle2objs.each do |auth_bundle2obj| %>
       <tr>
-        <td><%= auth_bundle2obj.auth_bundle_id %></td>
+        <td><%= auth_bundle2obj.auth_bundle.auth_name %></td>
         <td><%= auth_bundle2obj.auth_obj_id %></td>
         <td><%= auth_bundle2obj.auth_obj_model_name %></td>
         <td><%= link_to 'Show', auth_bundle2obj %></td>

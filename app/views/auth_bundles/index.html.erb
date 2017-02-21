@@ -2,11 +2,15 @@
 
 <h1>Bundles</h1>
 
+<a href="/auth_bundle2objs">
+	Bundle Objs
+</a>
 <table class='table'>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Total</th>
+      <th>type</th>
+      <th>$</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,6 +19,7 @@
     <% @auth_bundles.each do |auth_bundle| %>
       <tr>
         <td><%= auth_bundle.auth_name %></td>
+        <td><%= auth_bundle.auth_bundle_type.name %></td>
         <td><%= auth_bundle.auth_total %></td>
         <td><%= link_to 'Show', auth_bundle %></td>
         <td><%= link_to 'Edit', edit_auth_bundle_path(auth_bundle) %></td>
