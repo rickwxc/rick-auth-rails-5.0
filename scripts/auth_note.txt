@@ -78,6 +78,15 @@ auth_order_id:integer auth_paymethod_id:integer auth_invoicest_id:integer
 rails g scaffold auth_bundle 
 auth_name:string auth_total:decimal{10.2}
 
+rails g scaffold auth_bundle_type name:string 
+//exclusive
+//inclusive
+
+rails generate migration add_auth_bundle_type_id_to_auth_bundle auth_bundle_type_id:integer
+//todo here bunld
+rails generate migration add_descr_to_auth_bundle descr:text
+
+
 rails g scaffold auth_bundle2obj
 auth_bundle_id:integer auth_obj_id:integer auth_obj_model_name:string
 

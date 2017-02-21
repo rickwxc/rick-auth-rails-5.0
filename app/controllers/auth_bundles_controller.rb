@@ -72,6 +72,6 @@ class AuthBundlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_bundle_params
-      params.require(:auth_bundle).permit(:auth_name, :auth_total)
+      params.require(:auth_bundle).permit(:auth_name, :auth_total, :descr, :auth_bundle_type_id)
     end
 end

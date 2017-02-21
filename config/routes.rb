@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :auth_bundle_types
   resources :auth_coupons
   resources :auth_user_addrs
   resources :auth_user_addr_types
