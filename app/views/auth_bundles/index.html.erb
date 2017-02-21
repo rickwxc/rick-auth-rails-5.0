@@ -21,6 +21,10 @@
         <td><%= auth_bundle.auth_name %></td>
         <td><%= auth_bundle.auth_bundle_type.name %></td>
         <td><%= auth_bundle.auth_total %></td>
+
+		<td>
+<%= link_to 'Add Img', new_img_path(:uuid => auth_bundle.id, :modelname => auth_bundle.class.name), target: "_blank"  %>
+		</td>
         <td><%= link_to 'Show', auth_bundle %></td>
         <td><%= link_to 'Edit', edit_auth_bundle_path(auth_bundle) %></td>
         <td><%= link_to 'Destroy', auth_bundle, method: :delete, data: { confirm: 'Are you sure?' } %></td>

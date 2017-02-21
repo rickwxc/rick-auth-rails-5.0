@@ -27,6 +27,8 @@
 				href="/auth_bundle2objs/new?auth_obj_model_name=<%=auth_obj.class.name%>&auth_obj_id=<%=auth_obj.id%>">
 				Add to bundle
 			</a>
+			|
+<%= link_to 'Add Img', new_img_path(:uuid => auth_obj.id, :modelname => auth_obj.class.name), target: "_blank"  %>
 		</td>
 
         <td><%= link_to 'Show', auth_obj %></td>
