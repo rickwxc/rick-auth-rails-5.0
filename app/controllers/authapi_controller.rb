@@ -82,11 +82,17 @@ class AuthapiController < ApplicationController
 			self.auth_save_order_meta(params['order_meta_keys'], o)
 		end
 
+		if params['shipping_rule_id']
+			self.auth_shipping_cacul(o)
+		end
+
 		if params['items']
 			self.auth_save_order_items(o)
 		elsif params['cart_items']
 			self.auth_save_order_items_from_cart(o)
 		end
+
+
 
 		if params['note']
 			o.auth_note = params['note']
@@ -94,6 +100,23 @@ class AuthapiController < ApplicationController
 		o.save
 
 		o
+	end
+
+	def auth_shipping_cacul(o)
+		shipping_rule_id = params['shipping_rule_id'].to_i
+		r = AuthSelShippingrule.where(:id =>shipping_rule_id).first 
+		if !r
+			return
+		end
+
+		o.auth_shipping_cost = r.cost
+
+		if o.auth_total 
+			o.auth_total = o.auth_total + o.auth_shipping_cost
+		else
+			o.auth_total = o.auth_shipping_cost
+		end
+		o.save
 	end
 
 	def auth_get_order_shipping_cost
@@ -142,8 +165,12 @@ class AuthapiController < ApplicationController
 			end
 		end
 
-		order.auth_total =  total
-		order.auth_gst = gst
+		if order.auth_total 
+			order.auth_total = order.auth_total + total
+		else
+			order.auth_total = total
+		end
+		order.auth_gst = AuthOrder.get_gst_from_total(order.auth_total)
 		order.save
 	end
 
@@ -169,8 +196,12 @@ class AuthapiController < ApplicationController
 			total =  total + objitem.auth_total
 		end
 
-		order.auth_total =  total
-		order.auth_gst = gst
+		if order.auth_total 
+			order.auth_total = order.auth_total + total
+		else
+			order.auth_total = total
+		end
+		order.auth_gst = AuthOrder.get_gst_from_total(order.auth_total)
 		order.save
 	end
 
