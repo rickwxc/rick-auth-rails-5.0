@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  auth_sel_shippingrule_id: 1
+
+two:
+  model: MyString
+  auth_sel_shippingrule_id: 1

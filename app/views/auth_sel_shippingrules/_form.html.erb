@@ -1,0 +1,32 @@
+<%= form_for(auth_sel_shippingrule) do |f| %>
+  <% if auth_sel_shippingrule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_sel_shippingrule.errors.count, "error") %> prohibited this auth_sel_shippingrule from being saved:</h2>
+
+      <ul>
+      <% auth_sel_shippingrule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cost %>
+    <%= f.text_field :cost %>
+  </div>
+
+  <div class="field">
+    <%= f.label :idx %>
+    <%= f.number_field :idx %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Shippingrule2objs</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Auth sel shippingrule</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_shippingrule2objs.each do |auth_shippingrule2obj| %>
+      <tr>
+        <td><%= auth_shippingrule2obj.model %></td>
+        <td><%= auth_shippingrule2obj.auth_sel_shippingrule_id %></td>
+        <td><%= link_to 'Show', auth_shippingrule2obj %></td>
+        <td><%= link_to 'Edit', edit_auth_shippingrule2obj_path(auth_shippingrule2obj) %></td>
+        <td><%= link_to 'Destroy', auth_shippingrule2obj, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Shippingrule2obj', new_auth_shippingrule2obj_path %>

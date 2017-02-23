@@ -6,6 +6,14 @@ rails g scaffold img model:string  uuid:integer alt:string
 
 ecomm-6.0
 
+rails g scaffold auth_sel_shippingrule name:string cost:decimal{10.2} idx:integer
+
+aus: 0
+nz : 44
+other 100
+
+rails g scaffold auth_shippingrule2obj model:string auth_sel_shippingrule_id:integer
+
 
 rails g scaffold auth_addr street_number:string street:string auth_sb_id:integer org:text raw_json:text 
 

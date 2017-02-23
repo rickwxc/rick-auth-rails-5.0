@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_sel_shippingrule.name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @auth_sel_shippingrule.cost %>
+</p>
+
+<p>
+  <strong>Idx:</strong>
+  <%= @auth_sel_shippingrule.idx %>
+</p>
+
+<%= link_to 'Edit', edit_auth_sel_shippingrule_path(@auth_sel_shippingrule) %> |
+<%= link_to 'Back', auth_sel_shippingrules_path %>
