@@ -18,6 +18,7 @@
       <th>#</th>
       <th>user</th>
       <th>Total(inc gst)</th>
+      <th>Shipping Cost</th>
       <th>GST</th>
       <th>Orderst</th>
       <th>Payst</th>
@@ -45,6 +46,8 @@
 		<br />
 		<%end%>
 </td>
+
+        <td><%= auth_order.auth_shipping_cost %></td>
         <td><%= auth_order.auth_gst %></td>
         <td><%= auth_order.auth_orderst.auth_st %></td>
         <td><%= auth_order.auth_payst.auth_st %></td>
