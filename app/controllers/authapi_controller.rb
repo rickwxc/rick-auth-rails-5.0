@@ -219,7 +219,7 @@ class AuthapiController < ApplicationController
 		ucaddr = auth_save_user_addr_from_params('')
 		rs = {}
 		rs['uc_addr_id'] = ucaddr.id
-		rs['full'] = addr.full
+		rs['full'] = ucaddr.full
 
 		render :json => rs
 	end
