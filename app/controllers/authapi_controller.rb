@@ -242,8 +242,13 @@ class AuthapiController < ApplicationController
 		ucaddr.auth_visitor_uuid = g_get_visitor_uuid
 		ucaddr.auth_addr_id = addr_id
 
-		ucaddr.firstname = params["#{prefix}firstname"].strip
-		ucaddr.lastname = params["#{prefix}lastname"].strip
+		if params["#{prefix}firstname"]
+			ucaddr.firstname = params["#{prefix}firstname"].strip
+		end
+
+		if params["#{prefix}lastname"]
+			ucaddr.lastname = params["#{prefix}lastname"].strip
+		end
 
 		if params["#{prefix}mobile"]
 			ucaddr.mobile = params["#{prefix}mobile"].strip
