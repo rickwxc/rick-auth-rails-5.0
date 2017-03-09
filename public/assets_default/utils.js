@@ -21,6 +21,13 @@ function ajax_update_obj_qty_in_cart(cart_obj_id, qty, callback){
 	ajax_post('/auth_update_obj_qty_in_cart', data, 'json', callback);
 }
 
+function ajax_clear_cart_items(cart_obj_ids, callback){
+	data = {
+		cart_obj_ids: cart_obj_ids
+	}
+	ajax_post('/auth_rm_obj_from_cart', data, 'json', callback);
+}
+
 function ajax_rm_from_cart(cart_obj_id, callback){
 	data = {
 		cart_obj_id: cart_obj_id

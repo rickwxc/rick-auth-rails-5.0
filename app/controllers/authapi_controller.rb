@@ -4,10 +4,18 @@ class AuthapiController < ApplicationController
 	def auth_rm_obj_from_cart
 		rs = {}
 
-		id = params['cart_obj_id']
 		auth_visitor_uuid = g_get_visitor_uuid
 
-		AuthCart.where(:id => id, :auth_visitor_uuid => auth_visitor_uuid).destroy_all
+		id = params['cart_obj_id']
+		if id
+			AuthCart.where(:id => id, :auth_visitor_uuid => auth_visitor_uuid).destroy_all
+		end
+
+		ids = params['cart_obj_ids']
+		if ids
+			AuthCart.where(:auth_visitor_uuid => auth_visitor_uuid).where(id: ids).destroy_all
+		end
+
 		render :json => rs
 	end
 
