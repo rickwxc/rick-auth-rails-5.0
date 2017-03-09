@@ -22,6 +22,8 @@ rails generate migration add_unit_no_to_auth_addr unit_no:string
 rails generate migration add_shipping_addr_id_to_auth_order shipping_addr_id:integer
 rails generate migration add_billing_addr_id_to_auth_order billing_addr_id:integer
 
+rails g migration add_can_pickup_to_auth_user_addr can_pickup:boolean
+
 rails generate migration add_auth_shipping_cost_to_auth_order auth_shipping_cost:decimal{10.2}
 rails generate migration add_unit_no_to_auth_addr unit_no:string
 
@@ -72,6 +74,8 @@ auth_user_id:integer auth_visitor_uuid:string auth_user_addr_type:integer auth_a
 firstname:string lastname:string mobile:string company:string
 
 rails g migration change_auth_user_addr_type_to_auth_user_addr_type_id
+
+
 
 
 rails g scaffold auth_orderst auth_st:string auth_descr:text

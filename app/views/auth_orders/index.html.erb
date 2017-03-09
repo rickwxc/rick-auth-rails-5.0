@@ -45,9 +45,13 @@
 		<%=v.auth_total%>
 		<br />
 		<%end%>
+		<hr />
+	<%= (auth_order.shipping_addr.present?? (auth_order.shipping_addr.full):('') )%>
 </td>
 
-        <td><%= auth_order.auth_shipping_cost %></td>
+<td>
+	<%= auth_order.auth_shipping_cost %>
+</td>
         <td><%= auth_order.auth_gst %></td>
         <td><%= auth_order.auth_orderst.auth_st %></td>
         <td><%= auth_order.auth_payst.auth_st %></td>

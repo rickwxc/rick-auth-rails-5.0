@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223001157) do
+ActiveRecord::Schema.define(version: 20170309231740) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(version: 20170223001157) do
     t.string   "company"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.boolean  "can_pickup"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
