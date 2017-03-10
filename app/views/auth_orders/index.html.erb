@@ -57,7 +57,8 @@
         <td><%= auth_order.auth_payst.auth_st %></td>
 		<td>
 			<%= auth_order.auth_note %>
-			<br /><%= auth_order.auth_meta_json %>
+			<br />
+			<%= raw (dump_json auth_order.auth_meta_json  ) %>
 		</td>
         <td><%= link_to 'Show', auth_order %></td>
         <td><%= link_to 'Edit', edit_auth_order_path(auth_order) %></td>

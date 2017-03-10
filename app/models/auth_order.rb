@@ -61,7 +61,15 @@ class AuthOrder < ApplicationRecord
 	end
 
 	def save_order_meta(k, v)
-		#todo implemented by each application.
+		js = {}
+		if self.auth_meta_json 
+			js = JSON.parse self.auth_meta_json
+		end
+		js[k] = v
+
+		self.auth_meta_json = js.to_json
+
+		self.save
 	end
 
 	def self.init_order(user_id, uuid)

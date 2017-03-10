@@ -4,19 +4,19 @@ class AuthUserAddr < ApplicationRecord
 	def full
 		s = ''
 
-		if firstname
+		if firstname && firstname != ''
 			s = s + firstname + ' ' 
 		end
 
-		if lastname
+		if lastname && lastname != ''
 			s = s + lastname + ' ' 
 		end
 
-		if mobile
+		if mobile && mobile != ''
 			s = s + mobile + ' ' 
 		end
 
-		if company
+		if company && company != ''
 			s = s + 'Company: ' + company + ' ' 
 		end
 
