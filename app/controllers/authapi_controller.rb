@@ -52,7 +52,9 @@ class AuthapiController < ApplicationController
 		c.auth_obj_id = params['id']
 		c.auth_obj_model_name = params['model']
 		c.auth_obj_qty = params['qty']
-		c.auth_obj_meta_json = params['options_json'].to_json
+		if params['options_json']
+			c.auth_obj_meta_json = params['options_json'].to_json
+		end
 
 		c.save
 

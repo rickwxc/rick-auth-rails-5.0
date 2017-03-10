@@ -37,12 +37,19 @@
 		<%= auth_order.auth_total %>
 	<hr />
 
-		<% auth_order.auth_order2objs.each  do |v|%>
-		<%=v.auth_obj_display_name%> (<%=v.auth_obj_unitprice%> x <%=v.auth_obj_qty%>)
+	<% auth_order.auth_order2objs.each  do |v| %>
+			<%=v.auth_obj_display_name%> 
+			<%if v.auth_obj_qty.to_i != 1%> 
+			($<%=v.auth_obj_unitprice%> x <%=v.auth_obj_qty%>)
+			<%end %> 
+
+
 		<%if v.auth_shipping_cost.to_i > 0%>
 		(shipping: <%=v.auth_shipping_cost%>)
 		<%end%>
-		<%=v.auth_total%>
+		$<%=v.auth_total%>
+			<%if  v.auth_obj_meta_json   %>
+				[<%= raw (dump_json v.auth_obj_meta_json, ', '  ) %>]	<%end%>
 		<br />
 		<%end%>
 		<hr />

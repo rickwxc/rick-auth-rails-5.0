@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-	def dump_json(o)
+	def dump_json(o, sp)
 		if !o 
 			return ''
 		end
@@ -13,13 +13,15 @@ module ApplicationHelper
 			end
 		end
 		s = ''
+		rs = []
 		o.each do |k, v|
 			s = s + k.to_s + ': '
 			s = s + v.to_s
-			s = s + '<br />'
+			rs << (k.to_s + ': ' + v.to_s) 
+			#s = s + '<br />'
 		end
 
-		s
+		rs.join(sp)
 	end
 
 end
