@@ -95,7 +95,7 @@ class AuthOrder < ApplicationRecord
 		inv.auth_invoicest_id = AuthInvoicest::Refund
 		inv.save
 
-		if gross_f < self.auth_total.to_i - 1 
+		if gross_f.abs < self.auth_total.to_i - 1 
 			#amount not match
 			self.auth_payst_id = AuthPayst::Half_Paid
 			self.save
