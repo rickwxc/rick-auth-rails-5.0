@@ -1,0 +1,15 @@
+<%=@order.id%>
+<br />
+<br />
+
+<h2> Order Status </h2>
+<%= @order.auth_orderst.auth_st %>
+
+<% if @order.auth_orderst.auth_descr && @order.auth_orderst.auth_descr != '' %>
+	<h2>
+		What does it mean ?
+	</h2>
+		
+	<%= simple_format @order.auth_orderst.auth_descr%>
+
+<%end%>

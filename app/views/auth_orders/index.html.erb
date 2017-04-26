@@ -64,7 +64,7 @@
 		<td>
 			<%= auth_order.auth_note %>
 			<br />
-			<%= raw (dump_json auth_order.auth_meta_json  ) %>
+			<%= raw (dump_json auth_order.auth_meta_json, ', '  ) %>
 		</td>
         <td><%= link_to 'Show', auth_order %></td>
         <td><%= link_to 'Edit', edit_auth_order_path(auth_order) %></td>
