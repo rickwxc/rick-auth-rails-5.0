@@ -7,6 +7,7 @@ rails g scaffold img model:string  uuid:integer alt:string
 ecomm-6.0
 
 rails g scaffold auth_sel_shippingrule name:string cost:decimal{10.2} idx:integer
+rails generate migration add_src_user_id_to_auth_order src_user_id:integer
 
 aus: 0
 nz : 44
