@@ -15,7 +15,11 @@
     <% @auth_ordersts.each do |auth_orderst| %>
       <tr>
         <td><%= auth_orderst.auth_st %></td>
-        <td><%= auth_orderst.auth_descr %></td>
+		<td>
+			<%= auth_orderst.auth_descr %>
+			<hr />
+			<%= auth_orderst.user_todo %>
+		</td>
         <td><%= link_to 'Show', auth_orderst %></td>
         <td><%= link_to 'Edit', edit_auth_orderst_path(auth_orderst) %></td>
         <td><%= link_to 'Destroy', auth_orderst, method: :delete, data: { confirm: 'Are you sure?' } %></td>

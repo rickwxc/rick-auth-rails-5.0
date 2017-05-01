@@ -72,6 +72,6 @@ class AuthOrderstsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_orderst_params
-      params.require(:auth_orderst).permit(:auth_st, :auth_descr)
+      params.require(:auth_orderst).permit(:auth_st, :auth_descr, :user_todo)
     end
 end
