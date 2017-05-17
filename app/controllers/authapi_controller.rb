@@ -168,8 +168,9 @@ class AuthapiController < ApplicationController
 			id = item['id']
 			qty = item['qty'].to_f
 			obj = item['model'].constantize.where(:id => id).first
+			meta = item['meta'].to_s
 			if obj
-				objitem = order.add_order_item(obj, qty, nil)
+				objitem = order.add_order_item(obj, qty, meta)
 				gst = gst + objitem.auth_gst 
 				total =  total + objitem.auth_total
 			end
