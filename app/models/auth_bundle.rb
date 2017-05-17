@@ -2,6 +2,9 @@ class AuthBundle < ApplicationRecord
 	belongs_to:auth_bundle_type
 	has_many :auth_bundle2obj
 
+	def auth_obj_display_name
+		return self.auth_name
+	end
 
 	def objs
 		list = []
