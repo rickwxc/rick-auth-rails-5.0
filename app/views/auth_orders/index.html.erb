@@ -72,7 +72,14 @@
 				<%=link_to "RefBy #{auth_order.src_user_id}", "/adm/user/#{auth_order.src_user_id}", target: "_blank"%>
 			<%  end %>
 	</td>
-        <td><%= link_to 'Edit', edit_auth_order_path(auth_order) %></td>
+	<td>
+		<%= link_to 'Edit', edit_auth_order_path(auth_order) %>
+		<br >
+		Last Update: <%= au_date_full auth_order.updated_at %>
+		<br >
+		Create: <%= au_date_full auth_order.created_at %>
+
+</td>
         <td><%= link_to 'Destroy', auth_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

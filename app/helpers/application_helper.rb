@@ -24,4 +24,13 @@ module ApplicationHelper
 		rs.join(sp)
 	end
 
+	def au_date_full(dt)
+		Time.zone = 'Sydney'
+
+		local_dt = Time.zone.at(dt.to_i)
+		s = local_dt.strftime('%H:%M, %e/%b/%Y')
+
+		s
+	end
+
 end
