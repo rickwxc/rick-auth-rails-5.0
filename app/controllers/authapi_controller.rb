@@ -9,11 +9,18 @@ class AuthapiController < ApplicationController
 		id = params['cart_obj_id']
 		if id
 			AuthCart.where(:id => id, :auth_visitor_uuid => auth_visitor_uuid).destroy_all
+			if current_user
+				AuthCart.where(:id => id, :auth_user_id => current_user.id).destroy_all
+			end
 		end
 
 		ids = params['cart_obj_ids']
 		if ids
 			AuthCart.where(:auth_visitor_uuid => auth_visitor_uuid).where(id: ids).destroy_all
+
+			if current_user
+				AuthCart.where(:auth_user_id => current_user.id).where(id: ids).destroy_all
+			end
 		end
 
 		render :json => rs
