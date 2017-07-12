@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501010550) do
+ActiveRecord::Schema.define(version: 20170712062539) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -209,6 +209,34 @@ ActiveRecord::Schema.define(version: 20170501010550) do
     t.datetime "updated_at",       null: false
     t.integer  "auth_reasonst_id"
     t.integer  "auth_reason_id"
+  end
+
+  create_table "auth_tag2objs", force: :cascade do |t|
+    t.string   "model"
+    t.integer  "auth_obj_id"
+    t.integer  "auth_tag_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "auth_tag2tags", force: :cascade do |t|
+    t.integer  "ptag_id"
+    t.integer  "ctag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "auth_tags", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "auth_tagtype_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "auth_tagtypes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "auth_user_addr_types", force: :cascade do |t|

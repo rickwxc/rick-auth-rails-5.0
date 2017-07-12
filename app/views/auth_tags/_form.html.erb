@@ -1,0 +1,27 @@
+<%= form_for(auth_tag) do |f| %>
+  <% if auth_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_tag.errors.count, "error") %> prohibited this auth_tag from being saved:</h2>
+
+      <ul>
+      <% auth_tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_tagtype_id %>
+    <%= f.number_field :auth_tagtype_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

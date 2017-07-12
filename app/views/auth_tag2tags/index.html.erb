@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Tag2tags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ptag</th>
+      <th>Ctag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_tag2tags.each do |auth_tag2tag| %>
+      <tr>
+        <td><%= auth_tag2tag.ptag_id %></td>
+        <td><%= auth_tag2tag.ctag_id %></td>
+        <td><%= link_to 'Show', auth_tag2tag %></td>
+        <td><%= link_to 'Edit', edit_auth_tag2tag_path(auth_tag2tag) %></td>
+        <td><%= link_to 'Destroy', auth_tag2tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Tag2tag', new_auth_tag2tag_path %>

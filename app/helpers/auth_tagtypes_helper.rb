@@ -1,0 +1,2 @@
+module AuthTagtypesHelper
+end

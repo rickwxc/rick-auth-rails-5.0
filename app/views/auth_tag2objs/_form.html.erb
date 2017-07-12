@@ -1,0 +1,32 @@
+<%= form_for(auth_tag2obj) do |f| %>
+  <% if auth_tag2obj.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_tag2obj.errors.count, "error") %> prohibited this auth_tag2obj from being saved:</h2>
+
+      <ul>
+      <% auth_tag2obj.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_obj_id %>
+    <%= f.number_field :auth_obj_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_tag_id %>
+    <%= f.number_field :auth_tag_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

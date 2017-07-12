@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  auth_obj_id: 1
+  auth_tag_id: 1
+
+two:
+  model: MyString
+  auth_obj_id: 1
+  auth_tag_id: 1

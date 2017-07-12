@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Tag2objs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Auth obj</th>
+      <th>Auth tag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_tag2objs.each do |auth_tag2obj| %>
+      <tr>
+        <td><%= auth_tag2obj.model %></td>
+        <td><%= auth_tag2obj.auth_obj_id %></td>
+        <td><%= auth_tag2obj.auth_tag_id %></td>
+        <td><%= link_to 'Show', auth_tag2obj %></td>
+        <td><%= link_to 'Edit', edit_auth_tag2obj_path(auth_tag2obj) %></td>
+        <td><%= link_to 'Destroy', auth_tag2obj, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Tag2obj', new_auth_tag2obj_path %>

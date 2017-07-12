@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :auth_tag2objs
+  resources :auth_tag2tags
+  resources :auth_tags
+  resources :auth_tagtypes
   resources :auth_shippingrule2objs
   resources :auth_sel_shippingrules
   resources :auth_bundle_types

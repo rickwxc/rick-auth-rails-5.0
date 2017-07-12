@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Tagtypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_tagtypes.each do |auth_tagtype| %>
+      <tr>
+        <td><%= auth_tagtype.name %></td>
+        <td><%= link_to 'Show', auth_tagtype %></td>
+        <td><%= link_to 'Edit', edit_auth_tagtype_path(auth_tagtype) %></td>
+        <td><%= link_to 'Destroy', auth_tagtype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Tagtype', new_auth_tagtype_path %>

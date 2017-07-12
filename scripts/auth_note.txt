@@ -13,6 +13,16 @@ aus: 0
 nz : 44
 other 100
 
+rails g scaffold auth_tagtype name:string 
+rails g scaffold auth_tag name:string auth_tagtype_id:integer
+rails g scaffold auth_tag2tag ptag_id:integer ctag_id:integer 
+rails g scaffold auth_tag2obj model:string auth_obj_id:integer auth_tag_id:integer
+
+
+nav
+normal
+
+
 rails g scaffold auth_shippingrule2obj model:string auth_sel_shippingrule_id:integer
 
 

@@ -1,0 +1,2 @@
+class AuthTag < ApplicationRecord
+end

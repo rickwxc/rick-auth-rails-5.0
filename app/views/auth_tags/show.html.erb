@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_tag.name %>
+</p>
+
+<p>
+  <strong>Auth tagtype:</strong>
+  <%= @auth_tag.auth_tagtype_id %>
+</p>
+
+<%= link_to 'Edit', edit_auth_tag_path(@auth_tag) %> |
+<%= link_to 'Back', auth_tags_path %>
