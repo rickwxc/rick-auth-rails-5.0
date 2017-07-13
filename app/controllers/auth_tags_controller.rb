@@ -22,6 +22,7 @@ class AuthTagsController < ApplicationController
 
   # GET /auth_tags/1/edit
   def edit
+	  @pids = @auth_tag.get_parent_ids
   end
 
   # POST /auth_tags
@@ -29,10 +30,19 @@ class AuthTagsController < ApplicationController
   def create
     @auth_tag = AuthTag.new(auth_tag_params)
 
+
     respond_to do |format|
       if @auth_tag.save
-        format.html { redirect_to @auth_tag, notice: 'Auth tag was successfully created.' }
-        format.json { render :show, status: :created, location: @auth_tag }
+
+		  params[:ptags].each do |v|
+			  tt = AuthTag2tag.new
+			  tt.ptag_id = v
+			  tt.ctag_id = @auth_tag.id
+			  tt.save
+		  end if (params[:ptags] && @auth_tag.auth_tagtype_id != AuthTagtype::Nav)
+
+		  format.html { redirect_to @auth_tag, notice: 'Auth tag was successfully created.' }
+		  format.json { render :show, status: :created, location: @auth_tag }
       else
         format.html { render :new }
         format.json { render json: @auth_tag.errors, status: :unprocessable_entity }
@@ -43,6 +53,17 @@ class AuthTagsController < ApplicationController
   # PATCH/PUT /auth_tags/1
   # PATCH/PUT /auth_tags/1.json
   def update
+
+	  AuthTag2tag.delete_all(["ctag_id = ?", @auth_tag.id])
+
+	  params[:ptags].each do |v|
+		  tt = AuthTag2tag.new
+		  tt.ptag_id = v
+		  tt.ctag_id = @auth_tag.id
+		  tt.save
+	  end if params[:ptags] 
+
+
     respond_to do |format|
       if @auth_tag.update(auth_tag_params)
         format.html { redirect_to @auth_tag, notice: 'Auth tag was successfully updated.' }

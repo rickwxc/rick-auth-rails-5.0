@@ -1,0 +1,42 @@
+
+<table class='table table-bordered'>
+	  <tr>
+  <%AuthTag.nav_tags.each do |t| %> 
+	  <td>
+		  <label>
+			  <input name='ptags[]' value="<%=t.id%>" 
+			  <%if @pids && (@pids.include? t.id)%>
+				  checked
+			  <%end %>
+			  type='checkbox' />
+		  <%=t.name  %> 
+		  </label>
+
+		  <%t.get_child.each do |t2| %> 
+			  <br />
+		  <label>
+			  &nbsp; &nbsp; 
+			  <input name='ptags[]' value="<%=t2.id%>" 
+			  <%if @pids && (@pids.include? t2.id)%>
+				  checked
+			  <%end %>
+			  type='checkbox' />
+			  <%=t2.name %> 
+		  </label>
+			  <%t2.get_child.each do |t3| %> 
+				  <br />
+		  <label>
+			  &nbsp; &nbsp;&nbsp; &nbsp; 
+			  <input name='ptags[]' value="<%=t3.id%>" 
+			  <%if @pids && (@pids.include? t3.id)%>
+				  checked
+			  <%end %>
+			  type='checkbox' />
+			  <%=t3.name %> 
+		  </label>
+			  <%end %> 
+		  <%end %> 
+	  </td>
+  <%end  %> 
+	  </tr>
+</table>

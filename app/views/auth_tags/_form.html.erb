@@ -1,3 +1,4 @@
+<div class='container'>
 <%= form_for(auth_tag) do |f| %>
   <% if auth_tag.errors.any? %>
     <div id="error_explanation">
@@ -17,11 +18,62 @@
   </div>
 
   <div class="field">
-    <%= f.label :auth_tagtype_id %>
-    <%= f.number_field :auth_tagtype_id %>
+	  Type
+	<%= select_tag "auth_tag[auth_tagtype_id]", options_from_collection_for_select(AuthTagtype.all, "id", "name", auth_tag.auth_tagtype_id||2 ) %>
   </div>
+
+  <%  if @auth_tag.auth_tagtype_id != AuthTagtype::Nav %> 
+  <b>
+  Parent:
+  </b>
+  <br />
+  <br />
+  <%AuthTag.nav_tags.each do |t| 
+	  if t.id == @auth_tag.id
+		  next
+	  end
+  %> 
+	  <label>
+		  <input name='ptags[]' value="<%=t.id%>" 
+		  <%if @pids && (@pids.include? t.id)%>
+			  checked
+		  <%end %>
+		  
+		  type='checkbox' />
+	  <%=t.name %> 
+	  </label>
+
+	  <%t.get_child.each do |t2| 
+	  if t2.id == @auth_tag.id
+		  next
+	  end
+
+  %> 
+		  <br />
+		  <label>
+			  &nbsp;
+			  &nbsp;
+			  &nbsp;
+			  <input name='ptags[]' value="<%=t2.id%>" 
+			  <%if @pids && (@pids.include? t2.id)%>
+				  checked
+			  <%end %>
+			  type='checkbox' />
+			  <%=t2.name %> 
+		  </label>
+		  <%end %> 
+
+
+  <br />
+
+  <%end  %> 
+  <%end   %> 
+  <br />
+  <br />
+
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+	</div>

@@ -2,7 +2,7 @@
 
 <h1>Auth Tags</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Name</th>
@@ -15,7 +15,7 @@
     <% @auth_tags.each do |auth_tag| %>
       <tr>
         <td><%= auth_tag.name %></td>
-        <td><%= auth_tag.auth_tagtype_id %></td>
+        <td><%= auth_tag.auth_tagtype.name %></td>
         <td><%= link_to 'Show', auth_tag %></td>
         <td><%= link_to 'Edit', edit_auth_tag_path(auth_tag) %></td>
         <td><%= link_to 'Destroy', auth_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,3 +27,24 @@
 <br>
 
 <%= link_to 'New Auth Tag', new_auth_tag_path %>
+
+<table class='table table-bordered'>
+	  <tr>
+  <%AuthTag.nav_tags.each do |t| %> 
+	  <td>
+		  <%=t.name  %> 
+
+		  <%t.get_child.each do |t2| %> 
+			  <br />
+				  &nbsp; &nbsp; <%=t2.name %> 
+			  <%t2.get_child.each do |t3| %> 
+				  <br />
+				  &nbsp; &nbsp;&nbsp; &nbsp; <%=t3.name %> 
+			  <%end %> 
+		  <%end %> 
+	  </td>
+  <%end  %> 
+	  </tr>
+</table>
+
+

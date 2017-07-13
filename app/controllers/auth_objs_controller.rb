@@ -22,6 +22,8 @@ class AuthObjsController < ApplicationController
 
   # GET /auth_objs/1/edit
   def edit
+	  @pids = AuthTag2obj.get_tag_ids(@auth_obj.id, @auth_obj.class.name)
+	  puts @pids.inspect 
   end
 
   # POST /auth_objs
@@ -31,6 +33,15 @@ class AuthObjsController < ApplicationController
 
     respond_to do |format|
       if @auth_obj.save
+
+		  params[:ptags].each do |v|
+			  tt = AuthTag2obj.new
+			  tt.model = @auth_obj.class.name
+			  tt.auth_obj_id = @auth_obj.id
+			  tt.auth_tag_id = v
+			  tt.save
+		  end if params[:ptags]
+
         format.html { redirect_to @auth_obj, notice: 'Auth obj was successfully created.' }
         format.json { render :show, status: :created, location: @auth_obj }
       else
@@ -43,6 +54,15 @@ class AuthObjsController < ApplicationController
   # PATCH/PUT /auth_objs/1
   # PATCH/PUT /auth_objs/1.json
   def update
+	  AuthTag2obj.delete_all(["auth_obj_id = ? and model = ? ", @auth_obj.id, @auth_obj.class.name])
+	  params[:ptags].each do |v|
+		  tt = AuthTag2obj.new
+		  tt.model = @auth_obj.class.name
+		  tt.auth_obj_id = @auth_obj.id
+		  tt.auth_tag_id = v
+		  tt.save
+	  end if params[:ptags]
+
     respond_to do |format|
       if @auth_obj.update(auth_obj_params)
         format.html { redirect_to @auth_obj, notice: 'Auth obj was successfully updated.' }
