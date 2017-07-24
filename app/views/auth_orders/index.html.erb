@@ -38,7 +38,7 @@
 
 	<% auth_order.auth_order2objs.each  do |v| %>
 			<%=v.auth_obj_display_name%> 
-			<b><%=v.uuid.upcase%></b>
+			<b><%=v.uuid.to_s.upcase%></b>
 			<%if v.auth_obj_qty.to_i != 1%> 
 			($<%=v.auth_obj_unitprice%> x <%=v.auth_obj_qty%>)
 			<%end %> 
