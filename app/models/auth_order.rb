@@ -48,6 +48,11 @@ class AuthOrder < ApplicationRecord
 
 		orderobj.auth_obj_id = obj.id
 		orderobj.auth_obj_model_name = obj.class.name
+
+		if obj.instance.respond_to? :uuid
+			orderobj.uuid = obj.uuid
+		end
+
 		orderobj.auth_obj_display_name = obj.auth_obj_display_name
 		orderobj.auth_obj_qty = qty
 		orderobj.auth_obj_unitprice = obj.auth_obj_unitprice
