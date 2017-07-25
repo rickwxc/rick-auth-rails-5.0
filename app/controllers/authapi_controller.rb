@@ -327,4 +327,15 @@ class AuthapiController < ApplicationController
 		addr
 	end
 
+
+	def auth_item_count_in_cart
+		rs = AuthCart::get_item_list(current_user,g_get_visitor_uuid)
+
+		rs = {
+			:cart_items => rs.length
+		}
+
+		render :json => rs
+	end
+
 end
