@@ -251,14 +251,16 @@ class AuthapiController < ApplicationController
 			addr_id = addr.id
 		end
 
+
+		user_addr_type_id = params["#{prefix}auth_user_addr_type_id"].to_i
 		ucaddr = nil
 		if current_user
-			ucaddr = AuthUserAddr.find_or_create_by(:auth_user_id => current_user.id, :auth_addr_id => addr_id)
+			ucaddr = AuthUserAddr.find_or_create_by(:auth_user_id => current_user.id, :auth_addr_id => addr_id,:auth_user_addr_type_id => user_addr_type_id,:is_not_used=>false)
 		else
 			ucaddr = AuthUserAddr.new
 		end
 
-		ucaddr.auth_user_addr_type_id = params["#{prefix}auth_user_addr_type_id"].to_i
+		ucaddr.auth_user_addr_type_id = user_addr_type_id
 		ucaddr.auth_visitor_uuid = g_get_visitor_uuid
 		ucaddr.auth_addr_id = addr_id
 		ucaddr.is_not_used = false
