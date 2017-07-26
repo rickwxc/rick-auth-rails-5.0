@@ -251,9 +251,11 @@ class AuthapiController < ApplicationController
 			addr_id = addr.id
 		end
 
-		ucaddr = AuthUserAddr.new
+		ucaddr = nil
 		if current_user
-			ucaddr.auth_user_id = current_user.id
+			ucaddr = AuthUserAddr.find_or_create_by(:auth_user_id => current_user.id, :auth_addr_id => addr_id)
+		else
+			ucaddr = AuthUserAddr.new
 		end
 
 		ucaddr.auth_user_addr_type_id = params["#{prefix}auth_user_addr_type_id"].to_i
