@@ -85,6 +85,15 @@ class User < ApplicationRecord
 		rs
 	end
 
+	def is_super_admin
+		#first user default as Admin
+		if self.id == 1
+			return true 
+		end
+
+		self.has_relation(User2position, 'position_id', Position::AuthSuperAdmin)
+	end
+
 	# current_user.has_relation(User2position, 'position_id', Position::Admin)
 	# current_user.has_relation(User2position, 'position_id', User::No_relation)
 	def has_relation(relation_table, rel_field, rel_id)
