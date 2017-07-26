@@ -7,7 +7,7 @@ class AuthUserAddrsController < ApplicationController
   # GET /auth_user_addrs
   # GET /auth_user_addrs.json
   def index
-    @auth_user_addrs = AuthUserAddr.all
+	  @auth_user_addrs = AuthUserAddr.order('id desc').first(20)
   end
 
   # GET /auth_user_addrs/1

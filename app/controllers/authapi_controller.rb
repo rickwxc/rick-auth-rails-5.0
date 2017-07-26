@@ -338,4 +338,22 @@ class AuthapiController < ApplicationController
 		render :json => rs
 	end
 
+	def auth_user_addr_is_not_used
+		user_addr_id = params[:user_addr_id]
+		user_addr = AuthUserAddr.find(user_addr_id)
+		rs = {}
+		if !current_user
+			render :json => rs
+			return
+		end
+
+		if current_user.id == user_addr.auth_user_id
+			user_addr.is_not_used = true
+			user_addr.save
+		end
+
+		render :json => rs
+	end
+
+
 end

@@ -38,6 +38,8 @@ rails generate migration add_billing_addr_id_to_auth_order billing_addr_id:integ
 
 rails g migration add_can_pickup_to_auth_user_addr can_pickup:boolean
 
+rails g migration add_is_not_used_to_auth_user_addr is_not_used:boolean
+
 rails generate migration add_auth_shipping_cost_to_auth_order auth_shipping_cost:decimal{10.2}
 rails generate migration add_unit_no_to_auth_addr unit_no:string
 
