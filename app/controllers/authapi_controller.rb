@@ -259,6 +259,7 @@ class AuthapiController < ApplicationController
 		ucaddr.auth_user_addr_type_id = params["#{prefix}auth_user_addr_type_id"].to_i
 		ucaddr.auth_visitor_uuid = g_get_visitor_uuid
 		ucaddr.auth_addr_id = addr_id
+		ucaddr.is_not_used = false
 
 		if params["#{prefix}firstname"]
 			ucaddr.firstname = params["#{prefix}firstname"].strip
