@@ -1,5 +1,6 @@
 class Position < ApplicationRecord
 	has_many :position2permissions
+	AuthSuperAdmin = 1
 
 	def get_controllernames
 		rs = []
