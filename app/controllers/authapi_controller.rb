@@ -360,5 +360,21 @@ class AuthapiController < ApplicationController
 		render :json => rs
 	end
 
+	def auth_login_user_via_email
+		rs = {}
+		if current_user 
+			render :json => rs
+		end
+
+		email = params[:e]
+        user = User.where(:email => email).first
+		if !user.is_super_admin && user.has_relation(User2position, 'position_id', User::No_relation)
+			sign_in user, event: :authentication 
+			rs = {
+				:success => 1
+			}
+		end
+		render :json => rs
+	end
 
 end
