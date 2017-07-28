@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_order_shipping_rule.name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @auth_order_shipping_rule.cost %>
+</p>
+
+<p>
+  <strong>Order amt:</strong>
+  <%= @auth_order_shipping_rule.order_amt %>
+</p>
+
+<p>
+  <strong>Is enabled:</strong>
+  <%= @auth_order_shipping_rule.is_enabled %>
+</p>
+
+<%= link_to 'Edit', edit_auth_order_shipping_rule_path(@auth_order_shipping_rule) %> |
+<%= link_to 'Back', auth_order_shipping_rules_path %>

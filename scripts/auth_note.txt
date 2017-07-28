@@ -1,3 +1,11 @@
+global shipping rule:
+
+order based flat
+amt range
+
+rails g scaffold auth_order_shipping_rule name:text cost:decimal{10.2} order_amt:decimal{10.2} 
+is_enabled:boolean
+
 
 
 gallery

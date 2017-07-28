@@ -1,0 +1,2 @@
+class AuthOrderShippingRule < ApplicationRecord
+end

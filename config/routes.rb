@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :auth_order_shipping_rules
   resources :auth_tag2objs
   resources :auth_tag2tags
   resources :auth_tags

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  cost: 9.99
+  order_amt: 9.99
+  is_enabled: false
+
+two:
+  name: MyText
+  cost: 9.99
+  order_amt: 9.99
+  is_enabled: false

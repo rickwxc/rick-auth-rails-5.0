@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Order Shipping Rules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Cost</th>
+      <th>Order amt</th>
+      <th>Is enabled</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_order_shipping_rules.each do |auth_order_shipping_rule| %>
+      <tr>
+        <td><%= auth_order_shipping_rule.name %></td>
+        <td><%= auth_order_shipping_rule.cost %></td>
+        <td><%= auth_order_shipping_rule.order_amt %></td>
+        <td><%= auth_order_shipping_rule.is_enabled %></td>
+        <td><%= link_to 'Show', auth_order_shipping_rule %></td>
+        <td><%= link_to 'Edit', edit_auth_order_shipping_rule_path(auth_order_shipping_rule) %></td>
+        <td><%= link_to 'Destroy', auth_order_shipping_rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Order Shipping Rule', new_auth_order_shipping_rule_path %>
