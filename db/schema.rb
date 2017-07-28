@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728023849) do
+ActiveRecord::Schema.define(version: 20170728052248) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -238,9 +238,8 @@ ActiveRecord::Schema.define(version: 20170728023849) do
 
   create_table "auth_tags", force: :cascade do |t|
     t.string   "name"
-    t.integer  "auth_tagtype_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "auth_tagtypes", force: :cascade do |t|
@@ -268,6 +267,27 @@ ActiveRecord::Schema.define(version: 20170728023849) do
     t.datetime "updated_at",             null: false
     t.boolean  "can_pickup"
     t.boolean  "is_not_used"
+  end
+
+  create_table "auth_website2tags", force: :cascade do |t|
+    t.integer  "auth_website_id"
+    t.integer  "auth_tag_id"
+    t.integer  "idx"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "auth_websites", force: :cascade do |t|
+    t.string   "url"
+    t.string   "sendfromemail"
+    t.string   "replyemail"
+    t.string   "shortname"
+    t.string   "title"
+    t.text     "descr"
+    t.string   "mailapikey"
+    t.string   "mailapiurl"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

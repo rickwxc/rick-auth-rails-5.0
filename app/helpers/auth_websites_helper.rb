@@ -1,0 +1,2 @@
+module AuthWebsitesHelper
+end

@@ -1,0 +1,32 @@
+<%= form_for(auth_website2tag) do |f| %>
+  <% if auth_website2tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_website2tag.errors.count, "error") %> prohibited this auth_website2tag from being saved:</h2>
+
+      <ul>
+      <% auth_website2tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :auth_website_id %>
+    <%= f.number_field :auth_website_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_tag_id %>
+    <%= f.number_field :auth_tag_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :idx %>
+    <%= f.number_field :idx %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

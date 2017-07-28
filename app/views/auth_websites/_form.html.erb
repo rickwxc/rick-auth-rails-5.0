@@ -1,0 +1,57 @@
+<%= form_for(auth_website) do |f| %>
+  <% if auth_website.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_website.errors.count, "error") %> prohibited this auth_website from being saved:</h2>
+
+      <ul>
+      <% auth_website.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sendfromemail %>
+    <%= f.text_field :sendfromemail %>
+  </div>
+
+  <div class="field">
+    <%= f.label :replyemail %>
+    <%= f.text_field :replyemail %>
+  </div>
+
+  <div class="field">
+    <%= f.label :shortname %>
+    <%= f.text_field :shortname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descr %>
+    <%= f.text_area :descr %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mailapikey %>
+    <%= f.text_field :mailapikey %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mailapiurl %>
+    <%= f.text_field :mailapiurl %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

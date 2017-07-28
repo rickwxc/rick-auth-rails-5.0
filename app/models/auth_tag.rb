@@ -1,14 +1,21 @@
 class AuthTag < ApplicationRecord
-	belongs_to:auth_tagtype
 
 	def self.nav_tags
-		rs = AuthTag.where(:auth_tagtype_id => AuthTagtype::Nav)
+		#rs = AuthTag.where(:auth_tagtype_id => AuthTagtype::Nav)
+		rs = []
 
 		rs
 	end
 
 	def self.nav_tags_tree
 
+	end
+
+	def get_webroot_ids
+		rs = AuthWebsite2tag.where(:auth_tag_id => self.id)
+		l = rs.collect{|t| t.auth_website_id}
+
+		l
 	end
 
 	def get_parent

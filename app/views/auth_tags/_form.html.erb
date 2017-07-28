@@ -17,12 +17,82 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-	  Type
-	<%= select_tag "auth_tag[auth_tagtype_id]", options_from_collection_for_select(AuthTagtype.all, "id", "name", auth_tag.auth_tagtype_id||2 ) %>
-  </div>
+  <h2>
+  * Set as Nav Root Category:
+  </h2>
+  <br />
+  <% AuthWebsite.all.each do |web| %> 
 
-  <%  if @auth_tag.auth_tagtype_id != AuthTagtype::Nav %> 
+	  <label>
+		  <input name='webroot[]' value="<%=web.id%>" 
+		  <%if @webrootids && (@webrootids.include? web.id)%>
+			  checked
+		  <%end %>
+		  type='checkbox' />
+	  <%=web.url %> 
+	  </label>
+	  <br />
+
+  <% end %> 
+
+  <br />
+  <h2>
+  * Choolse Parent Category
+  </h2>
+  <% AuthWebsite.all.each do |web| %> 
+	  <h3>
+	  <%=web.url %> 
+	  </h3>
+	  <br />
+
+
+  <% web.nav_tags.each do |t| 
+	  if t.id == @auth_tag.id
+		  next
+	  end
+  %> 
+	  <label>
+		  <input name='ptags[]' value="<%=t.id%>" 
+		  <%if @pids && (@pids.include? t.id)%>
+			  checked
+		  <%end %>
+		  
+		  type='checkbox' />
+	  <%=t.name %> 
+	  </label>
+
+	  <%t.get_child.each do |t2| 
+	  if t2.id == @auth_tag.id
+		  next
+	  end
+
+  %> 
+		  <br />
+		  <label>
+			  &nbsp;
+			  &nbsp;
+			  &nbsp;
+			  <input name='ptags[]' value="<%=t2.id%>" 
+			  <%if @pids && (@pids.include? t2.id)%>
+				  checked
+			  <%end %>
+			  type='checkbox' />
+			  <%=t2.name %> 
+		  </label>
+		  <%end %> 
+
+
+  <br />
+
+  <%end   %> 
+
+
+
+
+  <% end %> 
+
+
+  <%  if false && @auth_tag.auth_tagtype_id != AuthTagtype::Nav %> 
   <b>
   Parent:
   </b>

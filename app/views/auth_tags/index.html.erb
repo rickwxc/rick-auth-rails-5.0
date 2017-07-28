@@ -2,11 +2,17 @@
 
 <h1>Auth Tags</h1>
 
+<a href="/auth_tag2tags">
+  TagRelation
+  </a>
+<a href="/auth_website2tags">
+  Host2tags
+  </a>
+
 <table class='table'>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Auth tagtype</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,8 +21,6 @@
     <% @auth_tags.each do |auth_tag| %>
       <tr>
         <td><%= auth_tag.name %></td>
-        <td><%= auth_tag.auth_tagtype.name %></td>
-        <td><%= link_to 'Show', auth_tag %></td>
         <td><%= link_to 'Edit', edit_auth_tag_path(auth_tag) %></td>
         <td><%= link_to 'Destroy', auth_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -27,10 +31,13 @@
 <br>
 
 <%= link_to 'New Auth Tag', new_auth_tag_path %>
+<hr />
 
+  <%AuthWebsite.all.each do |web| %> 
+	  <h3> <%=web.url  %> </h3>
 <table class='table table-bordered'>
 	  <tr>
-  <%AuthTag.nav_tags.each do |t| %> 
+  <%web.nav_tags.each do |t| %> 
 	  <td>
 		  <%=t.name  %> 
 
@@ -46,5 +53,6 @@
   <%end  %> 
 	  </tr>
 </table>
+  <%end  %> 
 
 

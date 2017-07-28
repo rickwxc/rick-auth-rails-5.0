@@ -23,6 +23,7 @@ class AuthTagsController < ApplicationController
   # GET /auth_tags/1/edit
   def edit
 	  @pids = @auth_tag.get_parent_ids
+	  @webrootids = @auth_tag.get_webroot_ids
   end
 
   # POST /auth_tags
@@ -39,7 +40,15 @@ class AuthTagsController < ApplicationController
 			  tt.ptag_id = v
 			  tt.ctag_id = @auth_tag.id
 			  tt.save
-		  end if (params[:ptags] && @auth_tag.auth_tagtype_id != AuthTagtype::Nav)
+		  end if (params[:ptags])
+
+		  params[:webroot].each do |v|
+			  tt = AuthWebsite2tag.new
+			  tt.auth_website_id = v
+			  tt.auth_tag_id = @auth_tag.id
+			  tt.save
+		  end if params[:webroot]
+
 
 		  format.html { redirect_to @auth_tag, notice: 'Auth tag was successfully created.' }
 		  format.json { render :show, status: :created, location: @auth_tag }
@@ -55,6 +64,8 @@ class AuthTagsController < ApplicationController
   def update
 
 	  AuthTag2tag.delete_all(["ctag_id = ?", @auth_tag.id])
+	  AuthWebsite2tag.delete_all(["auth_tag_id = ?", @auth_tag.id])
+
 
 	  params[:ptags].each do |v|
 		  tt = AuthTag2tag.new
@@ -63,6 +74,12 @@ class AuthTagsController < ApplicationController
 		  tt.save
 	  end if params[:ptags] 
 
+	  params[:webroot].each do |v|
+		  tt = AuthWebsite2tag.new
+		  tt.auth_website_id = v
+		  tt.auth_tag_id = @auth_tag.id
+		  tt.save
+	  end if params[:webroot]
 
     respond_to do |format|
       if @auth_tag.update(auth_tag_params)
@@ -93,6 +110,6 @@ class AuthTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_tag_params
-      params.require(:auth_tag).permit(:name, :auth_tagtype_id)
+      params.require(:auth_tag).permit(:name)
     end
 end

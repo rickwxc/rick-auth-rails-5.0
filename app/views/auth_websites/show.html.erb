@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @auth_website.url %>
+</p>
+
+<p>
+  <strong>Sendfromemail:</strong>
+  <%= @auth_website.sendfromemail %>
+</p>
+
+<p>
+  <strong>Replyemail:</strong>
+  <%= @auth_website.replyemail %>
+</p>
+
+<p>
+  <strong>Shortname:</strong>
+  <%= @auth_website.shortname %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @auth_website.title %>
+</p>
+
+<p>
+  <strong>Descr:</strong>
+  <%= @auth_website.descr %>
+</p>
+
+<p>
+  <strong>Mailapikey:</strong>
+  <%= @auth_website.mailapikey %>
+</p>
+
+<p>
+  <strong>Mailapiurl:</strong>
+  <%= @auth_website.mailapiurl %>
+</p>
+
+<%= link_to 'Edit', edit_auth_website_path(@auth_website) %> |
+<%= link_to 'Back', auth_websites_path %>

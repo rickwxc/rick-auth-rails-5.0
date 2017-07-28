@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Websites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Sendfromemail</th>
+      <th>Replyemail</th>
+      <th>Shortname</th>
+      <th>Title</th>
+      <th>Descr</th>
+      <th>Mailapikey</th>
+      <th>Mailapiurl</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_websites.each do |auth_website| %>
+      <tr>
+        <td><%= auth_website.url %></td>
+        <td><%= auth_website.sendfromemail %></td>
+        <td><%= auth_website.replyemail %></td>
+        <td><%= auth_website.shortname %></td>
+        <td><%= auth_website.title %></td>
+        <td><%= auth_website.descr %></td>
+        <td><%= auth_website.mailapikey %></td>
+        <td><%= auth_website.mailapiurl %></td>
+        <td><%= link_to 'Show', auth_website %></td>
+        <td><%= link_to 'Edit', edit_auth_website_path(auth_website) %></td>
+        <td><%= link_to 'Destroy', auth_website, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Website', new_auth_website_path %>

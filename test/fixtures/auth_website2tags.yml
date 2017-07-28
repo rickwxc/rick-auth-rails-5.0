@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  auth_website_id: 1
+  auth_tag_id: 1
+  idx: 1
+
+two:
+  auth_website_id: 1
+  auth_tag_id: 1
+  idx: 1
