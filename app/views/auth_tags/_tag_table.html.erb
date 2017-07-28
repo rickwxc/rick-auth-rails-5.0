@@ -1,7 +1,9 @@
 
+  <%AuthWebsite.all.each do |web| %> 
+	  <h3> <%=web.url  %> </h3>
 <table class='table table-bordered'>
 	  <tr>
-  <%AuthTag.nav_tags.each do |t| %> 
+  <%web.nav_tags.each do |t| %> 
 	  <td>
 		  <label>
 			  <input name='ptags[]' value="<%=t.id%>" 
@@ -40,3 +42,4 @@
   <%end  %> 
 	  </tr>
 </table>
+  <%end  %> 
