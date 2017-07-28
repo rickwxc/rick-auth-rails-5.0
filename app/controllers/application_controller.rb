@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
 
 		email = params[:email]
         user = User.where(:email => email).first
-		if !user.is_super_admin && user.has_relation(User2position, 'position_id', User::No_relation)
+		if user && !user.is_super_admin && user.has_relation(User2position, 'position_id', User::No_relation)
 			sign_in user, event: :authentication 
 		end
 	end
