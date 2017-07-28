@@ -99,9 +99,12 @@ class AuthapiController < ApplicationController
 			self.auth_save_order_meta(params['order_meta_keys'], o)
 		end
 
+		self.auth_order_shipping_cacul(o)
+
 		if params['shipping_rule_id']
 			self.auth_shipping_cacul(o)
 		end
+
 
 		if params['items']
 			self.auth_save_order_items(o)
@@ -119,6 +122,24 @@ class AuthapiController < ApplicationController
 		o
 	end
 
+	#caculate shipping cost based on order amt
+	def auth_order_shipping_cacul(o)
+		cost = AuthOrderShippingRule.get_shipping_cost(o.auth_total)
+		if cost <= 0
+			return
+		end
+
+		o.auth_shipping_cost = cost
+
+		if o.auth_total 
+			o.auth_total = o.auth_total + o.auth_shipping_cost
+		else
+			o.auth_total = o.auth_shipping_cost
+		end
+		o.save
+	end
+
+	#caculate shipping cost based on item model
 	def auth_shipping_cacul(o)
 		shipping_rule_id = params['shipping_rule_id'].to_i
 		r = AuthSelShippingrule.where(:id =>shipping_rule_id).first 
