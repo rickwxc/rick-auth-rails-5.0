@@ -48,7 +48,6 @@ Rails.application.routes.draw do
     post 'auth_get_order_shipping_cost', to: 'authapi#auth_get_order_shipping_cost'
     post 'auth_item_count_in_cart', to: 'authapi#auth_item_count_in_cart'
     post 'auth_user_addr_is_not_used', to: 'authapi#auth_user_addr_is_not_used'
-    post 'auth_login_user_via_email', to: 'authapi#auth_login_user_via_email'
 
 
 	root 'we#index'

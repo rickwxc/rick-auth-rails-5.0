@@ -42,4 +42,16 @@ class ApplicationController < ActionController::Base
 		#tobe implemented
 	end
 
+	def auth_login_user_via_email
+		if current_user 
+			return
+		end
+
+		email = params[:email]
+        user = User.where(:email => email).first
+		if !user.is_super_admin && user.has_relation(User2position, 'position_id', User::No_relation)
+			sign_in user, event: :authentication 
+		end
+	end
+
 end
