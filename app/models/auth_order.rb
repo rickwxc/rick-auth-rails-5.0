@@ -135,12 +135,39 @@ class AuthOrder < ApplicationRecord
 			self.auth_payst_id = AuthPayst::Half_Paid
 			self.auth_orderst_id = AuthOrderst::Valid
 			self.save
+			self.after_order_paid
 			return
 		end
 
 		self.auth_payst_id = AuthPayst::Paid
 		self.auth_orderst_id = AuthOrderst::Valid
 		self.save
+
+		self.after_order_paid
+	end
+
+	def after_order_paid
+		self.clear_cart_items
+		self.dec_item_stock 
+	end
+
+	def clear_cart_items
+		self.auth_order2objs.each  do |v| 
+			AuthCart.delete_all(["auth_user_id =? and auth_obj_id = ? and  auth_obj_model_name = ?", self.auth_user_id, v.auth_obj_id, v.auth_obj_model_name])
+		end
+	end
+
+	def dec_item_stock 
+		self.auth_order2objs.each  do |v| 
+			obj = v.obj
+			if obj && obj.respond_to?(:auth_get_stock) && obj.respond_to?(:auth_set_stock)
+				qty = obj.auth_get_stock
+				if qty > 0
+					new_stock_qty = qty - v.auth_obj_qty
+					obj.auth_set_stock(new_stock_qty)
+				end
+			end
+		end
 	end
 
 end
