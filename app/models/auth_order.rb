@@ -53,6 +53,10 @@ class AuthOrder < ApplicationRecord
 			orderobj.uuid = obj.auth_uuid
 		end
 
+		if obj.has_attribute?(:barcode) || (obj.respond_to? :barcode)
+			orderobj.barcode = obj.barcode
+		end
+
 		orderobj.auth_obj_display_name = obj.auth_obj_display_name
 		orderobj.auth_obj_qty = qty
 		orderobj.auth_obj_unitprice = obj.auth_obj_unitprice

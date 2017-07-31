@@ -52,6 +52,8 @@ rails g scaffold auth_addr street_number:string street:string auth_sb_id:integer
 rails generate migration add_unit_no_to_auth_addr unit_no:string
 
 rails generate migration add_uuid_to_auth_order2obj uuid:string
+rails generate migration add_barcode_to_auth_order2obj barcode:string
+
 
 
 rails generate migration add_shipping_addr_id_to_auth_order shipping_addr_id:integer

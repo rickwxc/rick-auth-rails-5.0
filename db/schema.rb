@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731001201) do
+ActiveRecord::Schema.define(version: 20170731001412) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20170731001201) do
     t.datetime "updated_at",                                     null: false
     t.decimal  "auth_shipping_cost",    precision: 10, scale: 2
     t.string   "uuid"
+    t.string   "barcode"
   end
 
   create_table "auth_order_shipping_rules", force: :cascade do |t|
