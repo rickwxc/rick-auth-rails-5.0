@@ -1,0 +1,2 @@
+class AuthObjAttrGroup < ApplicationRecord
+end

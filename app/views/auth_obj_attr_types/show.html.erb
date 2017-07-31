@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_obj_attr_type.name %>
+</p>
+
+<p>
+  <strong>Auth obj attr group:</strong>
+  <%= @auth_obj_attr_type.auth_obj_attr_group_id %>
+</p>
+
+<p>
+  <strong>Idx:</strong>
+  <%= @auth_obj_attr_type.idx %>
+</p>
+
+<%= link_to 'Edit', edit_auth_obj_attr_type_path(@auth_obj_attr_type) %> |
+<%= link_to 'Back', auth_obj_attr_types_path %>

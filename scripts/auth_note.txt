@@ -7,6 +7,10 @@ rails g scaffold auth_order_shipping_rule name:text cost:decimal{10.2} order_amt
 is_enabled:boolean
 
 
+rails g scaffold auth_obj_attr  model:string obj_id:integer auth_meta_type_id:integer value:string idx:integer 
+rails g scaffold auth_obj_attr_type name:string auth_obj_attr_group_id:integer idx:integer
+rails g scaffold auth_obj_attr_group name:string 
+
 
 
 rails generate migration remove_auth_tagtype_id_from_auth_tag  auth_tagtype_id:integer

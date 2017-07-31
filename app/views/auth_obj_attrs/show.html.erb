@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @auth_obj_attr.model %>
+</p>
+
+<p>
+  <strong>Obj:</strong>
+  <%= @auth_obj_attr.obj_id %>
+</p>
+
+<p>
+  <strong>Auth meta type:</strong>
+  <%= @auth_obj_attr.auth_meta_type_id %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @auth_obj_attr.value %>
+</p>
+
+<p>
+  <strong>Idx:</strong>
+  <%= @auth_obj_attr.idx %>
+</p>
+
+<%= link_to 'Edit', edit_auth_obj_attr_path(@auth_obj_attr) %> |
+<%= link_to 'Back', auth_obj_attrs_path %>

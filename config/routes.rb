@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :auth_obj_attrs
+  resources :auth_obj_attr_types
+  resources :auth_obj_attr_groups
   resources :auth_website2tags
   resources :auth_websites
   resources :auth_order_shipping_rules

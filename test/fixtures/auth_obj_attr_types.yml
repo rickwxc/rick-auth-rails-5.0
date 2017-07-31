@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  auth_obj_attr_group_id: 1
+  idx: 1
+
+two:
+  name: MyString
+  auth_obj_attr_group_id: 1
+  idx: 1
