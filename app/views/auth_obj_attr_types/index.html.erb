@@ -16,6 +16,7 @@
     <% @auth_obj_attr_types.each do |auth_obj_attr_type| %>
       <tr>
         <td><%= auth_obj_attr_type.name %></td>
+        <td><%= auth_obj_attr_type.show_name %></td>
         <td><%= auth_obj_attr_type.auth_obj_attr_group_id %></td>
         <td><%= auth_obj_attr_type.idx %></td>
         <td><%= link_to 'Show', auth_obj_attr_type %></td>
