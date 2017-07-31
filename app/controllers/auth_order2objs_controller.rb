@@ -7,7 +7,7 @@ class AuthOrder2objsController < ApplicationController
   # GET /auth_order2objs
   # GET /auth_order2objs.json
   def index
-    @auth_order2objs = AuthOrder2obj.all
+	  @auth_order2objs = AuthOrder2obj.order('id desc').first(20)
   end
 
   # GET /auth_order2objs/1

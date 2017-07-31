@@ -11,6 +11,9 @@ rails g scaffold auth_obj_attr  model:string obj_id:integer auth_meta_type_id:in
 rails g scaffold auth_obj_attr_type name:string auth_obj_attr_group_id:integer idx:integer
 rails g scaffold auth_obj_attr_group name:string 
 
+rails generate migration add_display_name_to_auth_obj_attr_type display_name:name
+
+
 
 rails g migration change_auth_meta_type_id_to_auth_obj_attr_type_id
 

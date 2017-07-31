@@ -7,7 +7,7 @@ class AuthInvoicesController < ApplicationController
   # GET /auth_invoices
   # GET /auth_invoices.json
   def index
-    @auth_invoices = AuthInvoice.all
+    @auth_invoices = AuthInvoice.order('id desc').first(20)
   end
 
   # GET /auth_invoices/1
