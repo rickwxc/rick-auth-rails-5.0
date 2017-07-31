@@ -213,6 +213,7 @@ rails g scaffold auth_obj
 auth_name:string auth_uuid:string auth_descr:text auth_total:decimal{10.2} 
 
 rails generate migration add_auth_is_disable_to_auth_obj auth_is_disable:boolean
+rails generate migration add_barcode_to_auth_obj barcode:string
 
 
 rails g scaffold img model:string  uuid:integer alt:string   
