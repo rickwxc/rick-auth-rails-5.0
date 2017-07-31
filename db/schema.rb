@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731012616) do
+ActiveRecord::Schema.define(version: 20170731050953) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -102,17 +102,16 @@ ActiveRecord::Schema.define(version: 20170731012616) do
     t.integer  "idx"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.         "display_name"
   end
 
   create_table "auth_obj_attrs", force: :cascade do |t|
     t.string   "model"
     t.integer  "obj_id"
-    t.integer  "auth_attr_type_id"
+    t.integer  "auth_obj_attr_type_id"
     t.string   "value"
     t.integer  "idx"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "auth_objs", force: :cascade do |t|
