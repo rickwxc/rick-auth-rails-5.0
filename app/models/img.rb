@@ -24,7 +24,7 @@ class Img < ApplicationRecord
 
 
   def self.load_imgs(modelname, uuid)
-	  rs = Img.where(:modelname => modelname, :uuid => uuid).order('idx desc')
+	  rs = Img.where(:modelname => modelname, :uuid => uuid).order('idx asc')
 
 	  rs
   end
