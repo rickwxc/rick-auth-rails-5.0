@@ -1,4 +1,5 @@
 class AuthTag < ApplicationRecord
+	has_many:auth_tag2objs
 
 	def self.nav_tags
 		#rs = AuthTag.where(:auth_tagtype_id => AuthTagtype::Nav)
