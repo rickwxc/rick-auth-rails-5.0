@@ -12,6 +12,9 @@ rails g scaffold auth_obj_attr_type name:string auth_obj_attr_group_id:integer i
 rails g scaffold auth_obj_attr_group name:string 
 
 
+rails g migration change_auth_meta_type_id_to_auth_obj_attr_type_id
+
+rails generate migration remove_auth_meta_type_id_from_auth_tag  auth_tagtype_id:integer
 
 rails generate migration remove_auth_tagtype_id_from_auth_tag  auth_tagtype_id:integer
 
