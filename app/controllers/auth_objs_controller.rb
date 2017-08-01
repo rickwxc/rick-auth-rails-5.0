@@ -7,7 +7,7 @@ class AuthObjsController < ApplicationController
   # GET /auth_objs
   # GET /auth_objs.json
   def index
-    @auth_objs = AuthObj.all
+    @auth_objs = AuthObj.order('id desc').paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /auth_objs/1
