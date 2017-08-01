@@ -72,6 +72,6 @@ class AuthObjAttrTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_obj_attr_type_params
-      params.require(:auth_obj_attr_type).permit(:name, :auth_obj_attr_group_id, :idx, :show_name)
+      params.require(:auth_obj_attr_type).permit(:name, :auth_obj_attr_group_id, :idx, :show_name, :is_show)
     end
 end
