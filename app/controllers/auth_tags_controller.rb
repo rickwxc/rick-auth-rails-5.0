@@ -68,10 +68,7 @@ class AuthTagsController < ApplicationController
       if @auth_tag.save
 
 		  params[:ptags].each do |v|
-			  tt = AuthTag2tag.new
-			  tt.ptag_id = v
-			  tt.ctag_id = @auth_tag.id
-			  tt.save
+			  AuthTag2tag.find_or_create_by(:ptag_id => v, :ctag_id => @auth_tag.id)
 		  end if (params[:ptags])
 
 		  params[:webroot].each do |v|
@@ -100,10 +97,7 @@ class AuthTagsController < ApplicationController
 
 
 	  params[:ptags].each do |v|
-		  tt = AuthTag2tag.new
-		  tt.ptag_id = v
-		  tt.ctag_id = @auth_tag.id
-		  tt.save
+		  AuthTag2tag.find_or_create_by(:ptag_id => v, :ctag_id => @auth_tag.id)
 	  end if params[:ptags] 
 
 	  params[:webroot].each do |v|
