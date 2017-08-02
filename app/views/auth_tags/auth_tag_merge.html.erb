@@ -4,12 +4,23 @@
 </h1>
 
 
-Merge A into B.
+Merge <b>A </b>into <b>B</b>.
 
 <br />
-*All A related object will give to B (auth_tag2objs).
+*All <b>A </b> related object will give to <b>B </b> (auth_tag2objs).
 <br />
-*A will be deleted from auth_tag2tags, auth_tags, auth_tag2objs .
+*if  delete = true
+<br />
+&nbsp;
+&nbsp;
+<b>A</b> will be deleted from auth_tag2tags, auth_tags, auth_tag2objs .
+<br />
+else
+<br />
+&nbsp;
+&nbsp;
+All <b>A </b> relations stay as before.
+
 <br />
 <br />
 
@@ -31,6 +42,13 @@ Merge
 		</option>
     <% end %>
 	</select>
+	<br />
+		<label>
+		<input type='checkbox'  name='delete_from'  >
+		Delete all From Tag related info
+		after merge
+		</label>
+
 	<hr />
 		  <input type='submit'>
 	<% end %>
