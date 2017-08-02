@@ -9,12 +9,18 @@ rails g scaffold auth_order_shipping_rule name:text cost:decimal{10.2} order_amt
 is_enabled:boolean
 
 
+
 rails g scaffold auth_obj_attr  model:string obj_id:integer auth_meta_type_id:integer value:string idx:integer 
 rails g scaffold auth_obj_attr_type name:string auth_obj_attr_group_id:integer idx:integer
 rails g scaffold auth_obj_attr_group name:string 
 
 rails generate migration add_show_name_to_auth_obj_attr_type show_name:string
 rails generate migration add_is_show_to_auth_obj_attr_type is_show:boolean
+
+rails generate migration add_in_stock_date_to_auth_obj in_stock_date:date
+
+
+rails g scaffold auth_coupon code:string name:string val:decimal{10.2} expire_at:date is_enabled:boolean
 
 
 

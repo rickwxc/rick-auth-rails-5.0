@@ -8,6 +8,7 @@
       <th> name</th>
       <th> uuid</th>
       <th> stock</th>
+      <th> in stock date</th>
       <th> unit price</th>
       <th> is disabled</th>
       <th colspan="3"></th>
@@ -20,6 +21,14 @@
 		  <td> <%= auth_obj.auth_name %> </td>
         <td><%= auth_obj.auth_uuid %></td>
         <td><%= auth_obj.stock_qty %></td>
+		<td>
+			<%= auth_obj.in_stock_date %>
+			<br />
+			<%if auth_obj.auth_is_presale %>
+				Pre-sale
+			<%end %>
+	
+	</td>
         <td><%= auth_obj.auth_unitprice %></td>
         <td><%= (auth_obj.auth_is_disabled  == true ? 'Disabled':'') %></td>
 		<td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801042554) do
+ActiveRecord::Schema.define(version: 20170802230055) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20170801042554) do
     t.boolean  "auth_is_disabled"
     t.integer  "stock_qty"
     t.string   "barcode"
+    t.date     "in_stock_date"
   end
 
   create_table "auth_order2objs", force: :cascade do |t|

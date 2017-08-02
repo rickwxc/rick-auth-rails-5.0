@@ -21,5 +21,14 @@ class AuthObj < ApplicationRecord
 		self.save
 	end
 
+	def auth_is_presale
+		if !self.in_stock_date
+			return false
+		end
+
+		Time.zone = 'Sydney'
+		self.in_stock_date.future?
+	end
+
 
 end
