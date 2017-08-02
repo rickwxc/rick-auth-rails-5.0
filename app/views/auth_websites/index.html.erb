@@ -20,7 +20,7 @@
   <tbody>
     <% @auth_websites.each do |auth_website| %>
       <tr>
-        <td><%= auth_website.url %></td>
+        <td><%= link_to auth_website.url, edit_auth_website_path(auth_website) %></td>
         <td><%= auth_website.sendfromemail %></td>
         <td><%= auth_website.replyemail %></td>
         <td><%= auth_website.shortname %></td>
