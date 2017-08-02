@@ -10,6 +10,34 @@ class AuthTagsController < ApplicationController
     @auth_tags = AuthTag.all
   end
 
+  def auth_tag_merge
+	  if !params[:from_tag]
+		  return
+	  end
+
+	  if params[:from_tag] == params[:into_tag]
+		  render :plain => 'same from and intos, no action performed.'
+		  return
+	  end
+
+	  from_tag_id =  params[:from_tag]
+	  into_tag_id =  params[:into_tag]
+	  t2o = AuthTag2obj.where(:auth_tag_id => from_tag_id)
+
+	  t2o.each do |v|
+		  AuthTag2obj.find_or_create_by(:model => v.model, :auth_obj_id => v.auth_obj_id, :auth_tag_id => into_tag_id)
+		  v.destroy
+	  end
+
+	  AuthTag2tag.delete_all(["ctag_id = ?", from_tag_id])
+	  AuthTag2tag.delete_all(["ptag_id = ?", from_tag_id])
+	  AuthWebsite2tag.delete_all(["auth_tag_id = ?", from_tag_id])
+
+	  AuthTag.delete_all(["id = ?", from_tag_id])
+
+	  render :plain => 'success & done!'
+  end
+
   # GET /auth_tags/1
   # GET /auth_tags/1.json
   def show

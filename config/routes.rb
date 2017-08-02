@@ -55,6 +55,10 @@ Rails.application.routes.draw do
     post 'auth_item_count_in_cart', to: 'authapi#auth_item_count_in_cart'
     post 'auth_user_addr_is_not_used', to: 'authapi#auth_user_addr_is_not_used'
 
+	#
+    get 'auth_tag_merge', to: 'auth_tags#auth_tag_merge'
+    post 'auth_tag_merge', to: 'auth_tags#auth_tag_merge'
+
 
 	root 'we#index'
 

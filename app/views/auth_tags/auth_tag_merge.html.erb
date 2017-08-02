@@ -1,0 +1,38 @@
+<div class='container'>
+<h1>
+	Category Merge
+</h1>
+
+
+Merge A into B.
+
+<br />
+*All A related object will give to B (auth_tag2objs).
+<br />
+*A will be deleted from auth_tag2tags, auth_tags, auth_tag2objs .
+<br />
+<br />
+
+	<%= form_tag do %>
+
+Merge 
+	<select name='from_tag'>
+    <% AuthTag.all.each do |auth_tag| %>
+		<option value='<%= auth_tag.id %>'>
+		<%= auth_tag.name %>
+		</option>
+    <% end %>
+	</select>
+	Into
+	<select name='into_tag'>
+    <% AuthTag.all.each do |auth_tag| %>
+		<option value='<%= auth_tag.id %>'>
+		<%= auth_tag.name %>
+		</option>
+    <% end %>
+	</select>
+	<hr />
+		  <input type='submit'>
+	<% end %>
+
+	</div>
