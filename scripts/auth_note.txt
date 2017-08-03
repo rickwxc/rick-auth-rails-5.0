@@ -7,3 +7,9 @@ rails g scaffold img model:string  uuid:integer alt:string
 
 
 
+rails generate migration add_click_url_to_img click_url:text
+rails generate migration add_caption_to_img caption:text
+rails generate migration add_descr_to_img descr:text
+
+
+
