@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802230055) do
+ActiveRecord::Schema.define(version: 20170803014946) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -345,6 +345,9 @@ ActiveRecord::Schema.define(version: 20170802230055) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.text     "click_url"
+    t.text     "caption"
+    t.text     "descr"
   end
 
   create_table "permissions", force: :cascade do |t|
