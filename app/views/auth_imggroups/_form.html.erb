@@ -1,0 +1,42 @@
+<%= form_for(auth_imggroup) do |f| %>
+  <% if auth_imggroup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_imggroup.errors.count, "error") %> prohibited this auth_imggroup from being saved:</h2>
+
+      <ul>
+      <% auth_imggroup.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auth_imggroup_type_id %>
+	<%= select_tag "auth_imggroup[auth_imggroup_type_id]", options_from_collection_for_select(AuthImggroupType.all, "id", "name", auth_imggroup.auth_imggroup_type_id||0 ), class: '' , include_blank: "-none-" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :maximg %>
+    <%= f.number_field :maximg %>
+  </div>
+
+  <div class="field hide">
+    <%= f.label :obj_id %>
+    <%= f.number_field :obj_id %>
+  </div>
+
+  <div class="field hide">
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

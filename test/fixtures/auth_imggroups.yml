@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  auth_imggroup_type_id: 1
+  maximg: 1
+  obj_id: 1
+  model: MyString
+
+two:
+  name: MyString
+  auth_imggroup_type_id: 1
+  maximg: 1
+  obj_id: 1
+  model: MyString

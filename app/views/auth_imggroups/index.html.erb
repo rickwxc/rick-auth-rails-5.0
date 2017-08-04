@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Imggroups</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th>Auth imggroup type</th>
+      <th>Maximg</th>
+      <th>Obj</th>
+      <th>Model</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_imggroups.each do |auth_imggroup| %>
+      <tr>
+		  <td><%= auth_imggroup.name %></td>
+	  <td>
+		  <%= link_to 'Add Img', new_img_path(:uuid => auth_imggroup.id, :modelname => auth_imggroup.class.name), target: "_blank"  %>
+	  </td>
+        <td><%= auth_imggroup.auth_imggroup_type_id %></td>
+        <td><%= auth_imggroup.maximg %></td>
+        <td><%= auth_imggroup.obj_id %></td>
+        <td><%= auth_imggroup.model %></td>
+        <td><%= link_to 'Show', auth_imggroup %></td>
+        <td><%= link_to 'Edit', edit_auth_imggroup_path(auth_imggroup) %></td>
+        <td><%= link_to 'Destroy', auth_imggroup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Imggroup', new_auth_imggroup_path %>

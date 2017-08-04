@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Imggroup Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Acckey</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_imggroup_types.each do |auth_imggroup_type| %>
+      <tr>
+        <td><%= auth_imggroup_type.name %></td>
+        <td><%= auth_imggroup_type.acckey %></td>
+        <td><%= link_to 'Show', auth_imggroup_type %></td>
+        <td><%= link_to 'Edit', edit_auth_imggroup_type_path(auth_imggroup_type) %></td>
+        <td><%= link_to 'Destroy', auth_imggroup_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth Imggroup Type', new_auth_imggroup_type_path %>

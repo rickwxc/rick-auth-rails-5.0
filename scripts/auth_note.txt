@@ -276,6 +276,8 @@ user_id:integer
     t.string   "note"
     t.string   "mob"
     t.string   "cname"
+rails g scaffold auth_imggroup name:string auth_imggroup_type_id:integer maximg:integer obj_id:integer model:string
+rails g scaffold auth_imggroup_type name:string acckey:string 
 
 
 

@@ -1,0 +1,2 @@
+module AuthImggroupTypesHelper
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_imggroup.name %>
+</p>
+
+<p>
+  <strong>Auth imggroup type:</strong>
+  <%= @auth_imggroup.auth_imggroup_type_id %>
+</p>
+
+<p>
+  <strong>Maximg:</strong>
+  <%= @auth_imggroup.maximg %>
+</p>
+
+<p>
+  <strong>Obj:</strong>
+  <%= @auth_imggroup.obj_id %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @auth_imggroup.model %>
+</p>
+
+<%= link_to 'Edit', edit_auth_imggroup_path(@auth_imggroup) %> |
+<%= link_to 'Back', auth_imggroups_path %>

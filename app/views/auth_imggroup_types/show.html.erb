@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @auth_imggroup_type.name %>
+</p>
+
+<p>
+  <strong>Acckey:</strong>
+  <%= @auth_imggroup_type.acckey %>
+</p>
+
+<%= link_to 'Edit', edit_auth_imggroup_type_path(@auth_imggroup_type) %> |
+<%= link_to 'Back', auth_imggroup_types_path %>

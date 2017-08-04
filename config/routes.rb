@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :auth_orders
   resources :auth_ordersts
   resources :auth_paysts
+  resources :auth_imggroups
+  resources :auth_imggroup_types
 	resources :imgs
 	resources :user2positions
 	resources :positions
