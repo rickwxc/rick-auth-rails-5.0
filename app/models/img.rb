@@ -29,4 +29,17 @@ class Img < ApplicationRecord
 	  rs
   end
 
+  def url_to_href(default_str)
+
+	  if self.click_url.to_s != '' 
+		  return self.click_url
+	  end
+
+	  if default_str == 'void'
+		  return 'javascript:void()'
+	  end
+
+	  return default_str
+  end
+
 end
