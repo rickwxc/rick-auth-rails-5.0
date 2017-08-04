@@ -18,9 +18,10 @@ class AuthImggroupsController < ApplicationController
   # GET /auth_imggroups/new
   def new
     @auth_imggroup = AuthImggroup.new
-	if params[:model] && params[:obj_id]
+	if params[:model] && params[:obj_id] && params[:name]
 		@auth_imggroup.model ||= params[:model] 
 		@auth_imggroup.obj_id ||= params[:obj_id]
+		@auth_imggroup.name ||= params[:name]
 	else
 		redirect_to auth_imggroups_path
 	end

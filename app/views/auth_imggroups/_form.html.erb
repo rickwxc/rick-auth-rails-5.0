@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :auth_imggroup_type_id %>
-	<%= select_tag "auth_imggroup[auth_imggroup_type_id]", options_from_collection_for_select(AuthImggroupType.all, "id", "name", auth_imggroup.auth_imggroup_type_id||0 ), class: '' , include_blank: "-none-" %>
+	<%= select_tag "auth_imggroup[auth_imggroup_type_id]", options_from_collection_for_select(AuthImggroupType.all, "id", "name", auth_imggroup.auth_imggroup_type_id||0 ) %>
   </div>
 
   <div class="field">
