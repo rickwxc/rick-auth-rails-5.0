@@ -1,0 +1,2 @@
+class AuthImggroup < ApplicationRecord
+end
