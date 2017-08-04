@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803014946) do
+ActiveRecord::Schema.define(version: 20170804000321) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -348,11 +348,8 @@ ActiveRecord::Schema.define(version: 20170803014946) do
     t.text     "click_url"
     t.text     "caption"
     t.text     "descr"
-<<<<<<< HEAD
-=======
     t.index ["modelname"], name: "index_imgs_on_modelname"
     t.index ["uuid"], name: "index_imgs_on_uuid"
->>>>>>> gallery-5.0
   end
 
   create_table "permissions", force: :cascade do |t|
