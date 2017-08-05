@@ -99,8 +99,12 @@ class AuthapiController < ApplicationController
 			self.auth_save_order_meta(params['order_meta_keys'], o)
 		end
 
-		self.auth_order_shipping_cacul(o)
+		#order based shipping rules
+		if params['order_shipping_rule_id']
+			self.auth_order_shipping_cacul(o)
+		end
 
+		#this is object based shipping rules
 		if params['shipping_rule_id']
 			self.auth_shipping_cacul(o)
 		end
@@ -124,12 +128,21 @@ class AuthapiController < ApplicationController
 
 	#caculate shipping cost based on order amt
 	def auth_order_shipping_cacul(o)
-		cost = AuthOrderShippingRule.get_shipping_cost(o.auth_total)
-		if cost <= 0
+		order_shipping_rule_id = params['order_shipping_rule_id'].to_i
+		r = AuthOrderShippingRule.where(:id => order_shipping_rule_id).first 
+		if !r
 			return
 		end
 
-		o.auth_shipping_cost = cost
+		o.shipping_code = r.code
+
+		if (r.order_amt.to_i > 0) && (o.auth_total.to_i >= r.order_amt.to_i)
+			o.auth_shipping_cost = 0
+			o.save
+			return
+		end
+
+		o.auth_shipping_cost = r.cost
 
 		if o.auth_total 
 			o.auth_total = o.auth_total + o.auth_shipping_cost

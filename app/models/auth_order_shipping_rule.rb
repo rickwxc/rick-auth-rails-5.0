@@ -4,6 +4,7 @@ class AuthOrderShippingRule < ApplicationRecord
 		rules = AuthOrderShippingRule.where(:is_enabled => true)
 		rules
 	end
+
 	def self.get_shipping_cost(order_total) 
 		rules = self.current_shipping_rules 
 		if rules.length == 0
