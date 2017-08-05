@@ -2,6 +2,8 @@ global shipping rule:
 CREATE TABLE "auth_obj_attr_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "auth_obj_attr_group_id" integer, "idx" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
 
 
+authrules
+
 order based flat
 amt range
 
