@@ -17,6 +17,7 @@
     <% @auth_order_shipping_rules.each do |auth_order_shipping_rule| %>
       <tr>
         <td><%= auth_order_shipping_rule.name %></td>
+        <td><%= auth_order_shipping_rule.code %></td>
         <td><%= auth_order_shipping_rule.cost %></td>
         <td><%= auth_order_shipping_rule.order_amt %></td>
         <td><%= auth_order_shipping_rule.is_enabled %></td>
