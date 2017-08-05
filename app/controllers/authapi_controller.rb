@@ -99,11 +99,6 @@ class AuthapiController < ApplicationController
 			self.auth_save_order_meta(params['order_meta_keys'], o)
 		end
 
-		#order based shipping rules
-		if params['order_shipping_rule_id']
-			self.auth_order_shipping_cacul(o)
-		end
-
 		#this is object based shipping rules
 		if params['shipping_rule_id']
 			self.auth_shipping_cacul(o)
@@ -116,7 +111,10 @@ class AuthapiController < ApplicationController
 			self.auth_save_order_items_from_cart(o)
 		end
 
-
+		#order based shipping rules after order total
+		if params['order_shipping_rule_id']
+			self.auth_order_shipping_cacul(o)
+		end
 
 		if params['note']
 			o.auth_note = params['note']
@@ -136,7 +134,7 @@ class AuthapiController < ApplicationController
 
 		o.shipping_code = r.code
 
-		if (r.order_amt.to_i > 0) && (o.auth_total.to_i >= r.order_amt.to_i)
+		if r.is_free_shipping(o.auth_total)
 			o.auth_shipping_cost = 0
 			o.save
 			return

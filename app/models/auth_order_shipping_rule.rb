@@ -19,4 +19,27 @@ class AuthOrderShippingRule < ApplicationRecord
 		return 0
 	end
 
+	def is_free_shipping(total)
+		if self.order_amt.to_i > 0 &&  total.to_i >= self.order_amt.to_i 
+			return true
+		end
+
+		return false
+	end
+
+	def cost_info(total)
+		if self.is_free_shipping(total)
+			return '(Free shipping)'
+		end
+
+		s = "$#{self.cost}"
+
+		if self.order_amt.to_i > 0 
+			x =  self.order_amt.to_i  - total.to_i 
+			s = s + " ($#{x} away from Free Shipping)" 
+		end
+
+		return s
+	end
+
 end
