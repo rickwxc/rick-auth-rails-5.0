@@ -50,6 +50,34 @@ class AuthapiController < ApplicationController
 	def auth_add_obj_to_cart
 		rs = {}
 
+		begin 
+			md = params['model'].constantize
+		rescue NameError
+			rs = {
+				'msg' => 'Sorry, Product not found.'
+			}
+			render :json => rs
+			return
+		end
+
+		obj = md.where(:id => params['id']).first
+
+		if !obj
+			rs = {
+				'msg' => 'Sorry, Item not found.'
+			}
+			render :json => rs
+			return
+		end
+
+		if obj.auth_get_stock.to_f < params['qty'].to_f
+			rs = {
+				'msg' => 'Sorry, no stock!'
+			}
+			render :json => rs
+			return
+		end
+
 		c = AuthCart.new
 
 		if current_user
