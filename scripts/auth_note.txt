@@ -2,6 +2,8 @@ global shipping rule:
 CREATE TABLE "auth_obj_attr_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "auth_obj_attr_group_id" integer, "idx" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
 
 
+authrules
+
 order based flat
 amt range
 
@@ -18,6 +20,11 @@ rails generate migration add_show_name_to_auth_obj_attr_type show_name:string
 rails generate migration add_is_show_to_auth_obj_attr_type is_show:boolean
 
 rails generate migration add_in_stock_date_to_auth_obj in_stock_date:date
+
+
+rails generate migration add_shipping_code_to_auth_order shipping_code:string
+rails generate migration add_code_to_auth_order_shipping_rule code:string
+
 
 
 rails g scaffold auth_coupon code:string name:string val:decimal{10.2} expire_at:date is_enabled:boolean

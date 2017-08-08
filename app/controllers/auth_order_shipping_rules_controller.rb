@@ -72,6 +72,6 @@ class AuthOrderShippingRulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auth_order_shipping_rule_params
-      params.require(:auth_order_shipping_rule).permit(:name, :cost, :order_amt, :is_enabled)
+      params.require(:auth_order_shipping_rule).permit(:name, :cost, :order_amt, :is_enabled, :code)
     end
 end
