@@ -35,11 +35,7 @@ class AuthObjsController < ApplicationController
       if @auth_obj.save
 
 		  params[:ptags].each do |v|
-			  tt = AuthTag2obj.new
-			  tt.model = @auth_obj.class.name
-			  tt.auth_obj_id = @auth_obj.id
-			  tt.auth_tag_id = v
-			  tt.save
+			  AuthTag2obj.find_or_create_by(:model => @auth_obj.class.name, :auth_obj_id => @auth_obj.id, :auth_tag_id => v)
 		  end if params[:ptags]
 
         format.html { redirect_to @auth_obj, notice: 'Auth obj was successfully created.' }
@@ -56,11 +52,7 @@ class AuthObjsController < ApplicationController
   def update
 	  AuthTag2obj.delete_all(["auth_obj_id = ? and model = ? ", @auth_obj.id, @auth_obj.class.name])
 	  params[:ptags].each do |v|
-		  tt = AuthTag2obj.new
-		  tt.model = @auth_obj.class.name
-		  tt.auth_obj_id = @auth_obj.id
-		  tt.auth_tag_id = v
-		  tt.save
+		  AuthTag2obj.find_or_create_by(:model => @auth_obj.class.name, :auth_obj_id => @auth_obj.id, :auth_tag_id => v)
 	  end if params[:ptags]
 
     respond_to do |format|
