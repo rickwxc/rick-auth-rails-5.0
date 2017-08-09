@@ -47,4 +47,16 @@ function ajax_add_to_cart(id, model, qty, options_json, callback){
 	}
 
 	ajax_post('/auth_add_obj_to_cart', data, 'json', callback);
+
+}
+
+function ajax_check_item_has_stock(obj_id, obj_model, qty, is_cart, callback){
+	data = {
+		obj_id: obj_id,
+		obj_model: obj_model,
+		is_cart: is_cart,
+		qty: qty
+	}
+
+	ajax_post('/auth_has_stock_for_checkout', data, 'json', callback);
 }

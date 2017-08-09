@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     post 'auth_get_order_shipping_cost', to: 'authapi#auth_get_order_shipping_cost'
     post 'auth_item_count_in_cart', to: 'authapi#auth_item_count_in_cart'
     post 'auth_user_addr_is_not_used', to: 'authapi#auth_user_addr_is_not_used'
+    post 'auth_has_stock_for_checkout', to: 'authapi#auth_has_stock_for_checkout'
 
 	#
     get 'auth_tag_merge', to: 'auth_tags#auth_tag_merge'

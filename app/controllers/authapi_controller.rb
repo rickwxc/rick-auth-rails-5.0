@@ -420,4 +420,51 @@ class AuthapiController < ApplicationController
 		render :json => rs
 	end
 
+
+	def auth_has_stock_for_checkout
+		rs = {}
+		
+		is_cart = params[:is_cart]
+		if is_cart == 'true'
+			#todo verify all cart is ok for checkout 
+
+			render :json => rs
+			return
+		end
+
+		obj_id = params[:obj_id]
+		obj_model = params[:obj_model]
+		qty = params[:qty]
+
+		begin 
+			md = obj_model.constantize
+		rescue NameError
+			rs = {
+				'msg' => 'Sorry, Product not found.'
+			}
+			render :json => rs
+			return
+		end
+
+		obj = md.where(:id => obj_id.to_i).first
+
+		if !obj
+			rs = {
+				'msg' => 'Sorry, Item not found.'
+			}
+			render :json => rs
+			return
+		end
+
+		if obj.auth_get_stock.to_f < qty.to_f
+			rs = {
+				'msg' => 'Sorry, no stock!'
+			}
+			render :json => rs
+			return
+		end
+
+		render :json => rs
+	end
+
 end
