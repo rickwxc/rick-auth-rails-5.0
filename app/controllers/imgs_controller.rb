@@ -7,7 +7,12 @@ class ImgsController < ApplicationController
   # GET /imgs
   # GET /imgs.json
   def index
-	@imgs = Img.order('id desc').paginate(:page => params[:page], :per_page => 20)
+	  if params[:uuid] && params[:modelname]
+		  @imgs = Img.where(:uuid => params[:uuid], :modelname => params[:modelname]).paginate(:page => params[:page], :per_page => 20) 
+	  else
+		  @imgs = Img.order('id desc').paginate(:page => params[:page], :per_page => 20) 
+	  end 
+
   end
 
   # GET /imgs/1
