@@ -35,4 +35,5 @@
 
 <br>
 
-<%= link_to 'New Img', new_img_path %>
+<%= link_to 'New Img', new_img_path(:uuid => params[:uuid] , :modelname => params[:modelname]) %>
+
