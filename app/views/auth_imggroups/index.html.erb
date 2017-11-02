@@ -22,7 +22,7 @@
 	  <td>
 		  <%= link_to 'Add Img', new_img_path(:uuid => auth_imggroup.id, :modelname => auth_imggroup.class.name), target: "_blank"  %>
 	  </td>
-        <td><%= auth_imggroup.auth_imggroup_type_id %></td>
+        <td><%= auth_imggroup.auth_imggroup_type.name %></td>
         <td><%= auth_imggroup.maximg %></td>
         <td><%= auth_imggroup.obj_id %></td>
         <td><%= auth_imggroup.model %></td>

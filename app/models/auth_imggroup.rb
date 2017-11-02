@@ -1,4 +1,5 @@
 class AuthImggroup < ApplicationRecord
+	belongs_to:auth_imggroup_type
 
   def self.load_imgs(model, obj_id, acckey)
 
