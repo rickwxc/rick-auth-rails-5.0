@@ -1,0 +1,34 @@
+<%= form_for(auth_discount) do |f| %>
+  <% if auth_discount.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(auth_discount.errors.count, "error") %> prohibited this auth_discount from being saved:</h2>
+
+      <ul>
+      <% auth_discount.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :obj_id %>
+    <%= f.number_field :obj_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amt %>
+    <%= f.text_field :amt %>
+	ranges from 0.01 - 0.99,
+	0.9 means 10% off (unit price * 0.9)
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

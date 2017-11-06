@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auth Discounts</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Model</th>
+      <th>Obj</th>
+      <th>% Off</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth_discounts.each do |auth_discount| %>
+      <tr>
+        <td><%= auth_discount.id %></td>
+        <td><%= auth_discount.model %></td>
+        <td><%= auth_discount.obj_id %></td>
+        <td><%= auth_discount.to_p_s %></td>
+        <td><%= link_to 'Show', auth_discount %></td>
+        <td><%= link_to 'Edit', edit_auth_discount_path(auth_discount) %></td>
+        <td><%= link_to 'Destroy', auth_discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

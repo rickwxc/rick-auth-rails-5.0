@@ -1,0 +1,10 @@
+<h1>Editing Auth Discount</h1>
+
+<%= render 'form', auth_discount: @auth_discount %>
+
+<%= link_to 'Show', @auth_discount %> |
+<%= link_to 'Back', auth_discounts_path %>
+<br />
+<br />
+<%= link_to 'Destroy', @auth_discount, method: :delete, data: { confirm: 'Are you sure?' } %>
+

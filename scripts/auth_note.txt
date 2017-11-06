@@ -7,6 +7,11 @@ authrules
 order based flat
 amt range
 
+rails g scaffold auth_discount model:string obj_id:integer amt:decimal{10.2} 
+
+website discount, tag discount ,etc
+
+
 rails g scaffold auth_order_shipping_rule name:text cost:decimal{10.2} order_amt:decimal{10.2} 
 is_enabled:boolean
 

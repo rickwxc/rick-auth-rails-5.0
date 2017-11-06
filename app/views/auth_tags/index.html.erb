@@ -28,6 +28,13 @@
         <td><%= auth_tag.name %></td>
 		  <td>
 			  <%= link_to 'Add Img', new_img_path(:uuid => auth_tag.id, :modelname => auth_tag.class.name), target: "_blank"  %>
+			  |
+	<% d = AuthDiscount.has_discount(auth_tag.class.name, auth_tag.id) %>
+	<%if d  %>
+		<%= link_to d, edit_auth_discount_path(d), target: "_blank"  %>
+	<% else %>
+		<%= link_to 'Add Discount', new_auth_discount_path(:obj_id => auth_tag.id, :model => auth_tag.class.name), target: "_blank"  %>
+	<% end %>
 		  </td>
         <td><%= link_to 'Edit', edit_auth_tag_path(auth_tag) %></td>
         <td><%= link_to 'Destroy', auth_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -42,7 +49,16 @@
 <hr />
 
   <%AuthWebsite.all.each do |web| %> 
-	  <h3> <%=web.url  %> </h3>
+	  <b> <%=web.url  %> </b>
+	<% d = AuthDiscount.has_discount(web.class.name, web.id) %>
+	<%if d  %>
+		<%= link_to d, edit_auth_discount_path(d), target: "_blank"  %>
+	<% else %>
+			  <%= link_to 'Add website Discount', new_auth_discount_path(:obj_id => web.id, :model => web.class.name), target: "_blank"  %>
+	<% end %>
+
+			  <br />
+			  <br />
 <table class='table table-bordered'>
 	  <tr>
   <%web.nav_tags.each do |t| %> 
