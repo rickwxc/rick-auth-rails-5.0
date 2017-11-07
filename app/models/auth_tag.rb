@@ -40,4 +40,35 @@ class AuthTag < ApplicationRecord
 		rs
 	end
 
+	def self.get_discount(obj)
+		obj_tag_ids = AuthTag2obj.get_tag_ids(obj.id, obj.class.name)
+		all_tag_ids = self.get_all_parents_ids(obj_tag_ids)
+
+		d = AuthDiscount.where("model =? and obj_id in (?)", self.name, all_tag_ids).order('amt asc').first
+
+		d
+	end
+
+	def self.get_all_parents_ids(ids)
+		if ids.length == 0 
+			return []
+		end
+
+		c1 = ids.count
+
+		c2 = 0
+		while (c1 != c2)
+
+			c1 = ids.length
+
+			rs = AuthTag2tag.where("ctag_id in (?)", ids)
+			rs = rs.collect{|t| t.ptag_id}
+			(ids << rs).flatten!
+			ids.uniq!
+			c2 = ids.length
+		end
+
+		ids
+	end
+
 end
