@@ -50,12 +50,14 @@
 
   <%AuthWebsite.all.each do |web| %> 
 	  <b> <%=web.url  %> </b>
+	  <!--
 	<% d = AuthDiscount.has_discount(web.class.name, web.id) %>
 	<%if d  %>
 		<%= link_to d, edit_auth_discount_path(d), target: "_blank"  %>
 	<% else %>
 			  <%= link_to 'Add website Discount', new_auth_discount_path(:obj_id => web.id, :model => web.class.name), target: "_blank"  %>
 	<% end %>
+	-->
 
 			  <br />
 			  <br />
