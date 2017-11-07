@@ -57,6 +57,15 @@ class AuthObj < ApplicationRecord
 		self.in_stock_date.future?
 	end
 
+	#return 0 if not discount apply
+	def get_old_price
+		arg_old_price = 0
+		if self.auth_obj_get_discount
+			arg_old_price = self.auth_obj_unitprice_before_discount
+		end
+		arg_old_price
+	end
+
 	def auth_get_top_category_name
 		tag = (AuthTag.find_by_sql ["select t.* from auth_tag2objs t2o join  auth_tags t on t2o.auth_tag_id = t.id  and t2o.model = ? and  t2o.auth_obj_id = ? order by t.id desc", 'AuthObj', self.id]).first
 
