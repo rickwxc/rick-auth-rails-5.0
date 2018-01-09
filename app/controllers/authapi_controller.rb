@@ -38,7 +38,13 @@ class AuthapiController < ApplicationController
 			return
 		end
 
-		c = AuthCart.where(:id => id, :auth_visitor_uuid => auth_visitor_uuid).first
+		c = nil
+		if current_user
+			c = AuthCart.where(:id => id, :auth_user_id => current_user.id).first
+		else
+			c = AuthCart.where(:id => id, :auth_visitor_uuid => auth_visitor_uuid).first
+		end
+
 		if c
 			c.auth_obj_qty = qty
 			c.save
