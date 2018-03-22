@@ -81,13 +81,15 @@ class AuthOrder < ApplicationRecord
 		self.save
 	end
 
-	def self.init_order(user_id, uuid)
+	def self.init_order(user_id, uuid, website_id)
 		o = AuthOrder.new
 		o.auth_user_id = user_id
 		o.auth_visitor_uuid = uuid
+		o.website_id = website_id
 
 		o.auth_orderst_id = AuthOrderst::Draft
 		o.auth_payst_id = AuthPayst::Not_Paid
+
 		o.save
 
 		o

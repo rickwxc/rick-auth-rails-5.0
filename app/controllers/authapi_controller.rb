@@ -113,9 +113,9 @@ class AuthapiController < ApplicationController
 		end
 
 		if uc
-			o = AuthOrder.init_order(uc.id, auth_visitor_uuid)
+			o = AuthOrder.init_order(uc.id, auth_visitor_uuid, @gl_website.id)
 		else
-			o = AuthOrder.init_order(0, auth_visitor_uuid)
+			o = AuthOrder.init_order(0, auth_visitor_uuid, @gl_website.id)
 		end
 
 		if params['billing_addr']

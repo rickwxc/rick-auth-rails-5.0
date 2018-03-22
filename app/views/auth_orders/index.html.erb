@@ -79,6 +79,8 @@
 		Last Update: <%= au_date_full auth_order.updated_at %>
 		<br >
 		Create: <%= au_date_full auth_order.created_at %>
+		<br >
+		website: <%= auth_order.website_id %>
 
 </td>
         <td><%= link_to 'Destroy', auth_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -39,8 +39,29 @@ class ApplicationController < ActionController::Base
 	end
 
 	def init_env
-		#tobe implemented
+		
+
+
+		self.auth_init_gl_website
 	end
+
+	def auth_init_gl_website
+		host = request.host
+
+		web = AuthWebsite.where(:url => host).first
+		@gl_website = nil
+		@is_staging = false
+		if web
+			@gl_website = web
+		else
+			@gl_website = AuthWebsite.where(:id => 1).first
+		end
+
+		if (host.include? 'staging') || (['127.0.0.1'].include? request.remote_ip.to_s)
+			@is_staging = true 
+		end
+	end
+
 
 	def auth_login_user_via_email
 		if current_user 

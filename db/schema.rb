@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105234314) do
+ActiveRecord::Schema.define(version: 20180322032900) do
 
   create_table "auth_addrs", force: :cascade do |t|
     t.string   "street_number"
@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(version: 20171105234314) do
     t.decimal  "auth_coupon_amt",    precision: 10, scale: 2
     t.integer  "src_user_id"
     t.string   "shipping_code"
+    t.integer  "website_id"
   end
 
   create_table "auth_ordersts", force: :cascade do |t|
